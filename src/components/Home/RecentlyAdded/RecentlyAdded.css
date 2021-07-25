@@ -1,0 +1,22 @@
+.sale{
+    background: #778EA2;
+    padding: 2px 9px 3px 9px;
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+  }
+  .apartment{
+    font-size: 14px;
+    
+  }
+  #cardStyle{   
+    border: none;
+    padding: 10px;
+  }
+  
+  #cardStyle:hover{
+     box-shadow:5px 5px 10px rgb(0,0,0,.1),-5px -5px 10px rgb(0,0,0,.1);
+    transform: scale(1.1);
+    transition-duration: .5s;
+    
+  }
