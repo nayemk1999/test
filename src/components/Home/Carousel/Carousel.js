@@ -1,15 +1,25 @@
 import React from 'react';
-import img from "../../../image/digital-marketing-agency-ntwrk-g39p1kDjvSY-unsplash.jpg"
-import img1 from "../../../image/irina-ermakova-V9rTX32KuTI-unsplash.jpg"
-import img2 from "../../../image/jason-dent-w3eFhqXjkZE-unsplash.jpg"
-import "./Carousell.css"
-const Carousell = () => {
+import { Button, Form, FormControl } from 'react-bootstrap';
+import "./Carousel.css"
+
+
+const HeadCarousel = () => {
+    const img1 = "https://i.ibb.co/5YtR1KS/1-1.jpg"
+    const img2 = "https://i.ibb.co/kxKkGjD/1-2.jpg"
+    const img3 = "https://i.ibb.co/zPhHD6n/1-3.jpg"
     return (
-        <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="search-bar">
                 <div className='search-items'>
-                    <input className="text-input" type="text" name="" id="" />
-                    <button className="btn btn-info">Search</button>
+                    <Form className="d-flex">
+                        <FormControl
+                            type="search"
+                            placeholder="Search"
+                            className="m-1"
+                            aria-label="Search"
+                        />
+                        <Button className="m-1" size="lg" variant="success">Search</Button>
+                    </Form>
                 </div>
             </div>
 
@@ -20,29 +30,20 @@ const Carousell = () => {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img style={{ height: "600px" }} src={img} className="d-block w-100" alt="..." />
-                    <div className="searchInput">
-                        <div className="carousel-caption d-none d-md-block ">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div className="carousel-item">
                     <img style={{ height: "600px" }} src={img1} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                    <div className="searchInput">
+
                     </div>
+
+
                 </div>
                 <div className="carousel-item">
                     <img style={{ height: "600px" }} src={img2} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+
+                </div>
+                <div className="carousel-item">
+                    <img style={{ height: "600px" }} src={img3} className="d-block w-100" alt="..." />
+
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -57,4 +58,4 @@ const Carousell = () => {
     );
 };
 
-export default Carousell;
+export default HeadCarousel;

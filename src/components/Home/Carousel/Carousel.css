@@ -1,9 +1,12 @@
 .carousel{
     position: relative;
 }
+.carousel-item{
+    height: 600px;
+}
 .search-bar{
     position: absolute;
-    top: 50%;
+    top: 30%;
     bottom: 50%;
     z-index: 1;
     width: 100%;
@@ -13,5 +16,3 @@
 .carousel-inner{
     z-index: -1;
 }
-/* .text-input{
-} */

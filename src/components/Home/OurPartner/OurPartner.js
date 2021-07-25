@@ -1,51 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Image } from 'react-bootstrap';
 import Slider from 'react-slick';
-import PropertiesContent from './PropertiesContent';
-import './Properties.css'
-
-const properties = [
+import './OurPartner.css'
+const partner = [
     {
-        img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
-        title: 'Garden With House'
+        img: 'https://i.ibb.co/qd5PBcc/bkash.png',
     },
     {
-        img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
-        title: 'Office'
+        img: 'https://i.ibb.co/Wg1XLsw/city-bank.png',
     },
     {
-        img: 'https://i.ibb.co/zPhHD6n/1-3.jpg',
-        title: 'Pool With House'
+        img: 'https://i.ibb.co/HFn7L7b/master-card.png',
     },
     {
-        img: 'https://i.ibb.co/tC2Nc3x/1-4.jpg',
-        title: 'Building Interior'
+        img: 'https://i.ibb.co/XyJxC5y/paypal.png',
     },
     {
-        img: 'https://i.ibb.co/rMtm13p/1-5.jpg',
-        title: 'Restaurant'
+        img: 'https://i.ibb.co/dmZ93Jy/rocket.png',
     },
     {
-        img: 'https://i.ibb.co/VVmnYrr/1-6.jpg',
-        title: 'Black House'
-    },
-    {
-        img: 'https://i.ibb.co/VVmnYrr/1-6.jpg',
-        title: 'Black House'
-    },
-    {
-        img: 'https://i.ibb.co/VVmnYrr/1-6.jpg',
-        title: 'Black House'
-    },
+        img: 'https://i.ibb.co/n6R5q0P/visa-card.png',
+    }
 ]
-
-const Properties = () => {
-    // const [loading, setLoading]=useState(false)
+const OurPartner = () => {
     const settings = {
         dots: true,
         //   infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         initialSlide: 0,
         className: "text-center",
         centerMode: true,
@@ -87,17 +70,20 @@ const Properties = () => {
             },
         ]
     };
-
     return (
         <div className='mt-5 container'>
-            <h1 className='mb-3 mt-5 text-center'>Best Properties and Buildings</h1>
+            <h1 className='mb-5 mt-5 text-center'>Our Partner</h1>
             <Slider {...settings}>
-                {properties.length &&
-                    properties.map(propsData => <PropertiesContent propsData={propsData} />)
+                {partner.length &&
+                    partner.map(propsData =>
+                        <div className="d-flex justify-content-center align-items-center">
+                        <Image style={{ maxWidth: "140px", maxHeight: '80px', border:'1px solid #17a2b8', padding:'5px' }} src={propsData.img} roundedCircle />
+                    </div>
+                    )
                 }
             </Slider>
         </div>
     );
 };
 
-export default Properties;
+export default OurPartner;

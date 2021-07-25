@@ -1,17 +1,21 @@
 import React from 'react'
+import HeadCarousel from '../Carousel/Carousel';
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header/Header';
-// import Header from '../Header/Header2/Header'
+import OurPartner from '../OurPartner/OurPartner';
 import Properties from '../Properties/Properties';
 import RecentlyAdded from '../RecentlyAdded/RecentlyAdded'
-import Carousell from './../Carousel/Carousell';
+// import Carousell from './../Carousel/Carousell';
 
 export default function Home() {
     return (
         <div>
             <Header/>
-            <Carousell/>
+            <HeadCarousel/>
             <RecentlyAdded/>
             <Properties/>
+            <OurPartner/>
+            <Footer/>
         </div>
     )
 }

@@ -1,0 +1,8 @@
+.partner-container{
+    border-radius: 50% !important;
+    margin: 1vw 0px 16px 1vw;
+    border: 2px solid red;
+}
+.partner-container img{
+    width: 100%;
+}
