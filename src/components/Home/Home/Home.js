@@ -1,6 +1,6 @@
-
 import React from 'react'
-import Header from '../Header/Header/Header'
+import Header from '../Header/Header/Header';
+// import Header from '../Header/Header2/Header'
 import Properties from '../Properties/Properties';
 import RecentlyAdded from '../RecentlyAdded/RecentlyAdded'
 import Carousell from './../Carousel/Carousell';
@@ -8,7 +8,6 @@ import Carousell from './../Carousel/Carousell';
 export default function Home() {
     return (
         <div>
-            
             <Header/>
             <Carousell/>
             <RecentlyAdded/>
