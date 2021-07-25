@@ -6,6 +6,13 @@ import "./Carousell.css"
 const Carousell = () => {
     return (
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+            <div className="search-bar">
+                <div className='search-items'>
+                    <input className="text-input" type="text" name="" id="" />
+                    <button className="btn btn-info">Search</button>
+                </div>
+            </div>
+
             <div className="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -16,8 +23,8 @@ const Carousell = () => {
                     <img style={{ height: "600px" }} src={img} className="d-block w-100" alt="..." />
                     <div className="searchInput">
                         <div className="carousel-caption d-none d-md-block ">
-                            <input className="" type="text" name="" id="" />
-                            <button className="btn btn-info">Search</button>
+                            <h5>First slide label</h5>
+                            <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
 

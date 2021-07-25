@@ -1,0 +1,17 @@
+.carousel{
+    position: relative;
+}
+.search-bar{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.carousel-inner{
+    z-index: -1;
+}
+/* .text-input{
+} */
