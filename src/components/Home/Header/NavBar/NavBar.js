@@ -21,21 +21,20 @@ const NavBar = () => {
   }, []);
 
   return (
-    <Navbar expand="lg" className={(isSticky || isCollapsed) ? "slide in py-2 show shadow-sm navbar navbar-expand-sm bg-white navbar-light   fixed-top" : "slide out show navbar navbar-expand-sm navbar-light py-2 fixed-top "}>
-      <Container >
+    <Navbar expand="lg" className={(isSticky || isCollapsed) ? "slide in py-2 show shadow-sm navbar navbar-expand-sm bg-white navbar-light fixed-top" : "slide out show navbar-expand-sm navbar-light py-2 fixed-top "}>
+      <Container>
         <Navbar.Brand as={Link} to='/' > <Image style={{ height: '33px', width: '43px' }} src='{logo}' /> <strong>TOPRAK</strong></Navbar.Brand>
         <Navbar.Toggle onClick={() => setCollapsed(!isCollapsed ? 'show' : null)} aria-controls="basic-navbar-nav" style={{ background: '#10bad4' }} />
         <Navbar.Collapse id="navbar-nav" >
           <Nav className="m-auto text-center">
-            <Nav.Link as={Link} to='/home' className="mr-3"><strong>Home</strong></Nav.Link>
-            <Nav.Link href="/buy" className="mr-3"><strong>Buy</strong></Nav.Link>
-            <Nav.Link href="/rent" className="mr-3"><strong>Rent</strong></Nav.Link>
-            <Nav.Link href="/sold" className="mr-3"><strong>Sold</strong></Nav.Link>
-            <Nav.Link as={Link} to='/dashboard/profile' className="mr-3"><strong>Dashboard</strong></Nav.Link>
+            <Nav.Link as={Link} to='/home' className="mr-5"><strong>Home</strong></Nav.Link>
+            <Nav.Link href="/buy" className="mr-5"><strong>Buy</strong></Nav.Link>
+            <Nav.Link href="/rent" className="mr-5"><strong>Rent</strong></Nav.Link>
+            <Nav.Link href="/sold" className="mr-5"><strong>Sold</strong></Nav.Link>
+            <Nav.Link as={Link} to='/dashboard/profile' className="mr-5"><strong>Dashboard</strong></Nav.Link>
 
             <ProfilePopper />
             {/* <Button as={Link} to='/login' variant="info" className='main-button'>Login</Button> */}
-
           </Nav>
         </Navbar.Collapse>
       </Container>

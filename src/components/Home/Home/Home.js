@@ -7,6 +7,7 @@ import Carousell from './../Carousel/Carousell';
 export default function Home() {
     return (
         <div>
+            
             <Header/>
             <Carousell/>
             <RecentlyAdded/>
