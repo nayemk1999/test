@@ -2,6 +2,7 @@ import React from 'react';
 import img from "../../../image/digital-marketing-agency-ntwrk-g39p1kDjvSY-unsplash.jpg"
 import img1 from "../../../image/irina-ermakova-V9rTX32KuTI-unsplash.jpg"
 import img2 from "../../../image/jason-dent-w3eFhqXjkZE-unsplash.jpg"
+import "./Carousell.css"
 const Carousell = () => {
     return (
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
@@ -12,21 +13,25 @@ const Carousell = () => {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img style={{height:"600px"} }src={img} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                    <img style={{ height: "600px" }} src={img} className="d-block w-100" alt="..." />
+                    <div className="searchInput">
+                        <div className="carousel-caption d-none d-md-block ">
+                            <input className="" type="text" name="" id="" />
+                            <button className="btn btn-info">Search</button>
+                        </div>
                     </div>
+
+
                 </div>
                 <div className="carousel-item">
-                    <img style={{height:"600px"} } src={img1} className="d-block w-100" alt="..." />
+                    <img style={{ height: "600px" }} src={img1} className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div className="carousel-item">
-                    <img style={{height:"600px"} } src={img2} className="d-block w-100" alt="..." />
+                    <img style={{ height: "600px" }} src={img2} className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
