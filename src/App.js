@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
+import SignIn from './components/Authentication/SignIn/SignIn';
 
 export const UserContext = createContext()
 
@@ -18,6 +19,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route path ="/sign-in">
+            <SignIn/>
           </Route>
         </Switch>
       </Router>
