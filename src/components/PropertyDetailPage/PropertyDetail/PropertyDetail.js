@@ -3,7 +3,7 @@ import img from "../../../image/1 (1).jpg"
 import img2 from "../../../image/1 (3).jpg"
 import img3 from "../../../image/1 (2).jpg"
 import "./PropertyDetail.css"
-import { faBath, faBed, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBath, faBed, faBookmark, faHeart, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PropertyDetail = () => {
     return (
@@ -41,13 +41,16 @@ const PropertyDetail = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-            <div className="mt-4 d-flex">
+            <div className="mt-4 d-flex mapVideo">
                 <p className=" bg-success"><a href="#"> Map</a></p>
                 <p className="bg-success"><a href="#"> Video</a></p>
+                <a className="save" href="#"><FontAwesomeIcon icon={faBookmark} /></a>
+
+
             </div>
             <h3 className="mb-3">Price: 12,65,9000</h3>
             <h5 className="mb-3"><FontAwesomeIcon icon={faLocationArrow} /> {'41/12/b Zigatola, Dhaka'}</h5>
-            <div className="d-flex">
+            <div className="d-flex detail">
                 <p><strong><FontAwesomeIcon icon={faBed} /> {'Bed 3'}</strong></p>
                 <p><strong> <FontAwesomeIcon icon={faBath} /> {' Bath 2'}</strong></p>
                 <p> <strong> <FontAwesomeIcon icon={faSquare} /> {'Sqft 1290'}</strong></p>

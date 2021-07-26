@@ -1,17 +1,27 @@
-p{ 
+.mapVideo p{ 
     margin-right: 10px;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
 }
-p a{
+.mapVideo p a{
     color: white;
     text-decoration: none;
+}
+
+.detail p{
+    margin-right: 15px;
 }
 .description p{
     text-align: justify;
     font-size: 20px;
 }
 .location p{
+    margin-right: 10px;
     font-size: 20px;
     font-weight: 700;
+}
+.save {
+    margin-left: 10px;
+    color:rgb(155, 131, 131);
+    font-size: 22px;
 }
