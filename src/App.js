@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
+import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
 
 export const UserContext = createContext()
 
@@ -16,6 +17,9 @@ function App() {
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
         <Switch>
+        <Route path='/detail'>
+            <PropertyDetailPage/>
+          </Route>
           <Route exact path='/'>
             <Home />
           </Route>
