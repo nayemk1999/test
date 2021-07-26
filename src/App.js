@@ -8,7 +8,8 @@ import {
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
 import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
-import SignIn from './components/Authentication/SignIn/SignIn';
+import LoginForm from './components/Authentication/LoginForm';
+import RegisterForm from './components/Authentication/RegisterForm';
 
 export const UserContext = createContext()
 
@@ -24,8 +25,11 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route path ="/sign-in">
-            <SignIn/>
+          <Route path ="/login">
+            <LoginForm/>
+          </Route>
+          <Route path ="/register-form">
+            <RegisterForm/>
           </Route>
         </Switch>
       </Router>

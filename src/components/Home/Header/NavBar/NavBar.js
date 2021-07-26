@@ -32,8 +32,7 @@ const NavBar = () => {
             <Nav.Link href="/rent" className="mr-5 h5 nav-link"><strong>Rent</strong></Nav.Link>
             <Nav.Link href="/sold" className="mr-5 h5 nav-link"><strong>Sold</strong></Nav.Link>
             <Nav.Link as={Link} to='/dashboard/profile' className="mr-5 h5 nav-link"><strong>Dashboard</strong></Nav.Link>
-
-            {/* <Button as={Link} to='/login' variant="info" className='main-button'>Login</Button> */}
+            <Button as={Link} to='/login' variant="info" >Login</Button>
           </Nav>
           <div>
             <ProfilePopper />
