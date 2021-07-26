@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
+import firebase from "firebase/app";
+import "firebase/auth";
+import { initializeLoginFramework } from './LoginManager';
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
@@ -10,18 +13,19 @@ const RegisterForm = () => {
     const history = useHistory();
 
     const signupForm = (e) => {
+        initializeLoginFramework()
         e.preventDefault();
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         alert('SuccessFully Create Account')
-        //         history.push('/login')
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         const errorMessage = error.message;
-        //         alert(errorMessage)
-        //     });
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                alert('SuccessFully Create Account')
+                history.push('/login')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+            });
     }
 
     const handleFocus = (e) => {

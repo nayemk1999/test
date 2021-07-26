@@ -3,12 +3,53 @@ import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
+import { handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { setLoggedInUser} = useContext(UserContext);
 
+    const history = useHistory()
+    const location = useLocation()
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    const login = () => {
+        initializeLoginFramework()
+        signInWithEmailAndPassword(email, password)
+            .then(res => {
+                handleResponse(res)
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage);
+            });
+    }
+    const googleLogin = () => {
+        initializeLoginFramework()
+        handleGoogleSignIn()
+            .then(res => {
+                handleResponse(res)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.email;
+                alert(errorMessage)
+                console.log(errorCode, email, errorMessage);
+            });
+    }
+
+    const handleResponse = (res) => {
+        setLoggedInUser(res);
+        setJWTToken();
+        history.replace(from);
+        toast.success('Successfully Logged In!');
+        
+    }
     const handleFocus = (e) => {
         let parent = e.target.parentNode.parentNode;
         parent.classList.add('focus')
@@ -51,8 +92,8 @@ const LoginForm = () => {
                             <Link className="a" to="/">Forget Password</Link>
                             <Link className="a" to="/register-form">Sign Up</Link>
                         </div>
-                        <input onClick="{login}" type="submit" class="login-btn" value="Login" />
-                        <button onClick="{googleLogin}" class="login-btn" value="">Login With Google</button>
+                        <input onClick={login} type="submit" class="login-btn" value="Login" />
+                        <button onClick={googleLogin} class="login-btn" value="">Login With Google</button>
                     </div>
                 </div>
             </div>
