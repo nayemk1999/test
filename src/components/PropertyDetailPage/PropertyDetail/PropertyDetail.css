@@ -1,0 +1,17 @@
+p{ 
+    margin-right: 10px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+p a{
+    color: white;
+    text-decoration: none;
+}
+.description p{
+    text-align: justify;
+    font-size: 20px;
+}
+.location p{
+    font-size: 20px;
+    font-weight: 700;
+}

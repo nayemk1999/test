@@ -2,36 +2,66 @@ import React from 'react';
 import img from "../../../image/1 (1).jpg"
 import img2 from "../../../image/1 (3).jpg"
 import img3 from "../../../image/1 (2).jpg"
+import "./PropertyDetail.css"
+import { faBath, faBed, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PropertyDetail = () => {
     return (
         <div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img style={{height:"450px"}} class="d-block w-100" src={img} alt="First slide" />
+            <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div className="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img style={{ height: "600px" }} src={img} className="d-block w-100" alt="..." />
+                        <div className="searchInput">
+
+                        </div>
+
+
+                    </div>
+                    <div className="carousel-item">
+                        <img style={{ height: "600px" }} src={img2} className="d-block w-100" alt="..." />
+
+                    </div>
+                    <div className="carousel-item">
+                        <img style={{ height: "600px" }} src={img3} className="d-block w-100" alt="..." />
+
+                    </div>
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-item">
-                <img style={{height:"450px"}} class="d-block w-100" src={img2} alt="Second slide" />
+            <div className="mt-4 d-flex">
+                <p className=" bg-success"><a href="#"> Map</a></p>
+                <p className="bg-success"><a href="#"> Video</a></p>
             </div>
-            <div class="carousel-item">
-                <img style={{height:"450px"}} class="d-block w-100" src={img3} alt="Third slide" />
+            <h3 className="mb-3">Price: 12,65,9000</h3>
+            <h5 className="mb-3"><FontAwesomeIcon icon={faLocationArrow} /> {'41/12/b Zigatola, Dhaka'}</h5>
+            <div className="d-flex">
+                <p><strong><FontAwesomeIcon icon={faBed} /> {'Bed 3'}</strong></p>
+                <p><strong> <FontAwesomeIcon icon={faBath} /> {' Bath 2'}</strong></p>
+                <p> <strong> <FontAwesomeIcon icon={faSquare} /> {'Sqft 1290'}</strong></p>
+            </div>
+            <div className="description">
+                <h2>Garden With House</h2>
+                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab modi obcaecati reprehenderit fugiat, ipsum enim molestias pariatur aperiam ut veritatis beatae unde nulla itaque vero magni perferendis facere perspiciatis praesentium iure, nesciunt. <br /> Voluptatibus, vitae cumque. Sapiente perferendis sint quam illo omnis ipsa, voluptates rerum, a autem excepturi quaerat dolores vitae! Adipisci minus ratione voluptatum et doloribus eum suscipit optio accusamus dolor sint explicabo quod nihil tempora, tenetur sequi necessitatibus aliquid.</p>
+            </div>
+            <h2>Location & Nearby</h2>
+            <div className="location d-flex">
+                <p>School</p>
+                <p>Restaurents</p>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </a>
-    </div>
-
-  </div>
     );
 };
 

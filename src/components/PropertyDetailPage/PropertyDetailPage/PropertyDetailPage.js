@@ -5,7 +5,7 @@ const PropertyDetailPage = () => {
     return (
         <div className="container row mx-auto">
 
-            <div className="col-md-6">
+            <div className="col-md-7">
                 <PropertyDetail />
             </div>
             <div className=" col-md-4">
