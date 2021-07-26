@@ -1,27 +1,12 @@
-import { faLocationArrow, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Properties.css';
 import timeIcon from '../../../image/clock.svg';
 import locationIcon from '../../../image/map-pin.svg';
 
-const PropertiesContent = (props) => {
+const RecentCard = ( props ) => {
     const { title, img } = props.propsData;
-
-    const content = {
-        width: "21vw",
-        height: "17vw",
-        backgroundImage: `linear-gradient(to top, rgb(58, 58, 58) 0%, rgba(58, 58, 58, 0.5) 15%, rgba(58, 58, 58, 0) 25%, rgba(58, 58, 58, 0) 100%), url(${img})`,
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        borderRadius: "1vw",
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "center",
-    }
 
     return (
         <div className='slide-container'>
@@ -53,4 +38,4 @@ const PropertiesContent = (props) => {
     );
 };
 
-export default PropertiesContent;
+export default RecentCard;
