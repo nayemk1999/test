@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import timeIcon from '../../../image/clock.svg';
 import locationIcon from '../../../image/map-pin.svg';
 
-const RecentCard = ( props ) => {
+const RecentCard = (props) => {
     const { title, img } = props.propsData;
 
     return (
@@ -24,13 +24,16 @@ const RecentCard = ( props ) => {
                                 Dhaka
                             </div>
                         </div>
-                        <h5 className="card-title">{title}</h5>
-                        <div className='slide-value'>
-                            <span style={{ fontSize: "1vw", fontWeight: "400" }}>Posted By</span>
-                            <div>
-                                <FontAwesomeIcon style={{ color: 'rgb(10, 158, 136)' }} icon={faUser} /> {'Admin'}
+                        <div className='card-info'>
+                            <h5 className="card-title">{title}</h5>
+                            <div className='slide-value'>
+                                <span style={{ fontSize: "1vw", fontWeight: "400" }}>Posted By</span>
+                                <div>
+                                    <FontAwesomeIcon style={{ color: 'rgb(10, 158, 136)' }} icon={faUser} /> {'Admin'}
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </Link>
