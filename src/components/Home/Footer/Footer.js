@@ -39,7 +39,7 @@ const Footer = () => {
                 <a href="tel:+880-01121112222" alt=''>
                     +880-01121112222
                 </a>
-                <a href="/home" alt=''>
+                <a href="/" alt=''>
                     Toprak.com
                 </a>
             </div>
