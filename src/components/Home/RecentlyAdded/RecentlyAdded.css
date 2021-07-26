@@ -1,4 +1,202 @@
-.sale{
+.slide-container {
+  width: 21vw;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 1vw;
+  margin: 1vw 0px 16px 1vw;
+}
+
+.slide-content {
+  width: 21vw;
+  height: 17vw;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(213, 213, 213) 0%, rgb(241, 241, 241) 20%, rgb(213, 213, 213) 40%, rgb(213, 213, 213) 100%) center center / cover no-repeat rgb(213, 213, 213);
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1vw;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+}
+
+.img-content {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 1vw;
+  font-weight: 400;
+  color: white;
+  margin-right: 8px;
+}
+
+.slide-bottom-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-info {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.slide-time {
+  color: rgb(10, 158, 136);
+  font-size: 1vw;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.slide-info img {
+  width: 1.2vw;
+  height: 1.2vw;
+  margin-right: 4px;
+}
+
+.slide-location {
+  color: rgb(10, 158, 136);
+  font-size: 1vw;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.slide-word {
+  color: rgb(58, 58, 58);
+  width: 21vw;
+  font-size: 1.3vw;
+  font-weight: 600;
+  padding-left: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+  text-align: initial;
+}
+@media screen and (max-width: 480px) {
+  .slide-time {
+      color: rgb(10, 158, 136);
+      font-size: 5vw;
+      font-weight: 600;
+      padding: 8px;
+  }
+  
+  .slide-info img {
+      width: 7.2vw;
+      height: 7.2vw;
+      margin-right: 4px;
+  }
+  
+  .slide-location {
+      color: rgb(10, 158, 136);
+      font-size: 5vw;
+      font-weight: 600;
+      padding: 8px;
+  }
+ 
+  .slide-value div, span {
+      color: rgb(58, 58, 58);
+      font-size: 8vw !important;
+      font-weight: 600;
+      padding-left: 8px;
+  }
+ 
+}
+
+.slide-value {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0px 0px 12px 8px;
+  color: rgb(58, 58, 58);
+}
+
+.slide-value div {
+  color: rgb(58, 58, 58);
+  font-size: 1.2vw;
+  font-weight: 600;
+  padding-left: 8px;
+}
+
+.customize-content {
+  font-size: 2vw;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  width: 19vw;
+  height: 4vw;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-color: rgba(58, 58, 58, 0.2);
+  border: 1px solid white;
+  margin-bottom: 5vw;
+}
+.slick-next,
+.slick-prev {
+  font-size: 0px;
+  line-height: 0;
+  top: 40%;
+  width: 4vw;
+  height: 4vw;
+  transform: translate(0px, -50%);
+  cursor: pointer;
+  border: none;
+  border-radius: 5vw;
+  background-color: rgb(255, 255, 255);
+  z-index: 1;
+  box-shadow: rgb(35 35 35 / 50%) 0px 0px 20px 5px;
+}
+
+.slick-next:hover,
+.slick-prev:hover {
+  transform: scale(1.1);
+  top: 35%;
+  z-index: 1;
+  background-color: rgb(255, 255, 255);
+}
+
+.slick-next::before,
+.slick-prev::before {
+  font-size: 2.5vw;
+  line-height: 1;
+  opacity: 1;
+  color: rgb(10, 158, 136);
+}
+
+.slick-next:before,
+[dir=rtl] .slick-prev:before {
+  content: '→' !important;
+}
+
+/* .sale{
     background: #778EA2;
     padding: 2px 9px 3px 9px;
     font-size: 15px;
@@ -19,4 +217,4 @@
     transform: scale(1.1);
     transition-duration: .5s;
     
-  }
+  } */

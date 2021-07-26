@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
 import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
+import LoginForm from './components/Authentication/LoginForm';
+import RegisterForm from './components/Authentication/RegisterForm';
 
 export const UserContext = createContext()
 
@@ -23,10 +25,15 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
+          <Route path ="/login">
+            <LoginForm/>
+          </Route>
+          <Route path ="/register-form">
+            <RegisterForm/>
+          </Route>
         </Switch>
       </Router>
     </UserContext.Provider>
-
   );
 }
 
