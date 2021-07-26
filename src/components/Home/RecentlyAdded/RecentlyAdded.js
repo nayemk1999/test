@@ -1,8 +1,21 @@
 import React from 'react';
-import "./RecentlyAdded.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow, faPhone } from '@fortawesome/free-solid-svg-icons'
+import "./RecentlyAdded.css";
+import Slider from 'react-slick';
+import RecentCard from './RecentCard';
+
 const RecentlyAddedData = [
+  {
+    img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
+    title: 'Garden With House'
+  },
+  {
+    img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
+    title: 'Office'
+  },
+  {
+    img: 'https://i.ibb.co/zPhHD6n/1-3.jpg',
+    title: 'Pool With House'
+  },
   {
     img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
     title: 'Garden With House'
@@ -18,25 +31,60 @@ const RecentlyAddedData = [
 ]
 
 const RecentlyAdded = () => {
+  const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    className: "text-center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "10px",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      },
+    ]
+  };
+
   return (
     <div className="row container mx-auto">
       <h2 className="text-center mt-5">Recently Added</h2>
-      {
-        RecentlyAddedData.map(data =>
-          <div className="col-md-4 col-sm-12 g-5">
-            <div id="cardStyle" className="card shadow m-0 m-auto" style={{ width: "18rem" }}>
-              <div className="">
-                <img style={{ height: '200px' }} src={data.img} className="card-img-top" alt="" />
-              </div>
-              <div className="card-body">
-                <h5 style={{ height: '45px' }} >{data.title} <span className="sale">sale</span> </h5>
-                <span className="bg-success p-1 text-white apartment">APARTMENT/FLATS</span>
-                <p className='mt-3'> <FontAwesomeIcon icon={faLocationArrow} /> Mirpur, Dhaka</p>
-              </div>
-            </div>
-          </div>
-        )
-      }
+      <Slider {...settings}>
+        {RecentlyAddedData.length &&
+          RecentlyAddedData.map(propsData => <RecentCard propsData={propsData} />)
+        }
+      </Slider>
     </div>
   );
 };
