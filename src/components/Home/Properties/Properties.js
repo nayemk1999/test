@@ -90,7 +90,7 @@ const Properties = () => {
 
     return (
         <div className='mt-5 container'>
-            <h1 className='mb-3 mt-5 text-center'>Best Properties and Buildings</h1>
+            <h1 className='mb-3 mt-5 text-center bg-light'>Best Properties and Buildings</h1>
             <Slider {...settings}>
                 {properties.length &&
                     properties.map(propsData => <PropertiesContent propsData={propsData} />)
