@@ -1,50 +1,39 @@
 import React from "react";
-import { Card, CardGroup } from "react-bootstrap";
+import Review from './Review';
+
+const properties = [
+  {
+    img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
+    Name: 'Sir Tanvir Hosain Fahim',
+    review: "Excellent Service Excellent Service"
+  },
+  {
+    img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
+    Name: 'Sir Nayeem Khan',
+    review: "Excellent Service Excellent Service"
+  },
+  {
+    img: 'https://i.ibb.co/zPhHD6n/1-3.jpg',
+    Name: 'Sir Mahmudul Hasan',
+    review: "Excellent Service Excellent Service"
+  },
+  {
+    img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
+    Name: 'Sir Badhan Chandra',
+    review: " Excellent Service Excellent Service "
+  }
+]
 
 export default function UserReview() {
   return (
-    <CardGroup className="mt-5">
-      <Card>
-        <Card.Img
-          style={{ height: "300px", width: "300px" }}
-          variant="top"
-          src="http://imoblar.com/site/img/demo/profile.jpg"
-        />
-        <Card.Body>
-          <Card.Title style={{ color: "tomato" }}>Reviews</Card.Title>
-          <Card.Text>
-            lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Card.Text>
-        </Card.Body>
-      </Card>
+    <div className="mt-5">
+      <h2 className='text-center mt-5 h1Style'>Client  <span style={{ color: "#61dfed" }}>Feedback</span></h2>
 
-      <Card>
-        <Card.Img
-          style={{ height: "300px", width: "300px" }}
-          variant="top"
-          src="http://themesground.com/modern/demo/HTML/img/profileimg.png"
-        />
-        <Card.Body>
-          <Card.Title style={{ color: "tomato" }}>Reviews</Card.Title>
-          <Card.Text>
-            lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Card.Img
-          style={{ height: "300px", width: "300px" }}
-          variant="top"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutp6Rf6nH24hRGK5NBsW5LFII03lUqcgLNQ&usqp=CAU"
-        />
-        <Card.Body>
-          <Card.Title style={{ color: "tomato" }}>Reviews</Card.Title>
-          <Card.Text>
-            lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </CardGroup>
+      <div className="row mt-5" style={{ width: "80%", margin: "0 auto" }}>
+        {
+          properties.map(review => <Review review={review}></Review>)
+        }
+      </div>
+    </div>
   );
 }
