@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
+import SearchBar from '../SearchBar/SearchBar';
 import "./Carousel.css"
 
 
@@ -10,7 +11,7 @@ const HeadCarousel = () => {
     return (
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="search-bar">
-                <div className='search-items'>
+                {/* <div className='search-items'>
                     <Form className="d-flex">
                         <FormControl
                             type="search"
@@ -19,8 +20,9 @@ const HeadCarousel = () => {
                             aria-label="Search"
                         />
                         <Button className="m-1" size="lg" variant="success">Search</Button>
-                    </Form>
-                </div>
+                    </Form>  
+                </div>  */}
+                <SearchBar />
             </div>
 
             <div className="carousel-indicators">
@@ -31,29 +33,22 @@ const HeadCarousel = () => {
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <img style={{ height: "600px" }} src={img1} className="d-block w-100" alt="..." />
-                    <div className="searchInput">
-
-                    </div>
-
-
                 </div>
                 <div className="carousel-item">
                     <img style={{ height: "600px" }} src={img2} className="d-block w-100" alt="..." />
-
                 </div>
                 <div className="carousel-item">
                     <img style={{ height: "600px" }} src={img3} className="d-block w-100" alt="..." />
-
                 </div>
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            {/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
             </button>
             <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
-            </button>
+            </button> */}
         </div>
     );
 };
