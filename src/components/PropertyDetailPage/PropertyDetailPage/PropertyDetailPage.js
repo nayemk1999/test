@@ -1,6 +1,6 @@
 import React from 'react';
 import "./PropertyDetailPage.css"
-import Header from '../../Home/Header/Header/Header';
+import Header from '../../Shared/Header/Header/Header';
 import PropertyDetail from '../PropertyDetail/PropertyDetail';
 
 const PropertyDetailPage = () => {

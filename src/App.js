@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
 import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 
 export const UserContext = createContext()
 
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route path='/dashboard'>
+            <Dashboard />
           </Route>
         </Switch>
       </Router>

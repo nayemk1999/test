@@ -1,8 +1,8 @@
 import React from 'react'
+import Header from '../../Shared/Header/Header/Header';
 import AboutUs from '../AboutUs/AboutUs';
 import HeadCarousel from '../Carousel/Carousel';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header/Header';
 import OurPartner from '../OurPartner/OurPartner';
 import Properties from '../Properties/Properties';
 import RecentlyAdded from '../RecentlyAdded/RecentlyAdded'
@@ -12,7 +12,7 @@ import UserReview from '../UserReview/UserReview';
 export default function Home() {
     return (
         <div>
-            <Header/>
+            <Header />
             <HeadCarousel/>
             <RecentlyAdded/>
             <Properties/>
