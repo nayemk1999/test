@@ -1,4 +1,5 @@
 import React from "react";
+import AboutUs from "../About/AboutUs";
 import HeadCarousel from "../Carousel/Carousel";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <RecentlyAdded />
       <Properties />
       <OurPartner />
+      <AboutUs/>
       <UserReview />
       <Contact />
       <Footer />
