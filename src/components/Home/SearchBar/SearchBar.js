@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SearchBar.css'
 import { useForm } from "react-hook-form";
 export default function SearchBar() {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
+    const [allDivisionbn, setAllDivisionbn] = useState([])
+
+    useEffect(() => {
+        fetch('https://bdapis.herokuapp.com/api/v1.1/divisions')
+            .then(res => res.json())
+            .then(data => setAllDivisionbn(data.data))
+    }, [])
+    allDivisionbn.forEach(function (value) {
+        const op = document.createElement('option')
+        op.innerText = value.divisionbn;
+        op.setAttribute('value', value._id);
+        document.getElementById('বিভাগ').appendChild(op)
+    })
     return (
         <div class="search-container " aria-label="Mini form">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div class="d-flex">
-                    <input {...register("location")} class="form-control me-2" type="search" placeholder="Location" aria-label="Search" />
+                    <select {...register("বিভাগ")} id='বিভাগ' className="form-select me-2" aria-label="Default select example">
+                        <option selected>বিভাগ</option>
+                    </select>
+                    <select {...register("জেলা")} id='জেলা' className="form-select me-2" aria-label="Default select example">
+                        <option selected>জেলা</option>
+                    </select>
+                    <select {...register("থানা")} id='থানা' className="form-select me-2" aria-label="Default select example">
+                        <option selected>থানা</option>
+                    </select>
                     <button class="btn btn-outline-success" type="submit">Find</button>
                 </div>
                 <div className='d-flex mt-3'>
