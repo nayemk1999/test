@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 
 export default function SearchBar() {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
     const [allDivisionbn, setAllDivisionbn] = useState([])
     const [district, setDistrict] = useState([])
     const [selectId, setSelectId] = useState('')
     const [upazila, setupazila] = useState([])
 
+    const onSubmit = data => {
+        alert('Thank You....Data Connected')
+        console.log(data)
+    };
     useEffect(() => {
         fetch('https://bdapis.herokuapp.com/api/v1.1/divisions')
             .then(res => res.json())
