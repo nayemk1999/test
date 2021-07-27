@@ -1,4 +1,5 @@
 import React from 'react'
+import AboutUs from '../About/AboutUs';
 import HeadCarousel from '../Carousel/Carousel';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header/Header';
@@ -16,6 +17,7 @@ export default function Home() {
             <RecentlyAdded/>
             <Properties/>
             <OurPartner/>
+            <AboutUs/>
             <UserReview/>
             <Footer/>
         </div>

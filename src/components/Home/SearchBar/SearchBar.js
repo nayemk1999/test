@@ -8,28 +8,33 @@ export default function SearchBar() {
     const [district, setDistrict] = useState([])
     const [selectId, setSelectId] = useState('')
     const [upazila, setupazila] = useState([])
+    console.log(selectId);
+    console.log(district);
 
     const onSubmit = data => {
         alert('Thank You....Data Connected')
         console.log(data)
     };
+
     useEffect(() => {
         fetch('https://bdapis.herokuapp.com/api/v1.1/divisions')
             .then(res => res.json())
             .then(data => setAllDivisionbn(data.data))
     }, [])
 
+    useEffect(() => {
+        fetch('https://bdapis.herokuapp.com/api/v1.1/division/' + selectId)
+            .then(res => res.json())
+            .then(data => {
+                setDistrict(data.data)
+            })
+    }, [selectId])
+
     const divisionChange = (e) => {
         const select = allDivisionbn.find(id => e.target.value === id.divisionbn)
         setSelectId(select._id)
     }
-
-    useEffect(() => {
-        fetch('https://bdapis.herokuapp.com/api/v1.1/division/' + selectId)
-            .then(res => res.json())
-            .then(data => setDistrict(data.data))
-    }, [selectId])
-
+  
     const districtChange = (e) => {
         const select = district.find(id => e.target.value === id.district)
         setupazila(select.upazilla)
@@ -47,8 +52,8 @@ export default function SearchBar() {
                     </select>
                     <select {...register("জেলা")} onChange={districtChange} className="form-select me-2" aria-label="Default select example">
                         <option selected>জেলা</option>
-                        {selectId &&
-                            district?.map(dis => <option key={dis._id}>{dis.district}</option>)
+                        {district !== undefined &&
+                            district.map(dis => <option key={dis._id}>{dis.district}</option>)
                         }
                     </select>
                     <select {...register("উপজিলা")} className="form-select me-2" aria-label="Default select example">

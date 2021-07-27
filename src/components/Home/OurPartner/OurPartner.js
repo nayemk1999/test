@@ -71,7 +71,7 @@ const OurPartner = () => {
         ]
     };
     return (
-        <div className='mt-5 container'>
+        <div className='mt-5 mb-5 container'>
             <h1 className='mb-5 mt-5 text-center'>Our Partner</h1>
             <Slider {...settings}>
                 {partner.length &&
