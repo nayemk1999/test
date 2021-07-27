@@ -1,7 +1,12 @@
 .review{
-    height: 160px;
+    height: 170px;
 }
 
 .review img{
     border-radius: 50%;
+}
+@media screen and (max-width: 550px) {
+    .review{
+        height: 200px;
+    }
 }
