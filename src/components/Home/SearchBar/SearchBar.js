@@ -1,34 +1,54 @@
 import React, { useEffect, useState } from 'react'
 import './SearchBar.css'
 import { useForm } from "react-hook-form";
+
 export default function SearchBar() {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
     const [allDivisionbn, setAllDivisionbn] = useState([])
+    const [district, setDistrict] = useState([])
+    const [selectId, setSelectId] = useState('')
+    const [upazila, setupazila] = useState([])
 
     useEffect(() => {
         fetch('https://bdapis.herokuapp.com/api/v1.1/divisions')
             .then(res => res.json())
             .then(data => setAllDivisionbn(data.data))
     }, [])
-    allDivisionbn.forEach(function (value) {
-        const op = document.createElement('option')
-        op.innerText = value.divisionbn;
-        op.setAttribute('value', value._id);
-        document.getElementById('বিভাগ').appendChild(op)
-    })
+
+    const divisionChange = (e) => {
+        const select = allDivisionbn.find(id => e.target.value === id.divisionbn)
+        setSelectId(select._id) 
+    }
+
+    useEffect(() => {
+        fetch('https://bdapis.herokuapp.com/api/v1.1/division/' + selectId)
+            .then(res => res.json())
+            .then(data => setDistrict(data.data))
+    }, [selectId])
+
+    const districtChange = (e) => {
+        console.log(e.target);
+    }
     return (
         <div class="search-container " aria-label="Mini form">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div class="d-flex">
-                    <select {...register("বিভাগ")} id='বিভাগ' className="form-select me-2" aria-label="Default select example">
+                    <select {...register("বিভাগ")} onChange={divisionChange} className="form-select me-2" aria-label="Default select example">
                         <option selected>বিভাগ</option>
+                        {
+                            allDivisionbn.map(dv => <option id={dv._id}>{dv.divisionbn}</option>)
+                        }
+
                     </select>
-                    <select {...register("জেলা")} id='জেলা' className="form-select me-2" aria-label="Default select example">
+                    <select {...register("জেলা")} className="form-select me-2" aria-label="Default select example">
                         <option selected>জেলা</option>
+                        { selectId &&
+                            district.map(dis => <option id={dis._id}>{dis.district}</option>)
+                        }
                     </select>
-                    <select {...register("থানা")} id='থানা' className="form-select me-2" aria-label="Default select example">
-                        <option selected>থানা</option>
+                    <select {...register("উপজিলা")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>উপজিলা</option>
                     </select>
                     <button class="btn btn-outline-success" type="submit">Find</button>
                 </div>
