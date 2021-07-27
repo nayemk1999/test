@@ -4,12 +4,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Home from '../src/components/Home/Home/Home'
 import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
-import LoginForm from './components/Authentication/LoginForm';
-import RegisterForm from './components/Authentication/RegisterForm';
 
 export const UserContext = createContext()
 
@@ -24,12 +21,6 @@ function App() {
           </Route>
           <Route exact path='/'>
             <Home />
-          </Route>
-          <Route path ="/login">
-            <LoginForm/>
-          </Route>
-          <Route path ="/register-form">
-            <RegisterForm/>
           </Route>
         </Switch>
       </Router>
