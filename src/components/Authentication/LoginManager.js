@@ -26,6 +26,16 @@ const handleResponse = (res) => {
     }
     return signedInUser;
 }
+
+
+
+export const signInWithEmailAndPassword = (email, password) => {
+    return firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(res => handleResponse(res))
+}
+
 export const setJWTToken = () => {
     return firebase
         .auth().currentUser
@@ -34,9 +44,37 @@ export const setJWTToken = () => {
             localStorage.setItem('token', idToken)
         })
 }
-export const signInWithEmailAndPassword = (email, password) => {
+
+export const getDecodedUser = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return {};
+    }
+    const { name, picture, email } = jwt_decode(token);
+    const decodedUser = {
+        isSignedIn: true,
+        name: name,
+        email: email,
+        photo: picture || "https://i.ibb.co/7CzR0Dg/users.jpg"
+    }
+    return decodedUser;
+}
+
+
+export const handleSignOut = () => {
+    initializeLoginFramework()
     return firebase
         .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(res => handleResponse(res))
+        .signOut()
+        .then(() => {
+            localStorage.removeItem('token');
+            const signedOutUser = {
+                isSignedIn: false,
+                userName: '',
+                email: '',
+                userPhoto: ''
+            }
+            return signedOutUser;
+        })
+        .catch(error => console.log(error.message))
 }

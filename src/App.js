@@ -10,11 +10,12 @@ import Home from '../src/components/Home/Home/Home'
 import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
 import LoginForm from './components/Authentication/LoginForm';
 import RegisterForm from './components/Authentication/RegisterForm';
+import { getDecodedUser } from './components/Authentication/LoginManager';
 
 export const UserContext = createContext()
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState();
+  const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>

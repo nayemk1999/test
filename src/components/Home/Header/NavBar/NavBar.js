@@ -36,7 +36,7 @@ const NavBar = () => {
           </Nav>
           <div>
             {
-              loggedInUser ? <ProfilePopper />
+              loggedInUser.isSignedIn === true ? <ProfilePopper />
               :
               <Button as={Link} to='/login' variant="info" >Login</Button>
             }
