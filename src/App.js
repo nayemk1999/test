@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React, { createContext, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Home from '../src/components/Home/Home/Home'
-import PropertyDetailPage from './components/PropertyDetailPage/PropertyDetailPage/PropertyDetailPage';
-import LoginForm from './components/Authentication/LoginForm';
-import RegisterForm from './components/Authentication/RegisterForm';
-import { getDecodedUser } from './components/Authentication/LoginManager';
-=======
 import React, { createContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -21,7 +6,7 @@ import PropertyDetailPage from "./components/PropertyDetailPage/PropertyDetailPa
 import LoginForm from "./components/Authentication/LoginForm";
 import RegisterForm from "./components/Authentication/RegisterForm";
 import Contact from "./components/Home/Contact/Contact";
->>>>>>> origin/fahim
+import { getDecodedUser } from "./components/Authentication/LoginManager";
 
 export const UserContext = createContext();
 
