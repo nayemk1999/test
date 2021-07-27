@@ -3,7 +3,7 @@ import img from "../../../image/1 (1).jpg"
 import img2 from "../../../image/1 (3).jpg"
 import img3 from "../../../image/1 (2).jpg"
 import "./PropertyDetail.css"
-import { faBath, faBed, faBookmark, faHeart, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBath, faBed, faBookmark, faCheck, faHeart, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PropertyDetail = () => {
     return (
@@ -48,21 +48,29 @@ const PropertyDetail = () => {
 
 
             </div>
-            <h3 className="mb-3">Price: 12,65,9000</h3>
+            <h3 className="mb-3">Price: 12,65,9000 ট</h3>
             <h5 className="mb-3"><FontAwesomeIcon icon={faLocationArrow} /> {'41/12/b Zigatola, Dhaka'}</h5>
             <div className="d-flex detail">
                 <p><strong><FontAwesomeIcon icon={faBed} /> {'Bed 3'}</strong></p>
                 <p><strong> <FontAwesomeIcon icon={faBath} /> {' Bath 2'}</strong></p>
                 <p> <strong> <FontAwesomeIcon icon={faSquare} /> {'Sqft 1290'}</strong></p>
             </div>
-            <div className="description">
+            <div className="description mt-3">
                 <h2>Garden With House</h2>
                 <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab modi obcaecati reprehenderit fugiat, ipsum enim molestias pariatur aperiam ut veritatis beatae unde nulla itaque vero magni perferendis facere perspiciatis praesentium iure, nesciunt. <br /> Voluptatibus, vitae cumque. Sapiente perferendis sint quam illo omnis ipsa, voluptates rerum, a autem excepturi quaerat dolores vitae! Adipisci minus ratione voluptatum et doloribus eum suscipit optio accusamus dolor sint explicabo quod nihil tempora, tenetur sequi necessitatibus aliquid.</p>
             </div>
+            <div className="moreDetail mt-5">
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Type :</strong>  Apartment/Flat</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Added On :</strong>  17-05-20</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Completion :</strong>  Complete</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Purpose :</strong>  Sale</p>
+            </div>
+            <div className="location mt-5">
             <h2>Location & Nearby</h2>
-            <div className="location d-flex">
+            <div className=" d-flex">
                 <p>School</p>
                 <p>Restaurents</p>
+            </div>
             </div>
         </div>
     );
