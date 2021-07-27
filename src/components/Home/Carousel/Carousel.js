@@ -11,17 +11,6 @@ const HeadCarousel = () => {
     return (
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="search-bar">
-                {/* <div className='search-items'>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="m-1"
-                            aria-label="Search"
-                        />
-                        <Button className="m-1" size="lg" variant="success">Search</Button>
-                    </Form>  
-                </div>  */}
                 <SearchBar />
             </div>
 
