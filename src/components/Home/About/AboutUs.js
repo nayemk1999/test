@@ -4,7 +4,7 @@ import styles from "./AboutUs.module.css";
 
 const AboutUs = () => {
     return (
-        <Container>
+        <Container >
             <Row>
                 <Col sm={12} md={6} lg={6} className="text-center">
                     <h3 className={styles.title} >About Us</h3>
