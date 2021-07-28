@@ -3,26 +3,24 @@ import { Button, Form } from "react-bootstrap";
 
 export default function Contact() {
   return (
-    <Form>
+    <div className="container">
       <h2 className="text-center mt-5 text-success">Contact US</h2>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+      <div style={{ borderRadius: "20px" }} className="p-5 shadow-lg mt-5">
+        <form action="https://formspree.io/f/xrgrekdq" method='POST'>
+          <div className="form-group p-3">
+            <input type="text" className="form-control p-3" placeholder="Email Address *" />
+          </div>
+          <div className="form-group p-3">
+            <input type="text" className="form-control p-3" placeholder="Subject *" />
+          </div>
+          <div className="form-group p-3">
+            <textarea name="message" className="form-control p-3" id="" placeholder="Message *"></textarea>
+          </div>
+          <div className="form-group text-center">
+            <button type="submit" className="btn btn-primary btn-lg submitButton"> Send Message </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
