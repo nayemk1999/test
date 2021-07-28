@@ -7,6 +7,7 @@ import LoginForm from "./components/Authentication/LoginForm";
 import RegisterForm from "./components/Authentication/RegisterForm";
 import Contact from "./components/Home/Contact/Contact";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 
 export const UserContext = createContext();
 
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
         </Switch>
       </Router>
