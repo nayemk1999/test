@@ -8,8 +8,6 @@ export default function SearchBar() {
     const [district, setDistrict] = useState([])
     const [selectId, setSelectId] = useState('')
     const [upazila, setupazila] = useState([])
-    console.log(selectId);
-    console.log(district);
 
     const onSubmit = data => {
         alert('Thank You....Data Connected')
@@ -30,10 +28,11 @@ export default function SearchBar() {
             })
     }, [selectId])
 
-    const divisionChange = (e) => {
-        const select = allDivisionbn.find(id => e.target.value === id.divisionbn)
-        setSelectId(select._id)
-    }
+    // const divisionChange = (e) => {
+    //     // const select = allDivisionbn.find(id => e.target.value === id.division)
+        
+    //     setSelectId(select._id)
+    // }
   
     const districtChange = (e) => {
         const select = district.find(id => e.target.value === id.district)
@@ -43,21 +42,21 @@ export default function SearchBar() {
         <div class="search-container " aria-label="Mini form">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div class="d-flex">
-                    <select {...register("বিভাগ")} onChange={divisionChange} className="form-select me-2" aria-label="Default select example">
-                        <option selected>বিভাগ</option>
+                    <select {...register("division")} onChange={(e)=> setSelectId(e.target.value)} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Division</option>
                         {
-                            allDivisionbn.map(dv => <option key={dv._id}>{dv.divisionbn}</option>)
+                            allDivisionbn.map(dv => <option key={dv._id}>{dv.division}</option>)
                         }
 
                     </select>
-                    <select {...register("জেলা")} onChange={districtChange} className="form-select me-2" aria-label="Default select example">
-                        <option selected>জেলা</option>
+                    <select {...register("district")} onChange={districtChange} className="form-select me-2" aria-label="Default select example">
+                        <option selected>District</option>
                         {district !== undefined &&
                             district.map(dis => <option key={dis._id}>{dis.district}</option>)
                         }
                     </select>
-                    <select {...register("উপজিলা")} className="form-select me-2" aria-label="Default select example">
-                        <option selected>উপজিলা</option>
+                    <select {...register("upazilla")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Upazilla</option>
                         {selectId &&
                             upazila.map(upa => <option key={upa}>{upa}</option>)
                         }
