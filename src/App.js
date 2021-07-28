@@ -7,7 +7,7 @@ import LoginForm from "./components/Authentication/LoginForm";
 import RegisterForm from "./components/Authentication/RegisterForm";
 import Contact from "./components/Home/Contact/Contact";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
-import UserProfile from "./components/UserProfile/UserProfile";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 
 export const UserContext = createContext();
 
@@ -20,9 +20,7 @@ function App() {
           <Route path="/detail">
             <PropertyDetailPage />
           </Route>
-          <Route path="/userProfile">
-            <UserProfile/>
-          </Route>
+          
           <Route exact path="/">
             <Home />
           </Route>
@@ -37,6 +35,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
         </Switch>
       </Router>
