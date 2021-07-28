@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import AddAPost from '../AddAPost/AddAPost';
 import ManagePost from '../ManagePost/ManagePost';
+import Profile from '../Profile/Profile';
 import PurchasedProperty from '../PurchasedProperty/PurchasedProperty';
 
 const DashboardContent = () => {
@@ -21,6 +22,9 @@ const DashboardContent = () => {
                 </Route>
                 <Route path={`${path}/manage-post`}>
                     <ManagePost />
+                </Route>
+                <Route path={`${path}/profile`}>
+                    <Profile />
                 </Route>
             </Switch>
         </Col>
