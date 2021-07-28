@@ -32,7 +32,7 @@ const properties = [
 const Properties = () => {
 
     return (
-        <div className='mt-5 container'>
+        <div className='mt-5 container' id='buy'>
             <h1 className='mb-3 mt-5 py-2 text-center bg-light'>Best Properties and Buildings</h1>
             <div className="property-container">
                 {
