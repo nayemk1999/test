@@ -8,19 +8,21 @@ import RegisterForm from "./components/Authentication/RegisterForm";
 import Contact from "./components/Home/Contact/Contact";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 export const UserContext = createContext();
 
 function App() {
+
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
+
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
         <Switch>
           <Route path="/detail">
             <PropertyDetailPage />
-          </Route>
-          
+          </Route> 
           <Route exact path="/">
             <Home />
           </Route>
@@ -36,9 +38,9 @@ function App() {
           <Route path="/contact">
             <Contact />
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </UserContext.Provider>

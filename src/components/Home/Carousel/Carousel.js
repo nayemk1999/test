@@ -5,9 +5,9 @@ import "./Carousel.css"
 
 
 const HeadCarousel = () => {
-    const img1 = "https://i.ibb.co/5YtR1KS/1-1.jpg"
+    const img1 = "https://i.ibb.co/zsB41cJ/00-3.jpg"
     const img2 = "https://i.ibb.co/kxKkGjD/1-2.jpg"
-    const img3 = "https://i.ibb.co/zPhHD6n/1-3.jpg"
+    const img3 = "https://i.ibb.co/Lx9jjHK/00-2.jpg"
     return (
         <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="search-bar">
