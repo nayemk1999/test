@@ -28,9 +28,9 @@ const NavBar = () => {
         <Navbar.Collapse id="navbar-nav" >
           <Nav className="m-auto">
             <Nav.Link as={Link} to='/home' className="mr-5 h5  nav-link"><strong>Home</strong></Nav.Link>
-            <Nav.Link href="/buy" className="mr-5 h5 nav-link"><strong>Buy</strong></Nav.Link>
-            <Nav.Link href="/rent" className="mr-5 h5 nav-link"><strong>Rent</strong></Nav.Link>
-            <Nav.Link href="/sold" className="mr-5 h5 nav-link"><strong>Sold</strong></Nav.Link>
+            <Nav.Link href="#buy" className="mr-5 h5 nav-link"><strong>Buy</strong></Nav.Link>
+            <Nav.Link  href="#rent" className="mr-5 h5 nav-link"><strong>Rent</strong></Nav.Link>
+            <Nav.Link as={Link} to="/" className="mr-5 h5 nav-link"><strong>Sold</strong></Nav.Link>
             <Nav.Link as={Link} to='/dashboard/profile' className="mr-5 h5 nav-link"><strong>Dashboard</strong></Nav.Link>
             
           </Nav>

@@ -78,7 +78,7 @@ const RecentlyAdded = () => {
   };
 
   return (
-    <div className="row container mx-auto">
+    <div className="row container mx-auto" id='rent'>
       <h2 className="text-center mt-5">Recently Added</h2>
       <Slider {...settings}>
         {RecentlyAddedData.length &&
