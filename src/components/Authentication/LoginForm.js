@@ -50,6 +50,7 @@ const LoginForm = () => {
         toast.success('Successfully Logged In!');
         
     }
+
     const handleFocus = (e) => {
         let parent = e.target.parentNode.parentNode;
         parent.classList.add('focus')
