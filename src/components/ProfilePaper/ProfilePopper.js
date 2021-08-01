@@ -25,7 +25,7 @@ const ProfilePopper = () => {
             overlay={
                 <Popover id="popover-positioned-bottom">
                     <div className="d-flex justify-content-center">
-                    <Button as={Link} to='/dashboard/profile' variant="outline-info" className="py-0 px-1 mt-1 " size="md">View Profile</Button>
+                        <Button as={Link} to='/dashboard/profile' variant="outline-info" className="py-0 px-1 mt-1 " size="md">View Profile</Button>
                         {/* <Image style={{ maxWidth: "60px", border:'1px solid #17a2b8' }} src={photo || avatar} roundedCircle /> */}
                     </div>
 

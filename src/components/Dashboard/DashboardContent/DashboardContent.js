@@ -4,6 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import AddAPost from '../AddAPost/AddAPost';
 import ManagePost from '../ManagePost/ManagePost';
 import Profile from '../Profile/Profile';
+import ProfileUpdate from '../Profile/ProfileUpdate';
 import PurchasedProperty from '../PurchasedProperty/PurchasedProperty';
 
 const DashboardContent = () => {
@@ -25,6 +26,9 @@ const DashboardContent = () => {
                 </Route>
                 <Route path={`${path}/profile`}>
                     <Profile />
+                </Route>
+                <Route path={`/dashboard/update-profile`}>
+                    <ProfileUpdate />
                 </Route>
             </Switch>
         </Col>

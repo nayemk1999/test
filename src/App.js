@@ -13,16 +13,16 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 export const UserContext = createContext();
 
 function App() {
-
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
 
+  console.log(loggedInUser);
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
         <Switch>
           <Route path="/detail">
             <PropertyDetailPage />
-          </Route> 
+          </Route>
           <Route exact path="/">
             <Home />
           </Route>

@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { initializeLoginFramework } from './LoginManager';
+import { fetchProfile, initializeLoginFramework } from './LoginManager';
+import toast from 'react-hot-toast';
+import swal from 'sweetalert';
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [picture, setPicture] = useState('');
     const history = useHistory();
+
+    const profileData = {
+        name: name,
+        email: email,
+        password: password,
+        photo: 'https://i.ibb.co/7CzR0Dg/users.jpg'
+    }
+    const loading = toast.loading('Adding...Please wait!');
 
     const signupForm = (e) => {
         initializeLoginFramework()
@@ -18,7 +28,7 @@ const RegisterForm = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                alert('SuccessFully Create Account')
+                fetchProfile(profileData)
                 history.push('/login')
             })
             .catch((error) => {
@@ -27,6 +37,25 @@ const RegisterForm = () => {
                 alert(errorMessage)
             });
     }
+
+    // const profileFetch = () => {
+    //     const url = 'http://localhost:5000/profile-data'
+    //     fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'Application/json'
+    //         },
+    //         body: JSON.stringify(profileData)
+    //     })
+    //         .then(res => {
+    //             if (res) {
+    //                 toast.dismiss(loading);
+    //                 // reset();
+    //                 return swal(`Successfully Sign Up!`, `${name} Welcome`, "success");
+    //             }
+    //             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+    //         })
+    // }
 
     const handleFocus = (e) => {
         let parent = e.target.parentNode.parentNode;
@@ -53,7 +82,7 @@ const RegisterForm = () => {
                             </div>
                             <div>
                                 <h5>Full Name</h5>
-                                <input onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" />
+                                <input onChange={(e) => setName(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" />
                             </div>
                         </div>
                         <div class="input-div one">
@@ -78,10 +107,7 @@ const RegisterForm = () => {
                             <div class="i">
                                 <i class="fas fa-lock"></i>
                             </div>
-                            <div>
-                                <h5>Upload Picture</h5>
-                                <input onChange={(e) => setPicture(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="file" />
-                            </div>
+
                         </div>
                         <div class='login-a'>
                             <Link className="a" to="/login">Login</Link>

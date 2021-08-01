@@ -3,14 +3,14 @@ import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
+import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { setLoggedInUser} = useContext(UserContext);
+    const { setLoggedInUser } = useContext(UserContext);
 
     const history = useHistory()
     const location = useLocation()
@@ -20,7 +20,15 @@ const LoginForm = () => {
         initializeLoginFramework()
         signInWithEmailAndPassword(email, password)
             .then(res => {
-                handleResponse(res)
+                const url = 'http://localhost:5000/profile?email=' + res.email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        setLoggedInUser(data)
+                    })
+                setJWTToken();
+                history.replace(from);
+                toast.success('Successfully Logged In!');
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -28,11 +36,15 @@ const LoginForm = () => {
                 alert(errorMessage);
             });
     }
+
     const googleLogin = () => {
         initializeLoginFramework()
         handleGoogleSignIn()
             .then(res => {
-                handleResponse(res)
+                setLoggedInUser(res);
+                setJWTToken();
+                history.replace(from);
+                toast.success('Successfully Logged In!');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -43,13 +55,6 @@ const LoginForm = () => {
             });
     }
 
-    const handleResponse = (res) => {
-        setLoggedInUser(res);
-        setJWTToken();
-        history.replace(from);
-        toast.success('Successfully Logged In!');
-        
-    }
     const handleFocus = (e) => {
         let parent = e.target.parentNode.parentNode;
         parent.classList.add('focus')
