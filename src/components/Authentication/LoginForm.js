@@ -41,10 +41,7 @@ const LoginForm = () => {
         initializeLoginFramework()
         handleGoogleSignIn()
             .then(res => {
-                setLoggedInUser(res);
-                setJWTToken();
-                history.replace(from);
-                toast.success('Successfully Logged In!');
+                handleResponse(res)
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -67,7 +64,12 @@ const LoginForm = () => {
             parent.classList.remove('focus')
         }
     }
-
+    const handleResponse = (res) => {
+        setLoggedInUser(res);
+        setJWTToken();
+        history.replace(from);
+        toast.success('Successfully Logged In!');   
+    }
     return (
         <div className='login-content'>
             <div class="login-container-body">

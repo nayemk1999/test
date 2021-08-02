@@ -6,7 +6,7 @@ import { UserContext } from '../../../App';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [profile, setProfile] = useState({})
-    console.log(loggedInUser);
+    
     useEffect(() => {
         const url = 'http://localhost:5000/profile?email=' + loggedInUser.email
         fetch(url)

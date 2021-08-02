@@ -16,21 +16,19 @@ export const handleGoogleSignIn = () => {
         .auth()
         .signInWithPopup(googleProvider)
         .then(res => {
-            // fetchProfile(res.user)
             handleResponse(res)
+            fetchProfile(res.user)  
         })
 }
 
 const handleResponse = (res) => {
-    const { displayName, photoURL, email, name, password } = res.user;
+    const { displayName, photoURL, email } = res.user;
     const signedInUser = {
         isSignedIn: true,
-        name: displayName || name,
+        name: displayName,
         email: email,
-        password: password || '',
         photo: photoURL || "https://i.ibb.co/7CzR0Dg/users.jpg"
     }
-    
     return signedInUser;
 }
 
@@ -56,19 +54,15 @@ export const getDecodedUser = () => {
     if (!token) {
         return {};
     }
-
-    const { name, picture, email, password } = jwt_decode(token);
-    
+    const { name, picture, email } = jwt_decode(token);
     const decodedUser = {
         isSignedIn: true,
         name: name,
         email: email,
-        password: password ,
         photo: picture || "https://i.ibb.co/7CzR0Dg/users.jpg"
     }
     return decodedUser;
 }
-
 
 export const handleSignOut = () => {
     initializeLoginFramework()
@@ -90,7 +84,7 @@ export const handleSignOut = () => {
 
 export const fetchProfile = (props) => {
     const { displayName, photoURL, email } = props;
-    const profileData ={
+    const profileData = {
         name: displayName || props.name,
         email: email || props.email,
         password: props.password,

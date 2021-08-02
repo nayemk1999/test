@@ -7,6 +7,7 @@ import { handleSignOut, initializeLoginFramework } from '../../Authentication/Lo
 
 const Profile = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    console.log(loggedInUser);
     const [profile, setProfile] = useState({})
     
     useEffect(() => {
