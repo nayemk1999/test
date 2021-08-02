@@ -4,7 +4,7 @@ import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { initializeLoginFramework } from './LoginManager';
+import { fetchProfile, initializeLoginFramework } from './LoginManager';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 
@@ -28,7 +28,7 @@ const RegisterForm = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                profileFetch()
+                fetchProfile(profileData)
                 history.push('/login')
             })
             .catch((error) => {
@@ -36,25 +36,6 @@ const RegisterForm = () => {
                 const errorMessage = error.message;
                 alert(errorMessage)
             });
-    }
-
-    const profileFetch = () => {
-        const url = 'http://localhost:5000/profile-data'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'Application/json'
-            },
-            body: JSON.stringify(profileData)
-        })
-            .then(res => {
-                if (res) {
-                    toast.dismiss(loading);
-                    // reset();
-                    return swal(`Successfully Sign Up!`, `${name} Welcome`, "success");
-                }
-                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
-            })
     }
 
     const handleFocus = (e) => {

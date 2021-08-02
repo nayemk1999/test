@@ -3,6 +3,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import jwt_decode from "jwt-decode";
 import { firebaseConfig } from "../../firebaseConfig/firebaseConfig";
+import toast from 'react-hot-toast';
+import swal from 'sweetalert';
 
 export const initializeLoginFramework = () => {
     !firebase.apps.length && firebase.initializeApp(firebaseConfig);
@@ -17,6 +19,7 @@ export const handleGoogleSignIn = () => {
 }
 
 const handleResponse = (res) => {
+    fetchProfile(res.user)
     const { displayName, photoURL, email } = res.user;
     const signedInUser = {
         isSignedIn: true,
@@ -77,4 +80,31 @@ export const handleSignOut = () => {
             return signedOutUser;
         })
         .catch(error => console.log(error.message))
+}
+
+export const fetchProfile = (props) => {
+    const { displayName, photoURL, email } = props;
+    const profileData = {
+        name: displayName || props.name,
+        email: email || props.email,
+        password: props.password,
+        photo: photoURL || props.photo
+    }
+    const loading = toast.loading('Adding...Please wait!');
+    const url = 'http://localhost:5000/profile-data'
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(profileData)
+    })
+        .then(res => {
+            if (res) {
+                toast.dismiss(loading);
+                // reset();
+                return swal(`Successfully Sign Up!`, ` Welcome`, "success");
+            }
+            swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+        })
 }

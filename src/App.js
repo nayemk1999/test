@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../src/components/Home/Home/Home";
@@ -6,23 +6,22 @@ import PropertyDetailPage from "./components/PropertyDetailPage/PropertyDetailPa
 import LoginForm from "./components/Authentication/LoginForm";
 import RegisterForm from "./components/Authentication/RegisterForm";
 import Contact from "./components/Home/Contact/Contact";
-import { getDecodedUser } from "./components/Authentication/LoginManager";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { getDecodedUser } from "./components/Authentication/LoginManager";
 
 export const UserContext = createContext();
 
 function App() {
-
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
-
+console.log(loggedInUser);
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
         <Switch>
           <Route path="/detail">
             <PropertyDetailPage />
-          </Route> 
+          </Route>
           <Route exact path="/">
             <Home />
           </Route>
