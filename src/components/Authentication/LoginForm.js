@@ -20,7 +20,7 @@ const LoginForm = () => {
         initializeLoginFramework()
         signInWithEmailAndPassword(email, password)
             .then(res => {
-                const url = 'http://localhost:5000/profile?email=' + res.email
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
                 fetch(url)
                     .then(res => res.json())
                     .then(data => {

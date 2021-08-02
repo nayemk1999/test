@@ -8,7 +8,7 @@ export default function ProfileUpdate() {
     const [profile, setProfile] = useState({})
     
     useEffect(() => {
-        const url = 'http://localhost:5000/profile?email=' + loggedInUser.email
+        const url = 'https://toprak-real.herokuapp.com/profile?email=' + loggedInUser.email
         fetch(url)
             .then(res => res.json())
             .then(data => {
