@@ -15,13 +15,11 @@ export const handleGoogleSignIn = () => {
     return firebase
         .auth()
         .signInWithPopup(googleProvider)
-        .then(res => {
-            handleResponse(res)
-            fetchProfile(res.user)  
-        })
+        .then(res => handleResponse(res))
 }
 
 const handleResponse = (res) => {
+    fetchProfile(res.user)
     const { displayName, photoURL, email } = res.user;
     const signedInUser = {
         isSignedIn: true,
@@ -31,6 +29,7 @@ const handleResponse = (res) => {
     }
     return signedInUser;
 }
+
 
 
 export const signInWithEmailAndPassword = (email, password) => {
@@ -63,6 +62,7 @@ export const getDecodedUser = () => {
     }
     return decodedUser;
 }
+
 
 export const handleSignOut = () => {
     initializeLoginFramework()
@@ -108,4 +108,3 @@ export const fetchProfile = (props) => {
             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })
 }
-
