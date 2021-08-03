@@ -3,7 +3,7 @@ import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
+import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, setUserInfo, signInWithEmailAndPassword } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
@@ -20,15 +20,14 @@ const LoginForm = () => {
         initializeLoginFramework()
         signInWithEmailAndPassword(email, password)
             .then(res => {
+                
                 const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
                 fetch(url)
                     .then(res => res.json())
                     .then(data => {
-                        setLoggedInUser(data)
+                        handleResponse(data)
                     })
-                setJWTToken();
-                history.replace(from);
-                toast.success('Successfully Logged In!');
+                // setJWTToken();
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -55,6 +54,7 @@ const LoginForm = () => {
     const handleResponse = (res) => {
         setLoggedInUser(res);
         setJWTToken();
+        setUserInfo(res)
         history.replace(from);
         toast.success('Successfully Logged In!');
         

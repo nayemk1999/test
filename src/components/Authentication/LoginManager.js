@@ -30,8 +30,6 @@ const handleResponse = (res) => {
     return signedInUser;
 }
 
-
-
 export const signInWithEmailAndPassword = (email, password) => {
     return firebase
         .auth()
@@ -47,18 +45,26 @@ export const setJWTToken = () => {
             localStorage.setItem('token', idToken)
         })
 }
+export const setUserInfo = (props) => {
+    return localStorage.setItem('user', JSON.stringify(props))
+}
+
 
 export const getDecodedUser = () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    // const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    const userData = JSON.parse(user)
+    if (!userData) {
         return {};
     }
-    const { name, picture, email } = jwt_decode(token);
+    
+    // console.log(userData);
+    const { name, picture, email, photo } = userData;
     const decodedUser = {
         isSignedIn: true,
         name: name,
         email: email,
-        photo: picture || "https://i.ibb.co/7CzR0Dg/users.jpg"
+        photo: picture || photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
     }
     return decodedUser;
 }
@@ -70,7 +76,8 @@ export const handleSignOut = () => {
         .auth()
         .signOut()
         .then(() => {
-            localStorage.removeItem('token');
+            localStorage.removeItem('token'); 
+            localStorage.removeItem('user'); 
             const signedOutUser = {
                 isSignedIn: false,
                 userName: '',
@@ -90,6 +97,7 @@ export const fetchProfile = (props) => {
         password: props.password,
         photo: photoURL || props.photo
     }
+
     const loading = toast.loading('Adding...Please wait!');
     const url = 'https://toprak-real.herokuapp.com/profile-data'
     fetch(url, {
@@ -103,7 +111,7 @@ export const fetchProfile = (props) => {
             if (res) {
                 toast.dismiss(loading);
                 // reset();
-                return swal(`Successfully ${displayName ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+                return swal(`Successfully ${displayName || props.email ? 'Login' : 'Sign Up!'}`, ` Welcome`);
             }
             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })

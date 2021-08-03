@@ -6,15 +6,7 @@ import { UserContext } from '../../../App';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [profile, setProfile] = useState({})
-    
-    useEffect(() => {
-        const url = 'https://toprak-real.herokuapp.com/profile?email=' + loggedInUser.email
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setProfile(data)
-            })
-    }, [])
+   
     return (
         <div className="container">
             <h2 className="text-center mt-2 text-success">Profile Update</h2>
@@ -23,10 +15,10 @@ export default function ProfileUpdate() {
 
                 <form onSubmit={''}>
                     <div className="form-group p-3">
-                        <input required type="text" className="form-control p-3" defaultValue={profile.name} />
+                        <input required type="text" className="form-control p-3" defaultValue={loggedInUser.name} />
                     </div>
                     <div className="form-group p-3">
-                        <input required type="text" className="form-control p-3" defaultValue={profile.email} />
+                        <input required type="text" className="form-control p-3" value={loggedInUser.email} />
                     </div>
                     <div className="form-group p-3">
                         <input required type="text" className="form-control p-3" placeholder="Address added" />

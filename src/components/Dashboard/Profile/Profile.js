@@ -17,7 +17,8 @@ const Profile = () => {
         .then(data => {
             setProfile(data)
         })
-    }, [])
+    }, [loggedInUser.email])
+    
     const signOut = () => {
         initializeLoginFramework();
         handleSignOut()
