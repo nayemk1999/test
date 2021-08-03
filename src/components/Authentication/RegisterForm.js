@@ -84,12 +84,6 @@ const RegisterForm = () => {
                                 <input onChange={(e) => setPassword(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="password" />
                             </div>
                         </div>
-                        <div class="input-div">
-                            <div class="i">
-                                <i class="fas fa-lock"></i>
-                            </div>
-
-                        </div>
                         <div class='login-a'>
                             <Link className="a" to="/login">Login</Link>
                         </div>

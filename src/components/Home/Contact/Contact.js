@@ -8,10 +8,10 @@ export default function Contact() {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_za7y8qe",
-        "template_7lrgqed",
+        "service_edj9wxb",
+        "template_st7axfb",
         e.target,
-        "user_AaQfX3dRBUQR7t0wHUhjB"
+        "user_WIhaX7McgowK728YycnGL"
       )
       .then(
         (result) => {

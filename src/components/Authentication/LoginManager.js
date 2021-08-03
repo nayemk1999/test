@@ -103,7 +103,7 @@ export const fetchProfile = (props) => {
             if (res) {
                 toast.dismiss(loading);
                 // reset();
-                return swal(`Successfully Sign Up!`, ` Welcome`, "success");
+                return swal(`Successfully ${displayName ? 'Login' : 'Sign Up!'}`, ` Welcome`);
             }
             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })
