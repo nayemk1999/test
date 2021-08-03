@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
+import style from "./AddPost.module.css"
 const AddAPost = () => {
     const { register, handleSubmit } = useForm();
     const [allDivisionbn, setAllDivisionbn] = useState([])
@@ -9,7 +9,28 @@ const AddAPost = () => {
     const [upazila, setupazila] = useState([])
 
     const onSubmit = (data) => {
-        console.log("Done", data.location)
+
+        const newPost ={
+            name:data.name,
+            description:data.description,
+            area:data.area,
+            nearestPlace:data.nearestPlace,
+            image1:data.image1,
+            image2:data.image2,
+            image3:data.image3,
+            price:data.price,
+            address:data.address,
+            division:data.division,
+            district:data.district,
+            upazilla:data.upazilla,
+            beds:data.beds,
+            bath:data.bath,
+            type:data.type,
+            purpose:data.purpose,
+            completion:data.completion,
+            date:data.date,
+        }
+        console.log("Done", newPost)
     }
 
     useEffect(() => {
@@ -32,7 +53,7 @@ const AddAPost = () => {
     }
     return (
 
-        <div>
+    
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Name:</label>
                 <input {...register("name")} className="form-control" type="text" />
@@ -41,19 +62,22 @@ const AddAPost = () => {
                 <textarea {...register("description")} className="form-control" rows="6" ></textarea>
                 
                 <label>Area:</label>
-                <input {...register("area")} className="form-control" type="number" name="" id="" />
+                <input {...register("area")} className="form-control" type="number"  />
+
+                <label>Nearest Place:</label>
+                <input {...register("nearestPlace")} className="form-control" type="text" placeholder="like mosque, school etc.."/>
 
                 <label>Image 1:</label>
-                <input {...register("image-1")} className="form-control" type="file" name="" id="" />
+                <input {...register("image1")} className="form-control" type="file"  />
                 
                 <label>Image 2:</label>
-                <input {...register("image-2")} className="form-control" type="file" name="" id="" />
+                <input {...register("image2")} className="form-control" type="file"  />
                 
                 <label>Image 3:</label>
-                <input {...register("image-3")} className="form-control" type="file" name="" id="" />
+                <input {...register("image3")} className="form-control" type="file"  />
                 
                 <label>Price:</label>
-                <input {...register("location")} className="form-control" type="text" />
+                <input {...register("price")} className="form-control" type="number" />
                 
                 <label>Address:</label>
                 <input {...register("address")} className="form-control" type="text" />
@@ -122,14 +146,14 @@ const AddAPost = () => {
                         
                        
                     </select>
-                    <input {...register("completion")} className="form-control" type="date" name="" id="" />
+                    <input {...register("date")} className="form-control" type="date" />
                 </div>
                
                     
                 
                 <button class="btn btn-outline-success mt-4" type="submit">Post Now</button>
             </form>
-        </div>
+    
     );
 };
 
