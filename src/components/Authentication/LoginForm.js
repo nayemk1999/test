@@ -19,14 +19,14 @@ const LoginForm = () => {
     const login = () => {
         initializeLoginFramework()
         signInWithEmailAndPassword(email, password)
-            .then(res => {
-                
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        handleResponse(data)
-                    })
+            .then(res => { 
+                handleResponse(res)
+                // const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
+                // fetch(url)
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         
+                //     })
                 // setJWTToken();
             })
             .catch((error) => {

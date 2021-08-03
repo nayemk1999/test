@@ -79,10 +79,7 @@ export const handleSignOut = () => {
             localStorage.removeItem('token'); 
             localStorage.removeItem('user'); 
             const signedOutUser = {
-                isSignedIn: false,
-                userName: '',
-                email: '',
-                userPhoto: ''
+                
             }
             return signedOutUser;
         })

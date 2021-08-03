@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button, Image, Nav, OverlayTrigger, Popover } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,14 @@ import { handleSignOut, initializeLoginFramework } from '../Authentication/Login
 const ProfilePopper = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const { name, email, photo } = loggedInUser
-
+    useEffect(() => {
+        const url = 'https://toprak-real.herokuapp.com/profile?email=' + loggedInUser.email
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setLoggedInUser(data)
+            })
+    }, [loggedInUser.emai])
     const signOut = () => {
         initializeLoginFramework();
         handleSignOut()
