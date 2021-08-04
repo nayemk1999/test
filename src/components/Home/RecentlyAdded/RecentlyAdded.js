@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import RecentCard from './RecentCard';
 
 const RecentlyAddedData = [
+
+  //    const getPostdata =  'https://toprak-real.herokuapp.com/all-post'
   {
     img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
     title: 'Garden With House'
