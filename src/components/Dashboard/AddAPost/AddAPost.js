@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import style from "./AddPost.module.css"
 import axios from 'axios';
+import { UserContext } from '../../../App';
+import toast from 'react-hot-toast';
+import swal from 'sweetalert';
 
 const AddAPost = () => {
+    const { loggedInUser } = useContext(UserContext);
     const { register, handleSubmit } = useForm();
     const [allDivisionbn, setAllDivisionbn] = useState([])
     const [district, setDistrict] = useState([])
@@ -16,6 +20,7 @@ const AddAPost = () => {
 
         const newPost = {
             name: data.name,
+            email: loggedInUser.email,
             description: data.description,
             area: data.area,
             nearestPlace: data.nearestPlace,
@@ -32,8 +37,26 @@ const AddAPost = () => {
             type: data.type,
             purpose: data.purpose,
             completion: data.completion,
-            date: data.date,
+            date: new Date(),
         }
+        const loading = toast.loading('Adding...Please wait!');
+        const url = 'https://toprak-real.herokuapp.com/post-data'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(newPost)
+        })
+            .then(res => {
+                if (res) {
+                    toast.dismiss(loading);
+                    // reset();
+                    return swal(`Successfully Post add!`, `${loggedInUser.email} Welcome`, "success");
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
+
         console.log("Done", newPost)
     }
 
@@ -197,7 +220,7 @@ const AddAPost = () => {
 
 
                 </select>
-                <input {...register("date")} className="form-control" type="date" />
+                {/* <input {...register("date")} className="form-control" type="date" /> */}
             </div>
 
 
