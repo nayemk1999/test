@@ -62,7 +62,7 @@ const AddAPost = () => {
             imageData)
             .then(function (response) {
                 console.log(response.data.data.display_url);
-                setImageURL(response.data.data.display_url);
+                setImageURL1(response.data.data.display_url);
             })
             .catch(function (error) {
                 console.log(error);
@@ -77,7 +77,7 @@ const AddAPost = () => {
             imageData)
             .then(function (response) {
                 console.log(response.data.data.display_url);
-                setImageURL(response.data.data.display_url);
+                setImageURL2(response.data.data.display_url);
             })
             .catch(function (error) {
                 console.log(error);
