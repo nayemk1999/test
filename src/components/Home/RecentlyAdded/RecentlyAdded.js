@@ -1,38 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./RecentlyAdded.css";
 import Slider from 'react-slick';
 import RecentCard from './RecentCard';
 
-const RecentlyAddedData = [
 
-  //    const getPostdata =  'https://toprak-real.herokuapp.com/all-post'
-  {
-    img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
-    title: 'Garden With House'
-  },
-  {
-    img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
-    title: 'Office'
-  },
-  {
-    img: 'https://i.ibb.co/zPhHD6n/1-3.jpg',
-    title: 'Pool With House'
-  },
-  {
-    img: 'https://i.ibb.co/5YtR1KS/1-1.jpg',
-    title: 'Garden With House'
-  },
-  {
-    img: 'https://i.ibb.co/kxKkGjD/1-2.jpg',
-    title: 'Office'
-  },
-  {
-    img: 'https://i.ibb.co/zPhHD6n/1-3.jpg',
-    title: 'Pool With House'
-  }
-]
+
+
 
 const RecentlyAdded = () => {
+  const url = 'https://toprak-real.herokuapp.com/all-post'
+  const [allPost, setAllPost] = useState([])
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setAllPost(data))
+  }, [])
+
   const settings = {
     dots: true,
     speed: 500,
@@ -80,13 +64,15 @@ const RecentlyAdded = () => {
   };
 
   return (
-    <div className="row container mx-auto" id='rent'>
+    <div className="row container mx-auto" >
       <h2 className="text-center mt-5">Recently Added</h2>
-      <Slider {...settings}>
-        {RecentlyAddedData.length &&
-          RecentlyAddedData.map(propsData => <RecentCard propsData={propsData} />)
+      
+        <div  className="row">
+        { allPost.length &&
+          allPost.map(propsData => <RecentCard propsData={propsData} />)
         }
-      </Slider>
+        </div>
+  
     </div>
   );
 };

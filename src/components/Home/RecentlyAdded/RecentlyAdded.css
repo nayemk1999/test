@@ -190,6 +190,9 @@
   opacity: 1;
   color: rgb(10, 158, 136);
 }
+#rent{
+  cursor: pointer;
+}
 
 .slick-next:before,
 [dir=rtl] .slick-prev:before {
