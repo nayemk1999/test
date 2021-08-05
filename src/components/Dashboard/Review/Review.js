@@ -1,20 +1,23 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import { UserContext } from './../../../App';
 
 
 export default function Review() {
-    const { register, handleSubmit } = useForm();
+    const history = useHistory()
+    const { register, handleSubmit, reset } = useForm();
     const { loggedInUser } = useContext(UserContext);
     // const reviewdata =  'https://toprak-real.herokuapp.com/review-data'
-    
+
     const onSubmit = data => {
-        
+
         const newReview = {
-            name:loggedInUser.name || "User Name",
+            name: loggedInUser.name || "User Name",
             message: data.message,
             email: loggedInUser.email || "User Email",
-            img:loggedInUser.photo || "User Photo",
+            img: loggedInUser.photo || "User Photo",
         }
         console.log(newReview);
         const url = 'https://toprak-real.herokuapp.com/review-data'
@@ -26,7 +29,7 @@ export default function Review() {
             body: JSON.stringify(newReview)
         })
             .then(res => {
-               
+                swal(`Successfully review added `).then(ok => history.push('/dashboard/profile'));
             })
     }
     return (
@@ -35,7 +38,7 @@ export default function Review() {
             <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
                 <label>Review*</label>
                 <br />
-                <textarea className="form-control" rows="4" required {...register("message")} />
+                <textarea name='review' className="form-control" rows="4" required {...register("message")} />
                 <br />
                 <br />
                 <input className='btn btn-outline-info form-control' type="submit" />
