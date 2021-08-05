@@ -6,6 +6,7 @@ import ManagePost from '../ManagePost/ManagePost';
 import Profile from '../Profile/Profile';
 import ProfileUpdate from '../Profile/ProfileUpdate';
 import PurchasedProperty from '../PurchasedProperty/PurchasedProperty';
+import Review from '../Review/Review';
 
 const DashboardContent = () => {
     let { path } = useRouteMatch();
@@ -26,6 +27,9 @@ const DashboardContent = () => {
                 </Route>
                 <Route path={`${path}/profile`}>
                     <Profile />
+                </Route>
+                <Route path={`${path}/review`}>
+                    <Review />
                 </Route>
                 <Route path={`/dashboard/update-profile`}>
                     <ProfileUpdate />

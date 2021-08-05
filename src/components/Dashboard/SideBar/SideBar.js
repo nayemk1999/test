@@ -21,6 +21,9 @@ const SideBar = () => {
                 <li className={styles.sideBarLi}>
                     <Link to={`${url}/manage-post`} className={styles.sideBarLink} >Manage Post</Link>
                 </li>
+                <li className={styles.sideBarLi}>
+                    <Link to={`${url}/review`} className={styles.sideBarLink} >Review</Link>
+                </li>
 
             </ul>
         </Col>
