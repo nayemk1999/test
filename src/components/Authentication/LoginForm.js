@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
+import firebase from "firebase/app";
+import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
@@ -18,23 +20,28 @@ const LoginForm = () => {
 
     const login = () => {
         initializeLoginFramework()
-        signInWithEmailAndPassword(email, password)
-            .then(res => {
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        setLoggedInUser(data)
-                    })
-                setJWTToken();
-                history.replace(from);
-                toast.success('Successfully Logged In!');
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                alert(errorMessage);
-            });
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(res => {
+            const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+            fetch(url)
+                .then(res => res.json())
+                .then(data =>{
+                    fetchProfile(data)
+                    handleResponse(data)
+                })
+        })
+        // signInWithEmailAndPassword(email, password)
+        //     .then(res => {
+        //         console.log(res);
+        //         // handleResponse(res)
+        //     })
+        //     .catch((error) => {
+        //         var errorCode = error.code;
+        //         var errorMessage = error.message;
+        //         alert(errorMessage);
+        //     });
     }
 
     const googleLogin = () => {
@@ -54,8 +61,8 @@ const LoginForm = () => {
 
     const handleResponse = (res) => {
         setLoggedInUser(res);
-        setJWTToken();
-        history.replace(from);
+        // setJWTToken();
+        // history.replace(from);
         toast.success('Successfully Logged In!');
         
     }

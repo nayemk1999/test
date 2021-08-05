@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import jwt_decode from "jwt-decode";
@@ -18,26 +18,31 @@ export const handleGoogleSignIn = () => {
         .then(res => handleResponse(res))
 }
 
-const handleResponse = (res) => {
-    fetchProfile(res.user)
-    const { displayName, photoURL, email } = res.user;
+export const handleResponse = (res) => {
+    
+    // fetchProfile(res.user)
+    const { name, password , photo, displayName, photoURL, email } = res;
     const signedInUser = {
         isSignedIn: true,
-        name: displayName,
+        name: name,
         email: email,
-        photo: photoURL || "https://i.ibb.co/7CzR0Dg/users.jpg"
+        password: password,
+        photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
     }
-    return signedInUser;
+    return signedInUser;  
 }
 
-
-
-export const signInWithEmailAndPassword = (email, password) => {
-    return firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(res => handleResponse(res))
-}
+// export const signInWithEmailAndPassword = (email, password) => {
+//     return firebase
+//         .auth()
+//         .signInWithEmailAndPassword(email, password)
+//         .then(res => {
+//             const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+//             fetch(url)
+//                 .then(res => res.json())
+//                 .then(data => handleResponse(data))
+//         })
+// }
 
 export const setJWTToken = () => {
     return firebase
@@ -54,6 +59,7 @@ export const getDecodedUser = () => {
         return {};
     }
     const { name, picture, email } = jwt_decode(token);
+
     const decodedUser = {
         isSignedIn: true,
         name: name,
@@ -87,11 +93,11 @@ export const fetchProfile = (props) => {
     const profileData = {
         name: displayName || props.name,
         email: email || props.email,
-        password: props.password,
+        password: props.password || '',
         photo: photoURL || props.photo
     }
     const loading = toast.loading('Adding...Please wait!');
-    const url = 'https://toprak-real.herokuapp.com/profile-data'
+    const url = 'http://localhost:5000/profile-data'
     fetch(url, {
         method: 'POST',
         headers: {
@@ -103,7 +109,7 @@ export const fetchProfile = (props) => {
             if (res) {
                 toast.dismiss(loading);
                 // reset();
-                return swal(`Successfully ${displayName ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+                return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
             }
             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })
