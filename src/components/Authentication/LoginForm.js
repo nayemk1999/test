@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
+import firebase from "firebase/app";
+import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
@@ -18,28 +20,14 @@ const LoginForm = () => {
 
     const login = () => {
         initializeLoginFramework()
-        signInWithEmailAndPassword(email, password)
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
             .then(res => {
-                // const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
-                // fetch(url)
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         setLoggedInUser(data)
-                //     })
-                handleResponse(res)
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                alert(errorMessage);
-            });
-    }
-
-    const googleLogin = () => {
-        initializeLoginFramework()
-        handleGoogleSignIn()
-            .then(res => {
-                handleResponse(res)
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => handleResponse(data))
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -48,15 +36,45 @@ const LoginForm = () => {
                 alert(errorMessage)
                 console.log(errorCode, email, errorMessage);
             });
+
+    }
+
+    const googleLogin = () => {
+        initializeLoginFramework()
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(googleProvider)
+            .then(res => {
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        handleResponse(data)
+                        fetchProfile(res)
+                    })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.email;
+                alert(errorMessage)
+                console.log(errorCode, email, errorMessage);
+            });
+
+
     }
 
     const handleResponse = (res) => {
         console.log(res);
         setLoggedInUser(res);
-        setJWTToken();
-        history.replace(from);
-        toast.success('Successfully Logged In!');
-        
+        // setJWTToken();
+        // toast.success('Successfully Logged In!');
+        swal(`Successfully Login ${res.name || res.displayName}`, `Welcome`)
+            .then(res => {
+                history.push(from)
+            });
+
     }
 
     const handleFocus = (e) => {

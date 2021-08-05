@@ -9,7 +9,6 @@ const PropertyDetailPage = () => {
         <div>
             <Header/>
             <div className="container row mx-auto propertyDetailPage">
-
                 <div className="col-md-7">
                     <PropertyDetail />
                 </div>
