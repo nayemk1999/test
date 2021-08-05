@@ -32,7 +32,7 @@ const Profile = () => {
                 <Card.Header as={"h4"} className="text-center border-0 mt-1">Profile</Card.Header>
                 <Card.Body className="card-body">
                     <div className="d-flex flex-column align-items-center text-center">
-                        <img src={profile.photo} alt="..." className="rounded-circle" width="150" style={{ boxShadow: '0 8px 20px -4px #95abbb' }} />
+                        <img src={profile.photo || 'https://i.ibb.co/7CzR0Dg/users.jpg'} alt="..." className="rounded-circle" width="150" style={{ boxShadow: '0 8px 20px -4px #95abbb' }} />
                         <div className="mt-3">
                             <h4>{profile.name}</h4>
                             <p className="text-secondary mb-1">{profile.email}</p>
