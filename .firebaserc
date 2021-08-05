@@ -1,7 +1,5 @@
 {
   "projects": {
-    "default": "toprak-real",
-    "test": "toprak-real",
-    "live": "toprak-real"
+    "default": "toprak-real"
   }
 }

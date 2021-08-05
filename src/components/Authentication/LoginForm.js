@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { fetchProfile, initializeLoginFramework, setJWTToken, setUserInfo} from './LoginManager';
+import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, setUserInfo } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
@@ -41,19 +41,15 @@ const LoginForm = () => {
 
     const googleLogin = () => {
         initializeLoginFramework()
-        const googleProvider = new firebase.auth.GoogleAuthProvider();
-        firebase
-            .auth()
-            .signInWithPopup(googleProvider)
+        handleGoogleSignIn()
             .then(res => {
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+                const email = res.email
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + email;
                 fetch(url)
                     .then(res => res.json())
-                    .then(data => {
-                        handleResponse(data)
-                        fetchProfile(res)
-                    })
+                    .then(data => handleResponse(data))
             })
+            
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -61,9 +57,8 @@ const LoginForm = () => {
                 alert(errorMessage)
                 console.log(errorCode, email, errorMessage);
             });
-
-
     }
+
 
     const handleResponse = (res) => {
         setLoggedInUser(res);
@@ -74,7 +69,25 @@ const LoginForm = () => {
             .then(res => {
                 history.push(from)
             });
+    }
 
+
+    const handleGoogleResponse = (email) => {
+
+        // const url = 'https://toprak-real.herokuapp.com/profile?email=' + email
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         // setLoggedInUser(data);
+        //         // setJWTToken();
+        //         // setUserInfo(data)
+        //         // toast.success('Successfully Logged In!');
+        //         // swal(`Successfully Login ${data.name || data.displayName}`, `Welcome`)
+        //         //     .then(res => {
+        //         //         history.push(from)
+        //         //     });
+        //     })
     }
 
     const handleFocus = (e) => {

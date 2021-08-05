@@ -10,26 +10,24 @@ export const initializeLoginFramework = () => {
     !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 }
 
-// export const handleGoogleSignIn = () => {
-//     const googleProvider = new firebase.auth.GoogleAuthProvider();
-//     return firebase
-//         .auth()
-//         .signInWithPopup(googleProvider)
-//         .then(res => handleResponse(res))
-// }
+export const handleGoogleSignIn = () => {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    return firebase
+        .auth()
+        .signInWithPopup(googleProvider)
+        .then(res => handleResponse(res))
+}
 
-// export const handleResponse = (res) => {  
-//     // fetchProfile(res.user)
-//     const { name, password , photo, displayName, photoURL, email } = res;
-//     const signedInUser = {
-//         isSignedIn: true,
-//         name: name,
-//         email: email,
-//         password: password,
-//         photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
-//     }
-//     return signedInUser;  
-// }
+export const handleResponse = (res) => {  
+    fetchProfile(res.user)
+    const { displayName, photoURL, email } = res.user;
+    const signedInUser = {
+        name: displayName,
+        email: email,
+        photo: photoURL || "https://i.ibb.co/7CzR0Dg/users.jpg"
+    }
+    return signedInUser;  
+}
 
 // export const signInWithEmailAndPassword = (email, password) => {
 //     return firebase
@@ -111,7 +109,10 @@ export const fetchProfile = (props) => {
         },
         body: JSON.stringify(profileData)
     })
-    .then(res => res)
+    .then(res => {
+        return true
+    })
+    return true
         // .then(res => {
         //     if (res) {
         //         toast.dismiss(loading);
