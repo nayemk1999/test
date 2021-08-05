@@ -14,7 +14,7 @@ const RecentCard = (props) => {
     const { name, image, district, date, _id } = props.propsData;
 
     return (
-        <div onClick={() => handleCard(_id)} className="col-md-4 g-5" >
+        <div onClick={() => handleCard(_id)} className="col-md-4 g-5" id='rent' >
 
             <div class="card" style={{ width: "18rem" }}>
                 <img src={image} style={{ height: '200px' }} className="img-fluid" alt="..." />

@@ -67,7 +67,7 @@ const RecentlyAdded = () => {
     <div className="row container mx-auto" >
       <h2 className="text-center mt-5">Recently Added</h2>
       
-        <div id='rent' className="row">
+        <div  className="row">
         { allPost.length &&
           allPost.map(propsData => <RecentCard propsData={propsData} />)
         }
