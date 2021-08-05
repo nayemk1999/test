@@ -3,7 +3,7 @@ import React from 'react';
 const SellerForm = () => {
     return (
         <div>
-            <h2 className="text-center p-4">Contact Seller</h2>
+            <h2 className="text-center p-4">Contact Us</h2>
             <div style={{borderRadius:"20px"}} className="p-5 shadow bg-white">
                 <form action="https://formspree.io/f/xrgrekdq" method='POST'>
                     <div className="form-group p-3">

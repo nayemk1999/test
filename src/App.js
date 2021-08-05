@@ -19,7 +19,7 @@ function App() {
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
         <Switch>
-          <Route path="/detail/:id">
+          <Route path="/property-detail/:id">
             <PropertyDetailPage />
           </Route>
           <Route exact path="/">
