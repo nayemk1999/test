@@ -11,11 +11,10 @@ export default function Review() {
     const onSubmit = data => {
         
         const newReview = {
-
-            name: loggedInUser.name,
+            name:loggedInUser.name || "User Name",
             message: data.message,
-            email: loggedInUser.email,
-            img:loggedInUser.photo,
+            email: loggedInUser.email || "User Email",
+            img:loggedInUser.photo || "User Photo",
         }
         console.log(newReview);
         const url = 'https://toprak-real.herokuapp.com/review-data'
@@ -27,7 +26,7 @@ export default function Review() {
             body: JSON.stringify(newReview)
         })
             .then(res => {
-                
+               
             })
     }
     return (
