@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
+import { fetchProfile, initializeLoginFramework, setJWTToken, setUserInfo} from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
@@ -66,9 +66,9 @@ const LoginForm = () => {
     }
 
     const handleResponse = (res) => {
-        console.log(res);
         setLoggedInUser(res);
         // setJWTToken();
+        setUserInfo(res)
         // toast.success('Successfully Logged In!');
         swal(`Successfully Login ${res.name || res.displayName}`, `Welcome`)
             .then(res => {

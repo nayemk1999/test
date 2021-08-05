@@ -13,7 +13,7 @@ import { getDecodedUser } from "./components/Authentication/LoginManager";
 export const UserContext = createContext();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>

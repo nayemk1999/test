@@ -18,18 +18,18 @@ export const initializeLoginFramework = () => {
 //         .then(res => handleResponse(res))
 // }
 
-export const handleResponse = (res) => {  
-    // fetchProfile(res.user)
-    const { name, password , photo, displayName, photoURL, email } = res;
-    const signedInUser = {
-        isSignedIn: true,
-        name: name,
-        email: email,
-        password: password,
-        photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
-    }
-    return signedInUser;  
-}
+// export const handleResponse = (res) => {  
+//     // fetchProfile(res.user)
+//     const { name, password , photo, displayName, photoURL, email } = res;
+//     const signedInUser = {
+//         isSignedIn: true,
+//         name: name,
+//         email: email,
+//         password: password,
+//         photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
+//     }
+//     return signedInUser;  
+// }
 
 // export const signInWithEmailAndPassword = (email, password) => {
 //     return firebase
@@ -43,27 +43,32 @@ export const handleResponse = (res) => {
 //         })
 // }
 
-export const setJWTToken = () => {
-    return firebase
-        .auth().currentUser
-        .getIdToken(true)
-        .then(idToken => {
-            localStorage.setItem('token', idToken)
-        })
+// export const setJWTToken = () => {
+//     return firebase
+//         .auth().currentUser
+//         .getIdToken(true)
+//         .then(idToken => {
+//             localStorage.setItem('token', idToken)
+//         })
+// }
+export const setUserInfo = (props) => {
+    return localStorage.setItem('user', JSON.stringify(props) )
 }
 
 export const getDecodedUser = () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    const user = localStorage.getItem('user');
+    const userData = JSON.parse(user)
+    if (!user) {
         return {};
     }
-    const { name, picture, email } = jwt_decode(token);
+    const { name, photo, email, password } = userData;
 
     const decodedUser = {
         isSignedIn: true,
         name: name,
         email: email,
-        photo: picture || "https://i.ibb.co/7CzR0Dg/users.jpg"
+        password: password,
+        photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
     }
     return decodedUser;
 }
@@ -76,11 +81,11 @@ export const handleSignOut = () => {
         .signOut()
         .then(() => {
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             const signedOutUser = {
-                isSignedIn: false,
                 userName: '',
                 email: '',
-                userPhoto: ''
+                photo: ''
             }
             return signedOutUser;
         })
