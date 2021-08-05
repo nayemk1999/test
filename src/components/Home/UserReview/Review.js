@@ -8,10 +8,10 @@ const Review = ({review}) => {
             <img style={{height:"70px",width:"70px" }} src={review.img} alt="" />
             </div>
             <div className="col-md-9">
-            <h4>{review.Name}</h4>
-            <h6 class=" mb-2 text-muted">Daraz</h6>
+            <h4>{review.name}</h4>
+            <h6 class=" mb-2 text-muted">{review.email}</h6>
             </div>     
-            <p className="">{review.review}</p>     
+            <p className="">{review.message}</p>     
         </div>
        
     </div>
