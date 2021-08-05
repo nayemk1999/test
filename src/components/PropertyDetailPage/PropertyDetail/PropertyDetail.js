@@ -5,7 +5,20 @@ import img3 from "../../../image/1 (2).jpg"
 import "./PropertyDetail.css"
 import { faBath, faBed, faBookmark, faCheck, faHeart, faLocationArrow, faSquare, faSquareRootAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 const PropertyDetail = () => {
+    const[propertyDetail,setPropertyDetail] = useState([])
+    const { id } = useParams();
+
+    useEffect(()=>{
+       fetch(`https://toprak-real.herokuapp.com/single-post/${id}`) 
+       .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setPropertyDetail(data)
+            })
+    },[])
     return (
         <div>
             <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -16,7 +29,7 @@ const PropertyDetail = () => {
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img style={{ height: "600px" }} src={img} className="d-block w-100" alt="..." />
+                        <img style={{ height: "600px" }} src={propertyDetail.image} className="d-block w-100" alt="..." />
                         <div className="searchInput">
 
                         </div>
@@ -24,11 +37,11 @@ const PropertyDetail = () => {
 
                     </div>
                     <div className="carousel-item">
-                        <img style={{ height: "600px" }} src={img2} className="d-block w-100" alt="..." />
+                        <img style={{ height: "600px" }} src={propertyDetail.image1} className="d-block w-100" alt="..." />
 
                     </div>
                     <div className="carousel-item">
-                        <img style={{ height: "600px" }} src={img3} className="d-block w-100" alt="..." />
+                        <img style={{ height: "600px" }} src={propertyDetail.image2} className="d-block w-100" alt="..." />
 
                     </div>
                 </div>
@@ -48,28 +61,27 @@ const PropertyDetail = () => {
 
 
             </div>
-            <h3 className="mb-3">Price: 12,65,9000 ট</h3>
-            <h5 className="mb-3"><FontAwesomeIcon icon={faLocationArrow} /> {'41/12/b Zigatola, Dhaka'}</h5>
+            <h3 className="mb-3">Price: {propertyDetail.price} ট</h3>
+            <h5 className="mb-3"><FontAwesomeIcon icon={faLocationArrow} /> {propertyDetail.address}</h5>
             <div className="d-flex detail">
-                <p><strong><FontAwesomeIcon icon={faBed} /> {'Bed 3'}</strong></p>
-                <p><strong> <FontAwesomeIcon icon={faBath} /> {' Bath 2'}</strong></p>
-                <p> <strong> <FontAwesomeIcon icon={faSquare} /> {'Sqft 1290'}</strong></p>
+                <p><strong><FontAwesomeIcon icon={faBed} /> {propertyDetail.beds}</strong></p>
+                <p><strong> <FontAwesomeIcon icon={faBath} /> {propertyDetail.bath}</strong></p>
+                <p> <strong> <FontAwesomeIcon icon={faSquare} /> {propertyDetail.area}</strong> sqft</p>
             </div>
             <div className="description mt-3">
-                <h2>Garden With House</h2>
-                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab modi obcaecati reprehenderit fugiat, ipsum enim molestias pariatur aperiam ut veritatis beatae unde nulla itaque vero magni perferendis facere perspiciatis praesentium iure, nesciunt. <br /> Voluptatibus, vitae cumque. Sapiente perferendis sint quam illo omnis ipsa, voluptates rerum, a autem excepturi quaerat dolores vitae! Adipisci minus ratione voluptatum et doloribus eum suscipit optio accusamus dolor sint explicabo quod nihil tempora, tenetur sequi necessitatibus aliquid.</p>
+                <h2>{propertyDetail.name}</h2>
+                <p> {propertyDetail.description}</p>
             </div>
             <div className="moreDetail mt-5">
-            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Type :</strong>  Apartment/Flat</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Type :</strong>{propertyDetail.type}</p>
             <p> <strong> <FontAwesomeIcon icon={faCheck} /> Added On :</strong>  17-05-20</p>
-            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Completion :</strong>  Complete</p>
-            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Purpose :</strong>  Sale</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Completion :</strong>  {propertyDetail.completion}</p>
+            <p> <strong> <FontAwesomeIcon icon={faCheck} /> Purpose :</strong>  {propertyDetail.purpose}</p>
             </div>
             <div className="location mt-5">
             <h2>Location & Nearby</h2>
             <div className=" d-flex">
-                <p>School</p>
-                <p>Restaurents</p>
+                <h3>{propertyDetail.nearestPlace}</h3>
             </div>
             </div>
         </div>
