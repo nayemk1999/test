@@ -106,11 +106,12 @@ export const fetchProfile = (props) => {
         body: JSON.stringify(profileData)
     })
         .then(res => {
-            if (res) {
-                toast.dismiss(loading);
-                // reset();
-                return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
-            }
-            swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            console.log(res);
+            // if (res) {
+            //     toast.dismiss(loading);
+            //     // reset();
+            //     return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+            // }
+            // swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })
 }
