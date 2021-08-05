@@ -10,16 +10,15 @@ export const initializeLoginFramework = () => {
     !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 }
 
-export const handleGoogleSignIn = () => {
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    return firebase
-        .auth()
-        .signInWithPopup(googleProvider)
-        .then(res => handleResponse(res))
-}
+// export const handleGoogleSignIn = () => {
+//     const googleProvider = new firebase.auth.GoogleAuthProvider();
+//     return firebase
+//         .auth()
+//         .signInWithPopup(googleProvider)
+//         .then(res => handleResponse(res))
+// }
 
-export const handleResponse = (res) => {
-    
+export const handleResponse = (res) => {  
     // fetchProfile(res.user)
     const { name, password , photo, displayName, photoURL, email } = res;
     const signedInUser = {
@@ -105,13 +104,13 @@ export const fetchProfile = (props) => {
         },
         body: JSON.stringify(profileData)
     })
-        .then(res => {
-            console.log(res);
-            // if (res) {
-            //     toast.dismiss(loading);
-            //     // reset();
-            //     return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
-            // }
-            // swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
-        })
+    .then(res => res)
+        // .then(res => {
+        //     if (res) {
+        //         toast.dismiss(loading);
+        //         // reset();
+        //         return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+        //     }
+        //     swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+        // })
 }

@@ -21,34 +21,13 @@ const LoginForm = () => {
     const login = () => {
         initializeLoginFramework()
         firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(res => {
-            const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
-            fetch(url)
-                .then(res => res.json())
-                .then(data =>{
-                    fetchProfile(data)
-                    handleResponse(data)
-                })
-        })
-        // signInWithEmailAndPassword(email, password)
-        //     .then(res => {
-        //         console.log(res);
-        //         // handleResponse(res)
-        //     })
-        //     .catch((error) => {
-        //         var errorCode = error.code;
-        //         var errorMessage = error.message;
-        //         alert(errorMessage);
-        //     });
-    }
-
-    const googleLogin = () => {
-        initializeLoginFramework()
-        handleGoogleSignIn()
+            .auth()
+            .signInWithEmailAndPassword(email, password)
             .then(res => {
-                handleResponse(res)
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => handleResponse(data))
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -57,14 +36,44 @@ const LoginForm = () => {
                 alert(errorMessage)
                 console.log(errorCode, email, errorMessage);
             });
+
+    }
+
+    const googleLogin = () => {
+        initializeLoginFramework()
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(googleProvider)
+            .then(res => {
+                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        handleResponse(data)
+                        fetchProfile(res)
+                    })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.email;
+                alert(errorMessage)
+                console.log(errorCode, email, errorMessage);
+            });
+
+
     }
 
     const handleResponse = (res) => {
         setLoggedInUser(res);
         // setJWTToken();
-        // history.replace(from);
-        toast.success('Successfully Logged In!');
-        
+        // toast.success('Successfully Logged In!');
+        swal(`Successfully Login ${res.name || res.displayName}`, `Welcome`)
+            .then(res => {
+                history.push(from)
+            });
+
     }
 
     const handleFocus = (e) => {
