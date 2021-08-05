@@ -96,7 +96,8 @@ export const fetchProfile = (props) => {
         photo: photoURL || props.photo
     }
     const loading = toast.loading('Adding...Please wait!');
-    const url = 'http://localhost:5000/profile-data'
+    const url = 'https://toprak-real.herokuapp.com/profile-data'
+    
     fetch(url, {
         method: 'POST',
         headers: {
