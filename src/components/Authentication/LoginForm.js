@@ -20,15 +20,13 @@ const LoginForm = () => {
         initializeLoginFramework()
         signInWithEmailAndPassword(email, password)
             .then(res => {
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        setLoggedInUser(data)
-                    })
-                setJWTToken();
-                history.replace(from);
-                toast.success('Successfully Logged In!');
+                // const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.email
+                // fetch(url)
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         setLoggedInUser(data)
+                //     })
+                handleResponse(res)
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -53,6 +51,7 @@ const LoginForm = () => {
     }
 
     const handleResponse = (res) => {
+        console.log(res);
         setLoggedInUser(res);
         setJWTToken();
         history.replace(from);

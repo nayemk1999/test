@@ -15,11 +15,13 @@ export const handleGoogleSignIn = () => {
     return firebase
         .auth()
         .signInWithPopup(googleProvider)
-        .then(res => handleResponse(res))
+        .then(res => {
+            fetchProfile(res.user)
+            handleResponse(res)
+        })
 }
 
 const handleResponse = (res) => {
-    fetchProfile(res.user)
     const { displayName, photoURL, email } = res.user;
     const signedInUser = {
         isSignedIn: true,
@@ -29,8 +31,6 @@ const handleResponse = (res) => {
     }
     return signedInUser;
 }
-
-
 
 export const signInWithEmailAndPassword = (email, password) => {
     return firebase
@@ -84,6 +84,7 @@ export const handleSignOut = () => {
 
 export const fetchProfile = (props) => {
     const { displayName, photoURL, email } = props;
+
     const profileData = {
         name: displayName || props.name,
         email: email || props.email,
@@ -103,7 +104,7 @@ export const fetchProfile = (props) => {
             if (res) {
                 toast.dismiss(loading);
                 // reset();
-                return swal(`Successfully ${displayName ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+                return swal(`Successfully ${props.email || displayName ? 'Login' : 'Sign Up!'}`, ` Welcome`);
             }
             swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         })
