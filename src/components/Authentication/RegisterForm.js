@@ -15,7 +15,7 @@ const RegisterForm = () => {
     const history = useHistory();
 
     const profileData = {
-        name: name,
+        username: name,
         email: email,
         password: password,
         photo: 'https://i.ibb.co/7CzR0Dg/users.jpg'
@@ -23,19 +23,35 @@ const RegisterForm = () => {
     const loading = toast.loading('Adding...Please wait!');
 
     const signupForm = (e) => {
-        initializeLoginFramework()
-        e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                fetchProfile(profileData)
-                history.push('/login')
+        const url = 'https://toprakserver.herokuapp.com/auth/register'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(profileData)
+        })
+            .then(res => {
+                if (res) {
+                    toast.dismiss(loading);
+                    // reset();
+                    return swal(`Successfully Sign Up`,`Welcome`, "success").then(res =>  history.push('/login'));
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage)
-            });
+        // initializeLoginFramework()
+        // e.preventDefault();
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        //     .then((userCredential) => {
+        //         const user = userCredential.user;
+        //         fetchProfile(profileData)
+        //         history.push('/login')
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         alert(errorMessage)
+        //     });
     }
 
     const handleFocus = (e) => {
@@ -62,8 +78,8 @@ const RegisterForm = () => {
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h5>Full Name</h5>
-                                <input onChange={(e) => setName(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" />
+                                <h5>User Name</h5>
+                                <input onChange={(e) => setName(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" name='username' />
                             </div>
                         </div>
                         <div class="input-div one">
@@ -72,7 +88,7 @@ const RegisterForm = () => {
                             </div>
                             <div>
                                 <h5>Email</h5>
-                                <input onChange={(e) => setEmail(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="email" />
+                                <input onChange={(e) => setEmail(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="email" name='email' />
                             </div>
                         </div>
                         <div class="input-div two">
@@ -81,7 +97,7 @@ const RegisterForm = () => {
                             </div>
                             <div>
                                 <h5>Password</h5>
-                                <input onChange={(e) => setPassword(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="password" />
+                                <input onChange={(e) => setPassword(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="password" name='password' />
                             </div>
                         </div>
                         <div class='login-a'>

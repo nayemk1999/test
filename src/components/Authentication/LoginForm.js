@@ -10,32 +10,54 @@ import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
 const LoginForm = () => {
-    const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const { setLoggedInUser } = useContext(UserContext);
 
     const history = useHistory()
     const location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
+    const loading = toast.loading('Adding...Please wait!');
 
     const login = () => {
-        initializeLoginFramework()
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
+        const logindata = {
+            userName: userName,
+            password: password
+        }
+        const url = 'https://toprakserver.herokuapp.com/auth/login'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(logindata)
+        })
             .then(res => {
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => handleResponse(data))
+                if (res) {
+                    toast.dismiss(loading);
+                    // reset();
+                    return swal(`Successfully Log In`,`Welcome`, "success").then(res =>  history.push(from));
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.email;
-                alert(errorMessage)
-                console.log(errorCode, email, errorMessage);
-            });
+
+        // initializeLoginFramework()
+        // firebase
+        //     .auth()
+        //     .signInWithEmailAndPassword(email, password)
+        //     .then(res => {
+        //         const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
+        //         fetch(url)
+        //             .then(res => res.json())
+        //             .then(data => handleResponse(data))
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         const email = error.email;
+        //         alert(errorMessage)
+        //         console.log(errorCode, email, errorMessage);
+        //     });
 
     }
 
@@ -115,8 +137,8 @@ const LoginForm = () => {
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h5>UserName/Email</h5>
-                                <input onChange={(e) => setEmail(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" />
+                                <h5>UserName</h5>
+                                <input onChange={(e) => setUserName(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} class="input" type="text" />
                             </div>
                         </div>
                         <div class="input-div two">
