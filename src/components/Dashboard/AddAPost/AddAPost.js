@@ -40,7 +40,7 @@ const AddAPost = () => {
             date: new Date(),
         }
         const loading = toast.loading('Adding...Please wait!');
-        const url = 'https://toprak-real.herokuapp.com/post-data'
+        const url = 'https://toprakserver.herokuapp.com/property/add-post'
         fetch(url, {
             method: 'POST',
             headers: {

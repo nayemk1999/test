@@ -20,7 +20,7 @@ export default function Review() {
             img: loggedInUser.photo || "User Photo",
         }
         console.log(newReview);
-        const url = 'https://toprak-real.herokuapp.com/review-data'
+        const url = 'https://toprakserver.herokuapp.com/review/add-review'
         fetch(url, {
             method: 'POST',
             headers: {

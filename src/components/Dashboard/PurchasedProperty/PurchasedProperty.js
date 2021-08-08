@@ -1,9 +1,10 @@
 import React from 'react';
+import Post from '../post';
 
 const PurchasedProperty = () => {
     return (
         <div>
-            <h1>Purched Property</h1>
+            <Post/>
         </div>
     );
 };

@@ -8,7 +8,7 @@ import RecentCard from './RecentCard';
 
 
 const RecentlyAdded = () => {
-  const url = 'https://toprak-real.herokuapp.com/all-post'
+  const url = 'https://toprakserver.herokuapp.com/property/all-post'
   const [allPost, setAllPost] = useState([])
 
   useEffect(() => {
