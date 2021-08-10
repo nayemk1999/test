@@ -41,6 +41,7 @@ const LoginForm = () => {
                 }
                 swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
+
     }
 
     const googleLogin = () => {
