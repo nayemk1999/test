@@ -16,11 +16,11 @@ export default function Home() {
       <Header />
       <HeadCarousel />
       <RecentlyAdded />
-      {/* <Properties /> */}
+      <Properties />
       <OurPartner />
       <AboutUs/>
       <UserReview />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );

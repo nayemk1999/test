@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 
 const AddAPost = () => {
     const { loggedInUser } = useContext(UserContext);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,reset } = useForm();
     const [allDivisionbn, setAllDivisionbn] = useState([])
     const [district, setDistrict] = useState([])
     const [selectId, setSelectId] = useState('')
@@ -51,7 +51,7 @@ const AddAPost = () => {
             .then(res => {
                 if (res) {
                     toast.dismiss(loading);
-                    // reset();
+                    reset();
                     return swal(`Successfully Post add!`, `${loggedInUser.email} Welcome`, "success");
                 }
                 swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
