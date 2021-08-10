@@ -31,6 +31,9 @@ const DashboardContent = () => {
                 <Route path={`${path}/review`}>
                     <Review />
                 </Route>
+                <Route path={`${path}/add-admin`}>
+                    <ManagePost />
+                </Route>
                 <Route path={`/dashboard/update-profile`}>
                     <ProfileUpdate />
                 </Route>
