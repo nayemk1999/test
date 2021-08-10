@@ -32,33 +32,15 @@ const LoginForm = () => {
             },
             body: JSON.stringify(logindata)
         })
-            .then(res => {
-                if (res) {
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
                     toast.dismiss(loading);
-                    // reset();
-                    return swal(`Successfully Log In`,`Welcome`, "success").then(res =>  history.push(from));
+                    setLoggedInUser(data);
+                    return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
                 }
                 swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
-
-        // initializeLoginFramework()
-        // firebase
-        //     .auth()
-        //     .signInWithEmailAndPassword(email, password)
-        //     .then(res => {
-        //         const url = 'https://toprak-real.herokuapp.com/profile?email=' + res.user.email
-        //         fetch(url)
-        //             .then(res => res.json())
-        //             .then(data => handleResponse(data))
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         const errorMessage = error.message;
-        //         const email = error.email;
-        //         alert(errorMessage)
-        //         console.log(errorCode, email, errorMessage);
-        //     });
-
     }
 
     const googleLogin = () => {
@@ -71,7 +53,7 @@ const LoginForm = () => {
                     .then(res => res.json())
                     .then(data => handleResponse(data))
             })
-            
+
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

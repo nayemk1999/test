@@ -8,16 +8,6 @@ import { handleSignOut, initializeLoginFramework } from '../../Authentication/Lo
 const Profile = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
-    const [profile, setProfile] = useState({})
-    
-    useEffect(() => {
-        const url = 'https://toprak-real.herokuapp.com/profile?email=' +loggedInUser.email
-        fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            setProfile(data)
-        })
-    }, [])
     const signOut = () => {
         initializeLoginFramework();
         handleSignOut()
@@ -32,10 +22,10 @@ const Profile = () => {
                 <Card.Header as={"h4"} className="text-center border-0 mt-1">Profile</Card.Header>
                 <Card.Body className="card-body">
                     <div className="d-flex flex-column align-items-center text-center">
-                        <img src={profile.photo || 'https://i.ibb.co/7CzR0Dg/users.jpg'} alt="..." className="rounded-circle" width="150" style={{ boxShadow: '0 8px 20px -4px #95abbb' }} />
+                        <img src={loggedInUser.profilePicture || 'https://i.ibb.co/7CzR0Dg/users.jpg'} alt="..." className="rounded-circle" width="150" style={{ boxShadow: '0 8px 20px -4px #95abbb' }} />
                         <div className="mt-3">
-                            <h4>{profile.name}</h4>
-                            <p className="text-secondary mb-1">{profile.email}</p>
+                            <h4>{loggedInUser.username}</h4>
+                            <p className="text-secondary mb-1">{loggedInUser.email}</p>
                         </div>
                         <Button as={Link} to='/dashboard/update-profile' variant='info' className='main-button'>Profile Update</Button>
                         <Button onClick={signOut} variant='info' className='main-button'>Log Out</Button>
