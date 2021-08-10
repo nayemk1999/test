@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 
 const AddAPost = () => {
     const { loggedInUser } = useContext(UserContext);
-    const { register, handleSubmit,reset } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [allDivisionbn, setAllDivisionbn] = useState([])
     const [district, setDistrict] = useState([])
     const [selectId, setSelectId] = useState('')
@@ -126,107 +126,108 @@ const AddAPost = () => {
         setupazila(select.upazilla)
     }
     return (
+        <div  className="shadow-lg p-5">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label>Name:</label>
+                <input {...register("name")} className="form-control" type="text" />
+
+                <label>Description:</label>
+                <textarea {...register("description")} className="form-control" rows="6" ></textarea>
+
+                <label>Area:</label>
+                <input {...register("area")} className="form-control" type="number" />
+
+                <label>Nearest Place:</label>
+                <input {...register("nearestPlace")} className="form-control" type="text" placeholder="like mosque, school etc.." />
+
+                <label>Image 1:</label>
+                <input {...register("image1")} onChange={handleImageUpload} className="form-control" type="file" />
+
+                <label>Image 2:</label>
+                <input {...register("image2")} onChange={handleImageUpload1} className="form-control" type="file" />
+
+                <label>Image 3:</label>
+                <input {...register("image3")} onChange={handleImageUpload2} className="form-control" type="file" />
+
+                <label>Price:</label>
+                <input {...register("price")} className="form-control" type="number" />
+
+                <label>Address:</label>
+                <input {...register("address")} className="form-control" type="text" />
+
+                <div class="d-flex mt-4">
+                    <select {...register("division")} onChange={(e) => setSelectId(e.target.value)} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Division</option>
+                        {
+                            allDivisionbn.map(dv => <option key={dv._id}>{dv.division}</option>)
+                        }
+
+                    </select>
+                    <select {...register("district")} onChange={districtChange} className="form-select me-2" aria-label="Default select example">
+                        <option selected>District</option>
+                        {district !== undefined &&
+                            district.map(dis => <option key={dis._id}>{dis.district}</option>)
+                        }
+                    </select>
+                    <select {...register("upazilla")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Upazilla</option>
+                        {selectId &&
+                            upazila.map(upa => <option key={upa}>{upa}</option>)
+                        }
+                    </select>
+
+                </div>
+                <div className="d-flex mt-4">
+                    <select {...register("beds")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Beds</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <select {...register("bath")} className="form-select me-2 " aria-label="Default select example">
+                        <option selected>Bath</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <select {...register("type")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Type</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Land">Land</option>
+
+                    </select>
+                </div>
+                <div className="d-flex mt-4">
+
+                    <select {...register("purpose")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Purpose</option>
+                        <option value="Sale">Sale</option>
+                        <option value="Rent">Rent</option>
+
+                    </select>
+                    <select {...register("completion")} className="form-select me-2" aria-label="Default select example">
+                        <option selected>Completion</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Under-Construction">Under-Construction</option>
 
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Name:</label>
-            <input {...register("name")} className="form-control" type="text" />
-
-            <label>Description:</label>
-            <textarea {...register("description")} className="form-control" rows="6" ></textarea>
-
-            <label>Area:</label>
-            <input {...register("area")} className="form-control" type="number" />
-
-            <label>Nearest Place:</label>
-            <input {...register("nearestPlace")} className="form-control" type="text" placeholder="like mosque, school etc.." />
-
-            <label>Image 1:</label>
-            <input {...register("image1")} onChange={handleImageUpload} className="form-control" type="file" />
-
-            <label>Image 2:</label>
-            <input {...register("image2")} onChange={handleImageUpload1} className="form-control" type="file" />
-
-            <label>Image 3:</label>
-            <input {...register("image3")} onChange={handleImageUpload2} className="form-control" type="file" />
-
-            <label>Price:</label>
-            <input {...register("price")} className="form-control" type="number" />
-
-            <label>Address:</label>
-            <input {...register("address")} className="form-control" type="text" />
-
-            <div class="d-flex mt-4">
-                <select {...register("division")} onChange={(e) => setSelectId(e.target.value)} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Division</option>
-                    {
-                        allDivisionbn.map(dv => <option key={dv._id}>{dv.division}</option>)
-                    }
-
-                </select>
-                <select {...register("district")} onChange={districtChange} className="form-select me-2" aria-label="Default select example">
-                    <option selected>District</option>
-                    {district !== undefined &&
-                        district.map(dis => <option key={dis._id}>{dis.district}</option>)
-                    }
-                </select>
-                <select {...register("upazilla")} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Upazilla</option>
-                    {selectId &&
-                        upazila.map(upa => <option key={upa}>{upa}</option>)
-                    }
-                </select>
-
-            </div>
-            <div className="d-flex mt-4">
-                <select {...register("beds")} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Beds</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-                <select {...register("bath")} className="form-select me-2 " aria-label="Default select example">
-                    <option selected>Bath</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-                <select {...register("type")} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Type</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Flat">Flat</option>
-                    <option value="Land">Land</option>
-
-                </select>
-            </div>
-            <div className="d-flex mt-4">
-
-                <select {...register("purpose")} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Purpose</option>
-                    <option value="Sale">Sale</option>
-                    <option value="Rent">Rent</option>
-
-                </select>
-                <select {...register("completion")} className="form-select me-2" aria-label="Default select example">
-                    <option selected>Completion</option>
-                    <option value="Complete">Complete</option>
-                    <option value="Under-Construction">Under-Construction</option>
-
-
-                </select>
-                {/* <input {...register("date")} className="form-control" type="date" /> */}
-            </div>
+                    </select>
+                    {/* <input {...register("date")} className="form-control" type="date" /> */}
+                </div>
 
 
 
-            <button class="btn btn-outline-success mt-4" type="submit">Post Now</button>
-        </form>
+                <button class="btn btn-outline-success mt-4" type="submit">Post Now</button>
+            </form>
+
+        </div>
 
     );
 };

@@ -33,7 +33,7 @@ export default function Review() {
             })
     }
     return (
-        <div>
+        <div className="shadow-lg p-5">
             <h2 className="text-center mb-5">Give Feedback</h2>
             <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
                 <label>Review*</label>
