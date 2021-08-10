@@ -8,17 +8,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 const PropertyDetail = () => {
-    const[propertyDetail,setPropertyDetail] = useState([])
+    const[propertyDetail,setPropertyDetail] = useState({})
     const { id } = useParams();
 
     useEffect(()=>{
-       fetch(`https://toprak-real.herokuapp.com/single-post/${id}`) 
+       fetch(`https://toprakserver.herokuapp.com/property/single-property/${id}`) 
        .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setPropertyDetail(data)
             })
-    },[])
+    },[id])
     return (
         <div>
             <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -31,10 +30,7 @@ const PropertyDetail = () => {
                     <div className="carousel-item active">
                         <img style={{ height: "600px" }} src={propertyDetail.image} className="d-block w-100" alt="..." />
                         <div className="searchInput">
-
                         </div>
-
-
                     </div>
                     <div className="carousel-item">
                         <img style={{ height: "600px" }} src={propertyDetail.image1} className="d-block w-100" alt="..." />

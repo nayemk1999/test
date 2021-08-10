@@ -34,34 +34,42 @@ const LoginForm = () => {
         })
             .then(res => res.json())
             .then(data => {
+                
+                if(data === 'No user found'){
+                    return swal("No user found!", "Please try again.", "error", { dangerMode: true });
+                }
+                if(data === 'Invalid password'){
+                    return swal("Invaild Password!", "Please try again.", "error", { dangerMode: true });
+                }
                 if (data) {
                     toast.dismiss(loading);
+                    setUserInfo(data)
                     setLoggedInUser(data);
                     return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
                 }
-                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+                
             })
     }
 
-    const googleLogin = () => {
-        initializeLoginFramework()
-        handleGoogleSignIn()
-            .then(res => {
-                const email = res.email
-                const url = 'https://toprak-real.herokuapp.com/profile?email=' + email;
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => handleResponse(data))
-            })
+    // const googleLogin = () => {
+    //     initializeLoginFramework()
+    //     handleGoogleSignIn()
+    //         .then(res => {
+    //             const email = res.email
+    //             const url = 'https://toprak-real.herokuapp.com/profile?email=' + email;
+    //             fetch(url)
+    //                 .then(res => res.json())
+    //                 .then(data => handleResponse(data))
+    //         })
 
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.email;
-                alert(errorMessage)
-                console.log(errorCode, email, errorMessage);
-            });
-    }
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             const email = error.email;
+    //             alert(errorMessage)
+    //             console.log(errorCode, email, errorMessage);
+    //         });
+    // }
 
 
     const handleResponse = (res) => {
@@ -137,7 +145,7 @@ const LoginForm = () => {
                             <Link className="a" to="/register-form">Sign Up</Link>
                         </div>
                         <input onClick={login} type="submit" class="login-btn" value="Login" />
-                        <button onClick={googleLogin} class="login-btn" value="">Login With Google</button>
+                        <button onClick={'googleLogin'} class="login-btn" value="">Login With Google</button>
                     </div>
                 </div>
             </div>

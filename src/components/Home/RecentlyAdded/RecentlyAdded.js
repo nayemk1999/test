@@ -4,9 +4,6 @@ import Slider from 'react-slick';
 import RecentCard from './RecentCard';
 
 
-
-
-
 const RecentlyAdded = () => {
   const url = 'https://toprakserver.herokuapp.com/property/all-post'
   const [allPost, setAllPost] = useState([])
@@ -69,7 +66,7 @@ const RecentlyAdded = () => {
       
         <div  className="row">
         { allPost.length &&
-          allPost.map(propsData => <RecentCard propsData={propsData} />)
+          allPost.map(propsData => <RecentCard key={propsData._id} propsData={propsData} />)
         }
         </div>
   

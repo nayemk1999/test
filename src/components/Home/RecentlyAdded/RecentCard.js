@@ -7,7 +7,7 @@ import locationIcon from '../../../image/map-pin.svg';
 
 const RecentCard = (props) => {
 
-    const { division,name, image, district, _id } = props.propsData;
+    const { division, name, image, district, _id } = props.propsData;
 
     return (
         <div className="col-md-4 g-5" id='rent' >

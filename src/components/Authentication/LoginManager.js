@@ -1,33 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import jwt_decode from "jwt-decode";
 import { firebaseConfig } from "../../firebaseConfig/firebaseConfig";
-import toast from 'react-hot-toast';
-import swal from 'sweetalert';
 
 export const initializeLoginFramework = () => {
     !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 }
 
-export const handleGoogleSignIn = () => {
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    return firebase
-        .auth()
-        .signInWithPopup(googleProvider)
-        .then(res => handleResponse(res))
-}
+// export const handleGoogleSignIn = () => {
+//     const googleProvider = new firebase.auth.GoogleAuthProvider();
+//     return firebase
+//         .auth()
+//         .signInWithPopup(googleProvider)
+//         .then(res => handleResponse(res))
+// }
 
-export const handleResponse = (res) => {  
-    fetchProfile(res.user)
-    const { displayName, photoURL, email } = res.user;
-    const signedInUser = {
-        name: displayName,
-        email: email,
-        photo: photoURL || "https://i.ibb.co/7CzR0Dg/users.jpg"
-    }
-    return signedInUser;  
-}
+// export const handleResponse = (res) => {  
+//     fetchProfile(res.user)
+//     const { displayName, photoURL, email } = res.user;
+//     const signedInUser = {
+//         name: displayName,
+//         email: email,
+//         photo: photoURL || "https://i.ibb.co/7CzR0Dg/users.jpg"
+//     }
+//     return signedInUser;  
+// }
 
 // export const signInWithEmailAndPassword = (email, password) => {
 //     return firebase
@@ -59,66 +57,46 @@ export const getDecodedUser = () => {
     if (!user) {
         return {};
     }
-    const { name, photo, email, password } = userData;
-
-    const decodedUser = {
-        isSignedIn: true,
-        name: name,
-        email: email,
-        password: password,
-        photo: photo || "https://i.ibb.co/7CzR0Dg/users.jpg"
-    }
-    return decodedUser;
+    return userData;
 }
 
 
-export const handleSignOut = () => {
-    initializeLoginFramework()
-    return firebase
-        .auth()
-        .signOut()
-        .then(() => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            const signedOutUser = {
-                userName: '',
-                email: '',
-                photo: ''
-            }
-            return signedOutUser;
-        })
-        .catch(error => console.log(error.message))
+export const handleSignOut = () => { 
+    const signout = {
+        email: ''
+    } 
+    return signout;
 }
 
-export const fetchProfile = (props) => {
-    const { displayName, photoURL, email } = props;
+// export const fetchProfile = (props) => {
+//     const { displayName, photoURL, email } = props;
 
-    const profileData = {
-        name: displayName || props.name,
-        email: email || props.email,
-        password: props.password || '',
-        photo: photoURL || props.photo
-    }
-    const loading = toast.loading('Adding...Please wait!');
-    const url = 'https://toprak-real.herokuapp.com/profile-data'
+//     const profileData = {
+//         name: displayName || props.name,
+//         email: email || props.email,
+//         password: props.password || '',
+//         photo: photoURL || props.photo
+//     }
+//     const loading = toast.loading('Adding...Please wait!');
+//     const url = 'https://toprak-real.herokuapp.com/profile-data'
     
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'Application/json'
-        },
-        body: JSON.stringify(profileData)
-    })
-    .then(res => {
-        return true
-    })
-    return true
-        // .then(res => {
-        //     if (res) {
-        //         toast.dismiss(loading);
-        //         // reset();
-        //         return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
-        //     }
-        //     swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
-        // })
-}
+//     fetch(url, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'Application/json'
+//         },
+//         body: JSON.stringify(profileData)
+//     })
+//     .then(res => {
+//         return true
+//     })
+//     return true
+//         // .then(res => {
+//         //     if (res) {
+//         //         toast.dismiss(loading);
+//         //         // reset();
+//         //         return swal(`Successfully ${res.success || res.insertOne ? 'Login' : 'Sign Up!'}`, ` Welcome`);
+//         //     }
+//         //     swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+//         // })
+// }

@@ -12,12 +12,19 @@ const ProfilePopper = () => {
     const { username, email, photo } = loggedInUser
 
     const signOut = () => {
-        initializeLoginFramework();
-        handleSignOut()
-            .then(res => {
-                setLoggedInUser(res)
-                toast.error('Logged Out!');
-            })
+        // initializeLoginFramework();
+        localStorage.removeItem('user');
+        const signout = {
+            email: ''
+        }
+        setLoggedInUser(signout)
+        // handleSignOut()
+        // .then(res => console.log(res))
+            // .then(res => {
+            //     console.log(res);
+            //     // setLoggedInUser(res)
+            //     // toast.error('Logged Out!');
+            // })
     }
 
     return (
