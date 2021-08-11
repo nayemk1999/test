@@ -23,6 +23,7 @@ export default function ProfileUpdate() {
         }
         console.log(updatedData);
         reset();
+         swal(`Successfully Updated Your Profile`, "success");
         // const url = 'https://toprakserver.herokuapp.com/auth/register'
         // fetch(url, {
         //     method: 'PUT',
