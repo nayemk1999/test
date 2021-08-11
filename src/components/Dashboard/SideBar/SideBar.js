@@ -19,7 +19,7 @@ const SideBar = () => {
         })
             .then(res => res.json())
             .then(data => setAdmin(true));
-    }, [])
+    }, [loggedInUser.email])
     return (
         <Col sm={12} md={5} xl={4} >
             <ul className={styles.sideBarUl}>
