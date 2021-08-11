@@ -10,9 +10,19 @@ export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [imageURL, setImageURL] = useState(null)
     console.log(loggedInUser);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const onSubmit = updateData => {
-      
+
+        const updatedData = {
+            email: updateData.email || loggedInUser.email,
+            mobile: updateData.mobile || loggedInUser.mobile,
+            city:updateData.city || loggedInUser.city,
+            country:updateData.country || loggedInUser.country,
+            profilePicture:imageURL || loggedInUser.profilePicture,
+            password:updateData.password || loggedInUser.password
+        }
+        console.log(updatedData);
+        reset();
         // const url = 'https://toprakserver.herokuapp.com/auth/register'
         // fetch(url, {
         //     method: 'PUT',
@@ -50,36 +60,36 @@ export default function ProfileUpdate() {
             <div style={{ borderRadius: "20px" }} className="p-5 shadow-lg mt-2">
                 <Image className="d-flex justify-content-center mx-auto" style={{ maxWidth: "70px", border: '1px solid #17a2b8' }} src={loggedInUser.profilePicture} roundedCircle />
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="d-flex mt-4">
-                        <div className=" me-2">
+                    <div className="row mt-4">
+                        <div className="col-md-4 me-2">
                             <label htmlFor="email">Email</label>
-                            <input className="form-control" name='email' {...register("email")} />
+                            <input className="form-control" name='email' {...register("email")} defaultValue={loggedInUser.email} />
                         </div>
-                        <div className=" me-2">
+                        <div className="col-md-4 me-2">
                             <label htmlFor="password">Password</label>
                             <input className="form-control" name='password' {...register("password")} />
-                        </div>   
-                        <div className=" me-2">
+                        </div>
+                        <div className="col-md-4 me-2">
                             <label htmlFor="email">Number</label>
-                            <input className="form-control" name='number' {...register("number")} />
+                            <input className="form-control" name='mobile' {...register("mobile")} defaultValue={loggedInUser.mobile} />
                         </div>
                     </div>
-                    <div className="d-flex mt-4">
-                        <div className=" me-2">
+                    <div className="row mt-2">
+                        <div className="col-md-4 me-2">
                             <label htmlFor="username">City</label>
-                            <input className="form-control" name='city' {...register("city")}  />
+                            <input className="form-control" name='city' {...register("city")} defaultValue={loggedInUser.city} />
                         </div>
-                        <div className=" me-2">
+                        <div className="col-md-4 me-2">
                             <label htmlFor="email">Country</label>
-                            <input className="form-control" name='country' {...register("country")} />
+                            <input className="form-control" name='country' {...register("country")} defaultValue={loggedInUser.country}/>
                         </div>
-                        <div className=" me-2">
+                        <div className="col-md-4 me-2">
                             <label htmlFor="password">Picture</label>
                             <input className="form-control" type="file" name='profilePicture' onChange={handleImageUpload} {...register("profilePicture")} />
-                        </div>   
+                        </div>
                     </div>
-                    
-                    <div className="form-group text-center mt-2">
+
+                    <div className="form-group text-center mt-4">
                         <button type="submit" className="btn btn-primary btn-lg submitButton"> Updated Profile </button>
                     </div>
                 </form>
