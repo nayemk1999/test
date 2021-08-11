@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
-
+import axios from 'axios';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-    // console.log(loggedInUser);
+    const [imageURL, setImageURL] = useState(null)
+    console.log(loggedInUser);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = updateData => {
-        console.log(updateData);
+      
         // const url = 'https://toprakserver.herokuapp.com/auth/register'
         // fetch(url, {
         //     method: 'PUT',
@@ -28,6 +29,21 @@ export default function ProfileUpdate() {
         //         swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
         //     })
     };
+    const handleImageUpload = (event) => {
+        console.log(event.target.files[0]);
+        const imageData = new FormData();
+        imageData.set('key', '9dd0f2772c6bcf2a62643d2538566ef1');
+        imageData.append('image', event.target.files[0])
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData)
+            .then(function (response) {
+                console.log(response.data.data.display_url);
+                setImageURL(response.data.data.display_url);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     return (
         <div className="container">
             <h2 className="text-center mt-2 text-success">Profile Update</h2>
@@ -36,33 +52,32 @@ export default function ProfileUpdate() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="d-flex mt-4">
                         <div className=" me-2">
-                            <label htmlFor="username">Enter UserName :</label>
-                            <input className="form-control" name='username' {...register("username")} defaultValue ={loggedInUser.username} />
-                        </div>
-                        <div className=" me-2">
-                            <label htmlFor="email">Enter Email :</label>
+                            <label htmlFor="email">Email</label>
                             <input className="form-control" name='email' {...register("email")} />
                         </div>
                         <div className=" me-2">
-                            <label htmlFor="password">Enter Password :</label>
+                            <label htmlFor="password">Password</label>
                             <input className="form-control" name='password' {...register("password")} />
                         </div>   
+                        <div className=" me-2">
+                            <label htmlFor="email">Number</label>
+                            <input className="form-control" name='number' {...register("number")} />
+                        </div>
                     </div>
-
-                    {/* <div className="d-flex mt-4">
+                    <div className="d-flex mt-4">
                         <div className=" me-2">
-                            <label htmlFor="email">Enter Email :</label>
-                            <input className="form-control" name='email' {...register("email")} />
+                            <label htmlFor="username">City</label>
+                            <input className="form-control" name='city' {...register("city")}  />
                         </div>
                         <div className=" me-2">
-                            <label htmlFor="email">Enter Email :</label>
-                            <input className="form-control" name='email' {...register("email")} />
+                            <label htmlFor="email">Country</label>
+                            <input className="form-control" name='country' {...register("country")} />
                         </div>
                         <div className=" me-2">
-                            <label htmlFor="email">Enter Email :</label>
-                            <input className="form-control" name='email' {...register("email")} />
+                            <label htmlFor="password">Picture</label>
+                            <input className="form-control" type="file" name='profilePicture' onChange={handleImageUpload} {...register("profilePicture")} />
                         </div>   
-                    </div>  */}
+                    </div>
                     
                     <div className="form-group text-center mt-2">
                         <button type="submit" className="btn btn-primary btn-lg submitButton"> Updated Profile </button>
