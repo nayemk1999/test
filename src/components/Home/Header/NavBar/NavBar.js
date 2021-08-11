@@ -24,21 +24,21 @@ const NavBar = () => {
     <Navbar expand="lg" className={(isSticky || isCollapsed) ? "slide in py-2 show shadow navbar navbar-expand-sm bg-light navbar-light fixed-top" : "slide out show navbar-expand-sm navbar-light py-2 fixed-top "}>
       <Container>
         <Navbar.Brand as={Link} to='/' > <Image style={{ height: '33px', width: '43px' }} src='https://www.graphicsprings.com/filestorage/stencils/0b9e79b37796b4f9200d26edfa127d19.png?width=500&height=500' /> <strong>TOPRAK</strong></Navbar.Brand>
-        <Navbar.Toggle onClick={() => setCollapsed(!isCollapsed ? 'show' : null)} aria-controls="basic-navbar-nav" style={{ background: 'rgb(199 199 199 / 75%)', marginRight:'7px' }} />
+        <Navbar.Toggle onClick={() => setCollapsed(!isCollapsed ? 'show' : null)} aria-controls="basic-navbar-nav" style={{ background: 'rgb(199 199 199 / 75%)', marginRight: '7px' }} />
         <Navbar.Collapse id="navbar-nav" >
           <Nav className="m-auto">
             <Nav.Link as={Link} to='/home' className="mr-5 h5  nav-link"><strong>Home</strong></Nav.Link>
             <Nav.Link href="#buy" className="mr-5 h5 nav-link"><strong>Buy</strong></Nav.Link>
-            <Nav.Link  href="#rent" className="mr-5 h5 nav-link"><strong>Rent</strong></Nav.Link>
+            <Nav.Link href="#rent" className="mr-5 h5 nav-link"><strong>Rent</strong></Nav.Link>
             <Nav.Link as={Link} to="/" className="mr-5 h5 nav-link"><strong>Sold</strong></Nav.Link>
             <Nav.Link as={Link} to='/dashboard/profile' className="mr-5 h5 nav-link"><strong>Dashboard</strong></Nav.Link>
-            
+
           </Nav>
           <div>
             {
               loggedInUser.email ? <ProfilePopper />
-              :
-              <Button as={Link} to='/login' variant="info" >Login</Button>
+                :
+                <Button as={Link} to='/login' variant="info" >Login</Button>
             }
           </div>
 

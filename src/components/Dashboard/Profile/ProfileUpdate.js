@@ -9,10 +9,10 @@ import axios from 'axios';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [imageURL, setImageURL] = useState(null)
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = updateData => {
-      
+
         // const url = 'https://toprakserver.herokuapp.com/auth/register'
         // fetch(url, {
         //     method: 'PUT',
@@ -37,7 +37,7 @@ export default function ProfileUpdate() {
         axios.post('https://api.imgbb.com/1/upload',
             imageData)
             .then(function (response) {
-                console.log(response.data.data.display_url);
+                console.log(response);
                 setImageURL(response.data.data.display_url);
             })
             .catch(function (error) {
@@ -58,7 +58,7 @@ export default function ProfileUpdate() {
                         <div className=" me-2">
                             <label htmlFor="password">Password</label>
                             <input className="form-control" name='password' {...register("password")} />
-                        </div>   
+                        </div>
                         <div className=" me-2">
                             <label htmlFor="email">Number</label>
                             <input className="form-control" name='number' {...register("number")} />
@@ -67,18 +67,24 @@ export default function ProfileUpdate() {
                     <div className="d-flex mt-4">
                         <div className=" me-2">
                             <label htmlFor="username">City</label>
-                            <input className="form-control" name='city' {...register("city")}  />
+                            <input className="form-control" name='city' {...register("city")} />
                         </div>
                         <div className=" me-2">
                             <label htmlFor="email">Country</label>
                             <input className="form-control" name='country' {...register("country")} />
                         </div>
+
+                    </div>
+                    <div className="d-flex mt-4">
+                        <div className=" me-2">
+                            <Image style={{ maxWidth: "60px", border: '1px solid #17a2b8' }} src={imageURL || 'https://i.ibb.co/7CzR0Dg/users.jpg'} roundedCircle />
+                        </div>
                         <div className=" me-2">
                             <label htmlFor="password">Picture</label>
                             <input className="form-control" type="file" name='profilePicture' onChange={handleImageUpload} {...register("profilePicture")} />
-                        </div>   
+                        </div>
                     </div>
-                    
+
                     <div className="form-group text-center mt-2">
                         <button type="submit" className="btn btn-primary btn-lg submitButton"> Updated Profile </button>
                     </div>
