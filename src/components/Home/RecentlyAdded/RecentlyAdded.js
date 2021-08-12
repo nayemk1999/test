@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./RecentlyAdded.css";
 import Slider from 'react-slick';
 import RecentCard from './RecentCard';
+import TableSpinner from '../../Spinner/Spinner';
 
 
 const RecentlyAdded = () => {
@@ -63,13 +64,14 @@ const RecentlyAdded = () => {
   return (
     <div className="row container mx-auto" >
       <h2 className="text-center mt-5">Recently Added</h2>
-      
-        <div  className="row">
-        { allPost.length &&
+
+      <div className="row">
+        {allPost.length ?
           allPost.map(propsData => <RecentCard key={propsData._id} propsData={propsData} />)
+          : <TableSpinner />
         }
-        </div>
-  
+      </div>
+
     </div>
   );
 };
