@@ -16,6 +16,7 @@ export default function Review() {
             name: data.name,
             message: data.message,
             email: loggedInUser.email,
+            profiePicture: loggedInUser.profileUpdate || ''
         }
         const url = 'https://toprakserver.herokuapp.com/review/add-review'
         fetch(url, {

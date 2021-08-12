@@ -7,7 +7,7 @@ const Review = ({review}) => {
         <div className="col-md-3 p-4 mb-4 " >
         <div className="row shadow text-center review">
             <div className="col-md-3">
-            <img style={{height:"70px",width:"70px" }} src={loggedInUser.profilePicture} alt="" />
+            <img style={{height:"70px",width:"70px" }} src={review.profilePicture || 'https://i.ibb.co/7CzR0Dg/users.jpg'} alt="" />
             </div>
             <div className="col-md-9">
             <h4>{review.name}</h4>

@@ -18,7 +18,6 @@ const RegisterForm = () => {
         username: name,
         email: email,
         password: password,
-        photo: 'https://i.ibb.co/7CzR0Dg/users.jpg'
     }
     const loading = toast.loading('Adding...Please wait!');
 
