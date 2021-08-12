@@ -12,14 +12,11 @@ export default function Review() {
     // const reviewdata =  'https://toprak-real.herokuapp.com/review-data'
 
     const onSubmit = data => {
-
         const newReview = {
-            name: loggedInUser.name || "User Name",
+            name: data.name,
             message: data.message,
-            email: loggedInUser.email || "User Email",
-            img: loggedInUser.photo || "User Photo",
+            email: loggedInUser.email,
         }
-        console.log(newReview);
         const url = 'https://toprakserver.herokuapp.com/review/add-review'
         fetch(url, {
             method: 'POST',
@@ -36,6 +33,8 @@ export default function Review() {
         <div className="shadow-lg p-5">
             <h2 className="text-center mb-5">Give Feedback</h2>
             <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
+                <label>Name*</label>
+                <input {...register("name")} required className="form-control" type="text" placeholder='Please enter your name' />
                 <label>Review*</label>
                 <br />
                 <textarea name='review' className="form-control" rows="4" required {...register("message")} />

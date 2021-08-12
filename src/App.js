@@ -14,6 +14,7 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
+  console.log(loggedInUser);
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <Router>
