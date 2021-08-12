@@ -31,7 +31,6 @@ const ManagePost = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="from-group mb-3">
                     <label htmlFor="email">Enter Email :</label>
-
                     <input className="form-control" name='email' {...register("email")} />
                 </div>
 
