@@ -5,26 +5,13 @@ const Review = ({ review }) => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
   return (
-    //     <div classNameName="col-md-3 p-4 mb-4 " >
-    //     <div classNameName="row shadow text-center review">
-    //         <div classNameName="col-md-3">
-    //         <img style={{height:"70px",width:"70px" }} src={review.profilePicture || 'https://i.ibb.co/7CzR0Dg/users.jpg'} alt="" />
-    //         </div>
-    //         <div classNameName="col-md-9">
-    //         <h4>{review.name}</h4>
-    //         <h6 className=" mb-2 text-muted">{review.email}</h6>
-    //         </div>
-    //         <p classNameName="">{review.message}</p>
-    //     </div>
-
-    // </div>
 
     <div className="col-md-6 col-lg-4 item ">
       <div className="box bg-light p-3">
         <img
           style={{ height: "90px", width: "90px" }}
           className="rounded-circle text-center"
-          src="https://i.ibb.co/7CzR0Dg/users.jpg"
+          src="https://i.ibb.co/7CzR0Dg/users.jpg" alt=''
         />
         <h5 className="name text-info">{review.name}</h5>
         {/* <p className="title">Musician</p> */}
