@@ -15,7 +15,7 @@ const DashboardContent = () => {
         <Col sm={12} md={7} xl={8} >
             <Switch>
                 <Route exact path={path}>
-                    <PurchasedProperty/>
+                    <Profile/>
                 </Route>
                 <Route path={`${path}/purchased-property`}>
                     <PurchasedProperty/>

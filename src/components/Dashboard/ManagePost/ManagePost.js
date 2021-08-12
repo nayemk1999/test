@@ -2,7 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const ManagePost = () => {
-  //   const { managePost, SetManagePost } = useEffect();
+
+  const url = 'https://toprakserver.herokuapp.com/property/all-post'
+  const [allPost, setAllPost] = useState([])
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setAllPost(data))
+  }, [])
+
   return (
     <table class="table">
       <thead>
