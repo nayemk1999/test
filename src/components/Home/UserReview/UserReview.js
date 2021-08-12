@@ -7,7 +7,7 @@ export default function UserReview() {
 const [review,setReview] = useState([])
 
   useEffect(() => {
-    fetch("'https://toprakserver.herokuapp.com/review/all-review'")
+    fetch('https://toprakserver.herokuapp.com/review/all-review')
     .then(res=>res.json())
     .then(data=> setReview(data))
   }, [])

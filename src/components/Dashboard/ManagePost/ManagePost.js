@@ -1,33 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
+
 
 
 
 const ManagePost = () => {
-    const { register, handleSubmit, reset } = useForm();
+ 
 
-    const onSubmit = (data) => {
-        const newEmail = {
-            email: data.email,
-        };
-        const url = 'https://toprakserver.herokuapp.com/admin/add-admin'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newEmail)
-        })
-        .then(res => res.json())
-            // .then(res => {
-            //     // reset()
-            //     return swal("Successfully add admin!", "Welcome.", { dangerMode: true });
-            // })
-            .then(data => console.log(data))
-    }
+
     return (
         <div>
+<<<<<<< HEAD
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="from-group mb-3">
                     <label htmlFor="email">Enter Email :</label>
@@ -36,6 +19,9 @@ const ManagePost = () => {
 
                 <button type="submit " className="btn btn-primary">Add Admin</button>
             </form>
+=======
+            <h3>Manage post</h3>
+>>>>>>> 88ca1aa2739704c1081877e40e8706f1a1383021
         </div>
     );
 };

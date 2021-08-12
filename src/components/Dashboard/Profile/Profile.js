@@ -28,7 +28,7 @@ const Profile = () => {
                             <p className="text-secondary mb-1">{loggedInUser.email}</p>
                         </div>
                         <Button as={Link} to='/dashboard/update-profile' variant='info' className='main-button'>Profile Update</Button>
-                        <Button onClick={signOut} variant='info' className='main-button'>Log Out</Button>
+                        <Button onClick={signOut} variant='info' className='main-button mt-3'>Log Out</Button>
                     </div>
                 </Card.Body>
             </Card>

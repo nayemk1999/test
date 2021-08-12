@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import AddAdmin from '../AddAdmin/AddAdmin';
 import AddAPost from '../AddAPost/AddAPost';
 import ManagePost from '../ManagePost/ManagePost';
 import Profile from '../Profile/Profile';
@@ -32,7 +33,7 @@ const DashboardContent = () => {
                     <Review />
                 </Route>
                 <Route path={`${path}/add-admin`}>
-                    <ManagePost />
+                   <AddAdmin/>
                 </Route>
                 <Route path={`/dashboard/update-profile`}>
                     <ProfileUpdate />

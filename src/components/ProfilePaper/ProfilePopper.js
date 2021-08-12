@@ -9,7 +9,7 @@ import { handleSignOut, initializeLoginFramework } from '../Authentication/Login
 
 const ProfilePopper = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-    const { username, email, photo } = loggedInUser
+    const { username, email, profilePicture } = loggedInUser
 
     const signOut = () => {
         // initializeLoginFramework();
@@ -47,7 +47,7 @@ const ProfilePopper = () => {
             }
         >
             <Nav.Link className="p-0 ">
-                <Image style={{ border: '1px solid #17a2b8' }} src={photo || avatar} width="40" height="40" roundedCircle className="d-inline-block align-top" alt="..." />
+                <Image style={{ border: '1px solid #17a2b8' }} src={profilePicture || "https://i.ibb.co/7CzR0Dg/users.jpg"} width="40" height="40" roundedCircle className="d-inline-block align-top" alt="..." />
             </Nav.Link>
         </OverlayTrigger>
     );

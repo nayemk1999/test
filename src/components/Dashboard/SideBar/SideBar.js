@@ -19,7 +19,7 @@ const SideBar = () => {
         })
             .then(res => res.json())
             .then(data => setAdmin(true));
-    }, [])
+    }, [loggedInUser.email])
     return (
         <Col sm={12} md={5} xl={4} >
             <ul className={styles.sideBarUl}>
@@ -33,19 +33,21 @@ const SideBar = () => {
                     <Link to={`${url}/add-post`} className={styles.sideBarLink} >Add a post</Link>
                 </li>
                 {
-                    isAdmin &&
-                    <li className={styles.sideBarLi}>
-                        <Link to={`${url}/manage-post`} className={styles.sideBarLink} >Manage Post</Link>
-                    </li>
-                }
-                <li className={styles.sideBarLi}>
-                    <Link to={`${url}/review`} className={styles.sideBarLink} >Review</Link>
-                </li>
-                {
-                    isAdmin &&
-                    <li className={styles.sideBarLi}>
-                        <Link to={`${url}/add-admin`} className={styles.sideBarLink} >Add Admin</Link>
-                    </li>
+                    isAdmin ?
+                    
+                        (<div> <li className={styles.sideBarLi}>
+                            <Link to={`${url}/manage-post`} className={styles.sideBarLink} >Manage Post</Link>
+                        </li>
+                            <li className={styles.sideBarLi}>
+                                <Link to={`${url}/add-admin`} className={styles.sideBarLink} >Add Admin</Link>
+                            </li>
+                        </div>)
+                        :
+                        (<div>
+                            <li className={styles.sideBarLi}>
+                                <Link to={`${url}/review`} className={styles.sideBarLink} >Review</Link>
+                            </li>
+                        </div>)
                 }
             </ul>
         </Col>
