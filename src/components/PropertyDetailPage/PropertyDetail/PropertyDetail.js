@@ -26,18 +26,18 @@ const PropertyDetail = () => {
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div className="carousel-inner">
+                <div className="carousel-inner custom-carousel-inner">
                     <div className="carousel-item active">
-                        <img style={{ height: "600px" }} src={propertyDetail.image} className="d-block w-100" alt="..." />
+                        <img src={propertyDetail.image} className="d-block w-100" alt="..." />
                         <div className="searchInput">
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img style={{ height: "600px" }} src={propertyDetail.image1} className="d-block w-100" alt="..." />
+                        <img src={propertyDetail.image1} className="d-block w-100" alt="..." />
 
                     </div>
                     <div className="carousel-item">
-                        <img style={{ height: "600px" }} src={propertyDetail.image2} className="d-block w-100" alt="..." />
+                        <img src={propertyDetail.image2} className="d-block w-100" alt="..." />
 
                     </div>
                 </div>
@@ -50,9 +50,9 @@ const PropertyDetail = () => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-            <div className="mt-4 d-flex mapVideo">
-                <p className=" bg-success"><a href="#"> Map</a></p>
-                <p className="bg-success"><a href="#"> Video</a></p>
+            <div className=" mt-3 d-flex mapVideo">
+                <p className=" bg-success px-5"><a href="#"> Map</a></p>
+                <p className="bg-success px-5"><a href="#"> Video</a></p>
                 <a className="save" href="#"><FontAwesomeIcon icon={faBookmark} /></a>
 
 

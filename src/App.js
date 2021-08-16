@@ -9,6 +9,7 @@ import Contact from "./components/Home/Contact/Contact";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
+import "./App.css"
 
 export const UserContext = createContext();
 
