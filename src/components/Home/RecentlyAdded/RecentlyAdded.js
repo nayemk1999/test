@@ -3,6 +3,9 @@ import "./RecentlyAdded.css";
 import Slider from 'react-slick';
 import RecentCard from './RecentCard';
 import TableSpinner from '../../Spinner/Spinner';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const RecentlyAdded = () => {
@@ -67,11 +70,13 @@ const RecentlyAdded = () => {
 
       <div className="row">
         {allPost.length ?
-          allPost.map(propsData => <RecentCard key={propsData._id} propsData={propsData} />)
+          allPost.slice(-6).map(propsData => <RecentCard key={propsData._id} propsData={propsData} />)
           : <TableSpinner />
         }
       </div>
-
+         <div className="d-flex justify-content-center py-3 mt-3">
+           <Link to="/shopPage" className="btn btn-info text-white text-uppercase px-4">View More <FontAwesomeIcon icon={faAngleRight}/><FontAwesomeIcon icon={faAngleRight}/></Link>
+         </div>
     </div>
   );
 };

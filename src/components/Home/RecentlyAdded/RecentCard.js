@@ -28,7 +28,6 @@ const RecentCard = (props) => {
           <div className="card-text">{description}</div>
           <div className="card-text">$67,400</div>
           <a href="#" className="card-button">
-            {" "}
             Explore
           </a>
         </div>
