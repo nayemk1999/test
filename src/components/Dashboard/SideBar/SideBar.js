@@ -105,32 +105,32 @@ const SideBar = () => {
                 <span>Add Post</span>
               </Link>
             </li>
-            {isAdmin ? (
-              <>
-                <li className="side-text">
-                  <Link to={`${url}/manage-post`}>
-                    <FontAwesomeIcon icon={faCog} />
-
-                    <span>Manage Post</span>
-                  </Link>
-                </li>
-                <li className="side-text">
-                  <Link to={`${url}/add-admin`}>
-                    <FontAwesomeIcon icon={faUsersCog} />
-
-                    <span>Add Admin</span>
-                  </Link>
-                </li>
-              </>
-            ) : (
+            {/* {isAdmin ? ( */}
+            <>
               <li className="side-text">
-                <Link to={`${url}/review`}>
-                  <FontAwesomeIcon icon={faUsersCog} />
+                <Link to={`${url}/manage-post`}>
+                  <FontAwesomeIcon icon={faCog} />
 
-                  <span>Review</span>
+                  <span>Manage Post</span>
                 </Link>
               </li>
-            )}
+              <li className="side-text">
+                <Link to={`${url}/add-admin`}>
+                  <FontAwesomeIcon icon={faUsersCog} />
+
+                  <span>Add Admin</span>
+                </Link>
+              </li>
+            </>
+            {/* ) : ( */}
+            <li className="side-text">
+              <Link to={`${url}/review`}>
+                <FontAwesomeIcon icon={faUsersCog} />
+
+                <span>Review</span>
+              </Link>
+            </li>
+            {/* )} */}
 
             <li className="side-text">
               <Link to="/">
