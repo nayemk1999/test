@@ -3,6 +3,7 @@ import "./PropertyDetailPage.css"
 import Header from '../../Home/Header/Header/Header';
 import PropertyDetail from '../PropertyDetail/PropertyDetail';
 import SellerForm from '../SellerForm/SellerForm';
+import Footer from '../../Home/Footer/Footer';
 
 const PropertyDetailPage = () => {
     return (
@@ -17,6 +18,7 @@ const PropertyDetailPage = () => {
                 </div>
 
             </div>
+            <Footer/>
         </div>
     );
 };

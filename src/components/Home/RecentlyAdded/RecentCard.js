@@ -4,6 +4,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import timeIcon from "../../../image/clock.svg";
 import locationIcon from "../../../image/map-pin.svg";
+import './RecentlyAdded.css'
 
 const RecentCard = (props) => {
   const { division, name, image, district, _id, description } = props.propsData;
@@ -13,11 +14,11 @@ const RecentCard = (props) => {
     <div className="col-md-4 mt-5">
       <Link to={"/property-detail/" + _id}>
         <div className="card-sl" style={{ width: "20rem" }}>
-          <div className="card-image">
+          <div className="card-image custom_card">
             <img
               src={image}
-              style={{ height: "300px" }}
-              // className="img-fluid"
+              style={{ height: "250px" }}
+              className="img-fluid"
               alt=""
             />
           </div>
@@ -27,7 +28,6 @@ const RecentCard = (props) => {
           <div className="card-text">{description}</div>
           <div className="card-text">$67,400</div>
           <a href="#" className="card-button">
-            {" "}
             Explore
           </a>
         </div>

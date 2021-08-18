@@ -102,7 +102,10 @@
   margin-bottom: 4px;
   text-align: initial;
 }
-
+.custom_card img{
+  object-fit: cover;
+  width: 100%;
+}
 @media screen and (max-width: 480px) {
   .slide-time {
     color: rgb(10, 158, 136);

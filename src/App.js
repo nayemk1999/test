@@ -9,7 +9,8 @@ import Contact from "./components/Home/Contact/Contact";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
-import "./App.css";
+import "./App.css"
+import ShopPage from "./components/ShopPage/ShopPage";
 
 export const UserContext = createContext();
 
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/shopPage">
+            <ShopPage />
           </Route>
           <Route path="/login">
             <LoginForm />

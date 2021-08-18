@@ -1,22 +1,24 @@
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 const SellerForm = () => {
     return (
         <div>
-            <h2 className="text-center p-4">Contact Us</h2>
-            <div style={{borderRadius:"20px"}} className="p-5 shadow bg-white">
+            <div style={{borderRadius:"5px"}} className=" px-5 py-4 shadow bg-white">
                 <form action="https://formspree.io/f/xrgrekdq" method='POST'>
-                    <div className="form-group p-3">
-                        <input type="text" className="form-control p-3" placeholder="Email Address *" />
+                    <h4 className="mb-4 text-center text-uppercase">Contact Us</h4>
+                    <div className="form-group mb-2">
+                        <input type="text" className="form-control p-2" placeholder="Email Address *" />
                     </div>
-                    <div className="form-group p-3">
-                        <input type="text" className="form-control p-3" placeholder="Subject *" />
+                    <div className="form-group mb-2">
+                        <input type="text" className="form-control p-2" placeholder="Subject *" />
                     </div>
-                    <div className="form-group p-3">
-                        <textarea name="message" className="form-control p-3" id="" placeholder="Message *"></textarea>
+                    <div className="form-group mb-2">
+                        <textarea name="message" className="form-control p-2" id="" rows="4" placeholder="Message *"></textarea>
                     </div>
-                    <div className="form-group text-center">
-                        <button type="submit" className="btn btn-primary btn-lg submitButton"> Send Message </button>
+                    <div className="form-group mt-3 text-center">
+                        <button type="submit" className="btn btn-primary btn-lg submitButton"> Send Message <FontAwesomeIcon icon={faEnvelope} /> </button>
                     </div>
                 </form>
             </div>
