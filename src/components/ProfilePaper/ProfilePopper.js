@@ -1,31 +1,26 @@
 import React, { useContext } from 'react';
 import { Button, Image, Nav, OverlayTrigger, Popover } from 'react-bootstrap';
-import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+// import toast from 'react-hot-toast';
+import { Link, useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import { UserContext } from '../../App';
-import avatar from '../../image/avatar.svg';
-import { handleSignOut, initializeLoginFramework } from '../Authentication/LoginManager';
+// import { handleSignOut, initializeLoginFramework } from '../Authentication/LoginManager';
 
 
 const ProfilePopper = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const { username, email, profilePicture } = loggedInUser
-
+    const history = useHistory()
     const signOut = () => {
         // initializeLoginFramework();
-        localStorage.removeItem('user');
-        const signout = {
-            email: ''
+       const userId = localStorage.removeItem('user');
+        // toast.error("Logged Out!");
+        if (!userId) {
+            return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
+                .then(lo => history.push('/login'));
         }
-        setLoggedInUser(signout)
-        // handleSignOut()
-        // .then(res => console.log(res))
-            // .then(res => {
-            //     console.log(res);
-            //     // setLoggedInUser(res)
-            //     // toast.error('Logged Out!');
-            // })
     }
+
 
     return (
         <OverlayTrigger trigger="click" rootClose key="bottom" placement="bottom"

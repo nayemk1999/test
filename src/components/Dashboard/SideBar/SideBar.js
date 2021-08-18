@@ -94,18 +94,16 @@ const SideBar = () => {
             <li className="side-text">
               <Link to={`${url}/purchased-property`}>
                 <FontAwesomeIcon icon={faUser} />
-
                 <span>Purchased</span>
               </Link>
             </li>
             <li className="side-text">
               <Link to={`${url}/add-post`}>
                 <FontAwesomeIcon icon={faPlus} />
-
                 <span>Add Post</span>
               </Link>
             </li>
-            {/* {isAdmin ? ( */}
+            {isAdmin ? 
             <>
               <li className="side-text">
                 <Link to={`${url}/manage-post`}>
@@ -122,7 +120,7 @@ const SideBar = () => {
                 </Link>
               </li>
             </>
-            {/* ) : ( */}
+            :
             <li className="side-text">
               <Link to={`${url}/review`}>
                 <FontAwesomeIcon icon={faUsersCog} />
@@ -130,12 +128,11 @@ const SideBar = () => {
                 <span>Review</span>
               </Link>
             </li>
-            {/* )} */}
+            }
 
             <li className="side-text">
               <Link to="/">
                 <FontAwesomeIcon icon={faUsersCog} />
-
                 <span>Home</span>
               </Link>
             </li>

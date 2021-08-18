@@ -62,6 +62,7 @@ export const getDecodedUser = () => {
 
 
 export const handleSignOut = () => { 
+    localStorage.removeItem('user');
     const signout = {
         email: ''
     } 

@@ -1,23 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import { Button, Card, Container } from "react-bootstrap";
-import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+// import toast from "react-hot-toast";
+import { Link, useHistory } from "react-router-dom";
+import swal from "sweetalert";
 import { UserContext } from "../../../App";
-import {
-  handleSignOut,
-  initializeLoginFramework,
-} from "../../Authentication/LoginManager";
+// import {
+//   handleSignOut,
+//   initializeLoginFramework,
+// } from "../../Authentication/LoginManager";
 
 const Profile = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-
+  const history = useHistory()
   const signOut = () => {
-    initializeLoginFramework();
-    handleSignOut().then((res) => {
-      setLoggedInUser(res);
-      toast.error("Logged Out!");
-    });
-  };
+    // initializeLoginFramework();
+    const userId = localStorage.removeItem('user');
+    // toast.error("Logged Out!");
+    if (!userId) {
+      return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
+        .then(lo => history.push('/login'));
+    }
+  }
   return (
     <Container style={{ maxWidth: "30rem" }}>
       <Card className="border-0 shadow">
