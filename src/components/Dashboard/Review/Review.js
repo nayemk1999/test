@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import { UserContext } from "./../../../App";
-import "./Review.css";
+import reviewStyles from "./Review.module.css";
 
 export default function Review() {
   const history = useHistory();
@@ -32,30 +32,32 @@ export default function Review() {
     });
   };
   return (
-    <section className="form">
-      <div className="formContainer">
-        <h2 className="text-center mb-5 text-light">Give Feedback</h2>
+    <section className={reviewStyles.form}>
+      <div className={reviewStyles.formContainer}>
+        <h1 className="text-center mb-5 text-light text-uppercase">
+          Give Feedback
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Name*</label>
+          <label className={reviewStyles.label}>Name</label>
           <input
             {...register("name")}
             required
-            className="form-control"
             type="text"
             placeholder="Please enter your name"
+            className={reviewStyles.input}
           />
-          <label>Review*</label>
-          <br />
+          <label className={reviewStyles.label}>Review</label>
+
           <textarea
             name="review"
-            className="form-control"
             rows="4"
             required
             {...register("message")}
+            className={reviewStyles.textarea}
           />
           <br />
           <br />
-          <button className="form-button" type="submit">
+          <button className={reviewStyles.formButton} type="submit">
             Submit
           </button>
         </form>

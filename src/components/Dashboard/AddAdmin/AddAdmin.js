@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import "./Addadmin.css";
+import addAdminStyles from "./Addadmin.module.css";
 const AddAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
@@ -24,21 +24,25 @@ const AddAdmin = () => {
       .then((data) => console.log(data));
   };
   return (
-    <section className="form">
-      <div className="formContainer">
-        <h1 className="text-white text-center mb-5">Add new admin</h1>
+    <section className={addAdminStyles.form}>
+      <div className={addAdminStyles.formContainer}>
+        <h1 className="text-white text-center mb-5 text-uppercase">
+          Add new admin
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="from-group mb-3">
-            <label htmlFor="email">Enter Email :</label>
+            <label className={addAdminStyles.label} htmlFor="email">
+              Enter Email :
+            </label>
 
             <input
-              className="form-control"
+              className={addAdminStyles.input}
               name="email"
               {...register("email")}
             />
           </div>
 
-          <button type="submit " className="form-button">
+          <button type="submit " className={addAdminStyles.formButton}>
             Add Admin
           </button>
         </form>
