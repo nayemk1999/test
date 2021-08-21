@@ -1,4 +1,4 @@
-.form-button {
+.formButton {
   border: none;
   outline: none;
   width: 100%;
@@ -15,7 +15,7 @@
   padding-bottom: 40px;
 }
 
-.form .formContainer {
+.formContainer {
   padding: 60px;
   margin: auto;
   width: 100%;
@@ -30,7 +30,7 @@
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.form .formContainer label {
+.label {
   color: white;
   margin: 14px 0;
   display: block;
@@ -38,7 +38,8 @@
   line-height: 1;
 }
 
-.form .formContainer input {
+.input[type="text"],
+.input[type="number"] {
   width: 100%;
   border: none;
   outline: none;
@@ -47,33 +48,27 @@
   background: rgba(250, 250, 250, 0.1);
   color: white;
   letter-spacing: 1px;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.form .formContainer textarea {
+.textarea {
   background: rgba(250, 250, 250, 0.1);
   color: white;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 0;
 }
-.form .formContainer select {
+.select {
   background-color: rgba(250, 250, 250, 0.1);
   color: darkgray;
 }
 
-.form .formContainer .btnContainer {
-  width: 100%;
-  padding: 24px 0;
-}
-
-.form .formContainer .btnContainer p {
-  margin: 14px 0 0 0;
-  text-align: right;
-  color: #fff;
-}
-
-input[type="file"]::file-selector-button {
+.input[type="file"]::file-selector-button {
   background-color: gray;
   color: white;
   border: 0px;
 }
-input[type="text"]::placeholder {
+.input[type="text"]::placeholder {
   color: whitesmoke;
-  opacity: 0.5;
+  font-weight: lighter;
 }

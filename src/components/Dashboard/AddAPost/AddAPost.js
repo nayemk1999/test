@@ -4,7 +4,7 @@ import axios from "axios";
 import { UserContext } from "../../../App";
 import toast from "react-hot-toast";
 import swal from "sweetalert";
-import "./AddPost.css";
+import addPostStyles from "./AddPost.module.css";
 
 const AddAPost = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -129,82 +129,88 @@ const AddAPost = () => {
     setupazila(select.upazilla);
   };
   return (
-    <section className="form">
-      <div className="formContainer">
-        <h2 className="text-center mb-5 text-light">Add new Property</h2>
+    <section className={addPostStyles.form}>
+      <div className={addPostStyles.formContainer}>
+        <h1 className="text-center mb-5 text-light text-uppercase">
+          Add new Property
+        </h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Name:</label>
+          <label className={addPostStyles.label}>Name:</label>
           <input
             {...register("name")}
-            className="form-control"
             type="text"
             autoFocus
+            className={addPostStyles.input}
           />
 
-          <label>Description:</label>
+          <label className={addPostStyles.label}>Description:</label>
           <textarea
+            className={addPostStyles.textarea}
             {...register("description")}
-            className="form-control"
             type="text"
             rows="6"
           ></textarea>
 
-          <label>Area:</label>
-          <input {...register("area")} className="form-control" type="number" />
-
-          <label>Nearest Place:</label>
+          <label className={addPostStyles.label}>Area:</label>
           <input
-            {...register("nearestPlace")}
-            className="form-control"
-            type="text"
-            placeholder="like mosque, school etc.."
+            {...register("area")}
+            type="number"
+            className={addPostStyles.input}
           />
 
-          <label>Image 1:</label>
+          <label className={addPostStyles.label}>Nearest Place:</label>
+          <input
+            {...register("nearestPlace")}
+            type="text"
+            placeholder="like mosque, school etc.."
+            className={addPostStyles.input}
+          />
+
+          <label className={addPostStyles.label}>Image 1:</label>
           <input
             {...register("image1")}
             onChange={handleImageUpload}
-            className="form-control"
             type="file"
             id="fileUpload"
+            className={addPostStyles.input}
           />
 
-          <label>Image 2:</label>
+          <label className={addPostStyles.label}>Image 2:</label>
           <input
             {...register("image2")}
             onChange={handleImageUpload1}
-            className="form-control"
             type="file"
+            className={addPostStyles.input}
           />
 
-          <label>Image 3:</label>
+          <label className={addPostStyles.label}>Image 3:</label>
           <input
             {...register("image3")}
             onChange={handleImageUpload2}
-            className="form-control"
             type="file"
+            className={addPostStyles.input}
           />
 
-          <label>Price:</label>
+          <label className={addPostStyles.label}>Price:</label>
           <input
             {...register("price")}
-            className="form-control"
             type="number"
+            className={addPostStyles.input}
           />
 
-          <label>Address:</label>
+          <label className={addPostStyles.label}>Address:</label>
           <input
             {...register("address")}
-            className="form-control"
             type="text"
+            className={addPostStyles.input}
           />
 
           <div class="d-flex mt-4">
             <select
               {...register("division")}
               onChange={(e) => setSelectId(e.target.value)}
-              className="form-select me-2 "
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Division</option>
@@ -215,7 +221,7 @@ const AddAPost = () => {
             <select
               {...register("district")}
               onChange={districtChange}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>District</option>
@@ -226,7 +232,7 @@ const AddAPost = () => {
             </select>
             <select
               {...register("upazilla")}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Upazilla</option>
@@ -237,7 +243,7 @@ const AddAPost = () => {
           <div className="d-flex mt-4">
             <select
               {...register("beds")}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Beds</option>
@@ -250,7 +256,7 @@ const AddAPost = () => {
             </select>
             <select
               {...register("bath")}
-              className="form-select me-2 "
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Bath</option>
@@ -263,7 +269,7 @@ const AddAPost = () => {
             </select>
             <select
               {...register("type")}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Type</option>
@@ -275,7 +281,7 @@ const AddAPost = () => {
           <div className="d-flex mt-4">
             <select
               {...register("purpose")}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Purpose</option>
@@ -284,17 +290,17 @@ const AddAPost = () => {
             </select>
             <select
               {...register("completion")}
-              className="form-select me-2"
+              className={`form-select me-2 ${addPostStyles.select}`}
               aria-label="Default select example"
             >
               <option selected>Completion</option>
               <option value="Complete">Complete</option>
               <option value="Under-Construction">Under-Construction</option>
             </select>
-            {/* <input {...register("date")} className="form-control" type="date" /> */}
+            {/* <input {...register("date")}  type="date" /> */}
           </div>
 
-          <button className="form-button mt-5 mb-5" type="submit">
+          <button className={addPostStyles.formButton} type="submit">
             Post Now
           </button>
         </form>

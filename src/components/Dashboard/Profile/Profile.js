@@ -4,17 +4,13 @@ import { Button, Card, Container } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import { UserContext } from "../../../App";
-// import {
-//   handleSignOut,
-//   initializeLoginFramework,
-// } from "../../Authentication/LoginManager";
 
 const Profile = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-  const history = useHistory()
+  const history = useHistory();
   const signOut = () => {
     // initializeLoginFramework();
-    const userId = localStorage.removeItem('user');
+    const userId = localStorage.removeItem("user");
     // toast.error("Logged Out!");
     if (!userId) {
       return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
@@ -23,9 +19,15 @@ const Profile = () => {
           history.push('/login')
         });
     }
-  }
+  };
   return (
-    <Container style={{ maxWidth: "30rem" }}>
+    <Container
+      style={{
+        maxWidth: "30rem",
+        position: "relative",
+        zIndex: -1,
+      }}
+    >
       <Card className="border-0 shadow">
         <Card.Header as={"h3"} className="text-center border-0 mt-3 pt-2 pb-2">
           Profile
@@ -46,20 +48,15 @@ const Profile = () => {
               <h4>{loggedInUser.username}</h4>
               <p className="text-secondary mb-3">{loggedInUser.email}</p>
             </div>
-            <div className="d-flex justify-content-center mt-2">
+            <div className="mt-2">
               <Button
                 as={Link}
                 to="/dashboard/update-profile"
-                variant="secondary"
-                className="main-button me-4"
+                className="btn btn-secondary me-4"
               >
                 Profile Update
               </Button>
-              <Button
-                onClick={signOut}
-                variant="secondary"
-                className="main-button"
-              >
+              <Button onClick={signOut} className="btn btn-secondary">
                 Log Out
               </Button>
             </div>
