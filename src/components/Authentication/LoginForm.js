@@ -51,26 +51,48 @@ const LoginForm = () => {
             })
     }
 
-    // const googleLogin = () => {
-    //     initializeLoginFramework()
-    //     handleGoogleSignIn()
-    //         .then(res => {
-    //             const email = res.email
-    //             const url = 'https://toprak-real.herokuapp.com/profile?email=' + email;
-    //             fetch(url)
-    //                 .then(res => res.json())
-    //                 .then(data => handleResponse(data))
-    //         })
+    var provider = new firebase.auth.GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        initializeLoginFramework()
+        firebase.auth().signInWithPopup(provider)
+            .then((res) => {
+                const { displayName, email, } = res.user;
+                // setCheckEmail(email);
 
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             const email = error.email;
-    //             alert(errorMessage)
-    //             console.log(errorCode, email, errorMessage);
-    //         });
-    // }
+                const signedInUser = {
+                    username: displayName,
+                    email: email,
+                    password: '0000000000000000000000'
+                }
+                // console.log(signedInUser);
 
+                const url = 'https://toprakserver.herokuapp.com/auth/register'
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    },
+                    body: JSON.stringify(signedInUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        // if (data.email) {
+                        //     toast.dismiss(loading);
+                        //     setUserInfo(data)
+                        //     setLoggedInUser(data);
+                        //     return swal(`Successfully Sign Up & Log In`, `Welcome`, "success").then(res => history.push(from));
+                        // }
+                    })
+
+            })
+            .catch((err) => {
+                console.log(err);
+                console.log(err.message);
+            })
+
+
+    }
 
     const handleResponse = (res) => {
         setLoggedInUser(res);
@@ -145,7 +167,7 @@ const LoginForm = () => {
                             <Link className="a" to="/register-form">Sign Up</Link>
                         </div>
                         <input onClick={login} type="submit" class="login-btn" value="Login" />
-                        <button onClick={'googleLogin'} class="login-btn" value="">Login With Google</button>
+                        <button onClick={handleGoogleSignIn} class="login-btn" value="">Login With Google</button>
                     </div>
                 </div>
             </div>

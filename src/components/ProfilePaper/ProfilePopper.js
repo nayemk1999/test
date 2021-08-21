@@ -17,7 +17,10 @@ const ProfilePopper = () => {
         // toast.error("Logged Out!");
         if (!userId) {
             return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
-                .then(lo => history.push('/login'));
+                .then(lo => {
+                    setLoggedInUser(lo)
+                    history.push('/login')
+                });
         }
     }
 
@@ -30,7 +33,6 @@ const ProfilePopper = () => {
                         <Button as={Link} to='/dashboard/profile' variant="outline-info" className="py-0 px-1 mt-1 " size="md">View Profile</Button>
                         {/* <Image style={{ maxWidth: "60px", border:'1px solid #17a2b8' }} src={photo || avatar} roundedCircle /> */}
                     </div>
-
                     <Popover.Content>
                         <strong className="text-center d-block">{username || 'username'}</strong>
                         <strong className="text-center d-block">{email || 'email'}</strong>
@@ -41,8 +43,8 @@ const ProfilePopper = () => {
                 </Popover>
             }
         >
-            <Nav.Link className="p-0 ">
-                <Image style={{ border: '1px solid #17a2b8' }} src={profilePicture || "https://i.ibb.co/7CzR0Dg/users.jpg"} width="40" height="40" roundedCircle className="d-inline-block align-top" alt="..." />
+            <Nav.Link className="p-0">
+                <Image style={{ border: '1px solid #17a2b8', marginTop:'-8px' }} src={profilePicture || "https://i.ibb.co/7CzR0Dg/users.jpg"} width="48" height="48" roundedCircle className="d-inline-block align-top" alt="..." />
             </Nav.Link>
         </OverlayTrigger>
     );

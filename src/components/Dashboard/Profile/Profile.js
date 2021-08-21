@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Button, Card, Container } from "react-bootstrap";
 // import toast from "react-hot-toast";
 import { Link, useHistory } from "react-router-dom";
@@ -18,7 +18,10 @@ const Profile = () => {
     // toast.error("Logged Out!");
     if (!userId) {
       return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
-        .then(lo => history.push('/login'));
+        .then(lo => {
+          setLoggedInUser(lo)
+          history.push('/login')
+        });
     }
   }
   return (

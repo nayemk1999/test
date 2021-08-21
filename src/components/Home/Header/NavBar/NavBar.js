@@ -60,21 +60,21 @@ const NavBar = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              style={{ marginRight: "30px" }}
+              // style={{ marginRight: "30px" }}
               to="/dashboard/profile"
-              className="mr-5 h5 nav-link"
+              className="h5 nav-link"
             >
               <strong class="colornav">Dashboard</strong>
             </Nav.Link>
           </Nav>
           <div>
-            {loggedInUser.email ? (
+            {loggedInUser.email ?
               <ProfilePopper />
-            ) : (
-              <Button as={Link} to="/login" variant="info">
+              :
+              <Nav.Link style={{ marginLeft: "20px" }} className='h5 colornav' as={Link} to="/login" >
                 Login
-              </Button>
-            )}
+              </Nav.Link>
+            }
           </div>
         </Navbar.Collapse>
       </Container>
