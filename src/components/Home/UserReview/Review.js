@@ -6,7 +6,7 @@ const Review = ({ review }) => {
 
   return (
 
-    <div className="col-md-6 col-lg-4 item ">
+    <div className="col-md-6 col-lg-4 item mb-3">
       <div className="box bg-light p-3">
         <img
           style={{ height: "90px", width: "90px" }}

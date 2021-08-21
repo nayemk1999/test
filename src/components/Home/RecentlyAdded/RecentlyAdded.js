@@ -65,10 +65,10 @@ const RecentlyAdded = () => {
   };
 
   return (
-    <div className="row container mx-auto" >
+    <div className="container mx-auto">
       <h2 className="text-center mt-5">Recently Added</h2>
 
-      <div className="row">
+      <div className="row mx-auto">
         {allPost.length ?
           allPost.slice(-6).map(propsData => <RecentCard key={propsData._id} propsData={propsData} />)
           : <TableSpinner />

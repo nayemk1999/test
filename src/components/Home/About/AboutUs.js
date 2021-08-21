@@ -6,13 +6,13 @@ const AboutUs = () => {
     return (
         <Container >
             <Row>
-                <Col sm={12} md={6} lg={6} className="text-center">
+                <Col sm={12} md={12} lg={6} className="text-center">
                     <h3 className={styles.title} >About Us</h3>
                     <p className={styles.aboutText}>Toprak is a multipurpose real estate web app where buyers as well as the property owners can make a perfect deal! Bringing out the best deal and customer satisfaction is our first choice.</p>
                     <p className={styles.aboutText}>Toprak offers customers an on-demand experience for selling, buying, renting and financing with transparency and nearly seamless end-to-end service. Toprak Offers buys and sells homes directly in dozens of markets across the world, allowing sellers control over their timeline. Toprak Home Loans, our affiliate lender, provides our customers with an easy option to get pre-approved and secure financing for their next home purchase. </p>
                     <button className={styles.button}>Our Details</button>
                 </Col>
-                <Col sm={12} md={6} lg={6} >
+                <Col sm={12} md={12} lg={6} >
                     <div className={styles.houses}>
                         <div className={styles.houseArea1} >
                             <img src="https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_960_720.jpg" alt="" className={styles.houseImg} />

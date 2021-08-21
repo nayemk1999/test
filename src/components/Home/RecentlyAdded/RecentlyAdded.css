@@ -325,3 +325,12 @@ a {
     box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
   }
 }
+
+/* Media Q ********/
+@media screen and (max-width: 1440px) {
+  .card-sl {
+     width: 21.5rem;
+  }
+}
+
+

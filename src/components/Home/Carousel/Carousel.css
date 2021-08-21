@@ -16,3 +16,9 @@
 .carousel-inner{
     z-index: -1;
 }
+
+@media (max-width: 425px) {
+    .custom__slide__size{
+      height: 450px;
+    }
+}

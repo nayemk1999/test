@@ -7,13 +7,13 @@ import locationIcon from "../../../image/map-pin.svg";
 import './RecentlyAdded.css'
 
 const RecentCard = (props) => {
-  const { division, name, image, district, _id, description } = props.propsData;
+  const {  name, image, _id, description } = props.propsData;
 
   return (
 
-    <div className="col-md-4 mt-5">
+    <div className="col-xl-4 col-md-6 mt-4">
       <Link to={"/property-detail/" + _id}>
-        <div className="card-sl" style={{ width: "20rem" }}>
+        <div className="card-sl">
           <div className="card-image custom_card">
             <img
               src={image}
