@@ -102,7 +102,7 @@
   margin-bottom: 4px;
   text-align: initial;
 }
-.custom_card img{
+.custom_card img {
   object-fit: cover;
   width: 100%;
 }
@@ -169,7 +169,7 @@
   border: 1px solid white;
   margin-bottom: 5vw;
 }
-.slick-next,
+/* .slick-next,
 .slick-prev {
   font-size: 0px;
   line-height: 0;
@@ -199,15 +199,15 @@
   line-height: 1;
   opacity: 1;
   color: rgb(10, 158, 136);
-}
+} */
 #rent {
   cursor: pointer;
 }
 
-.slick-next:before,
+/* .slick-next:before,
 [dir="rtl"] .slick-prev:before {
   content: "→" !important;
-}
+} */
 
 /* .sale{
     background: #778EA2;

@@ -11,15 +11,20 @@ export default function UserReview() {
       .then((data) => setReview(data));
   }, []);
   return (
-    <div className="mt-5">
-      <h2 className="text-center mt-5 h1Style">
-        Client <span style={{ color: "#61dfed" }}>Feedback</span>
-      </h2>
-
-      <div className="row mt-5" style={{ width: "80%", margin: "0 auto" }}>
-        {review.map((review) => (
-          <Review key={review._id} review={review}></Review>
-        ))}
+    <div class="testimonials-clean">
+      <div class="container">
+        <div class="intro">
+          <h2 class="text-center">Testimonials </h2>
+          <p class="text-center">
+            Our customers love us! Read what they have to say below. Aliquam sed
+            justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.
+          </p>
+        </div>
+        <div class="row people">
+          {review.map((review) => (
+            <Review key={review._id} review={review}></Review>
+          ))}
+        </div>
       </div>
     </div>
   );

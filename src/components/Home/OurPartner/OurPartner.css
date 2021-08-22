@@ -1,8 +1,17 @@
-.partner-container{
-    border-radius: 50% !important;
-    margin: 1vw 0px 16px 1vw;
-    border: 2px solid red;
+.partner-container {
+  padding: 30px;
+  border: 1px solid #cecece;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: white;
+  min-height: 200px;
 }
-.partner-container img{
-    width: 100%;
+.partner-container .img {
+  max-width: 100%;
+  filter: grayscale(100%);
+  transition: all 0.3s;
+}
+.partner-container:hover .img {
+  filter: none;
 }
