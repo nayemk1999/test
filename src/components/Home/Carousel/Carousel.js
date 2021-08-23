@@ -40,7 +40,7 @@ const HeadCarousel = () => {
         ></button>
       </div>
       <div className="carousel-inner">
-        <div className="carousel-item active">
+        <div className="carousel-item active custom__slide__size">
           <img
             style={{ height: "600px" }}
             src={img1}
@@ -48,7 +48,7 @@ const HeadCarousel = () => {
             alt="..."
           />
         </div>
-        <div className="carousel-item">
+        <div className="carousel-item custom__slide__size">
           <img
             style={{ height: "600px" }}
             src={img2}
@@ -56,7 +56,7 @@ const HeadCarousel = () => {
             alt="..."
           />
         </div>
-        <div className="carousel-item">
+        <div className="carousel-item custom__slide__size">
           <img
             style={{ height: "600px" }}
             src={img3}

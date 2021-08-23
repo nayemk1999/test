@@ -46,6 +46,38 @@
     text-transform: uppercase;
 }
 
+
+@media (max-width: 767px) {
+    .contact-content {
+        font-size: 5vw;
+    }
+    .social-content {
+    width: 50vw;
+    }
+    .socialIcon img {
+        height: 7.5vw;
+        width: 7.5vw;
+        margin: 0.6vw;
+    }
+    .socialIcon{
+        margin-right: 2vw;
+    }
+    
+    .contact-tech {
+        width: 45vw !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: center;
+    }
+
+    .contact-tech a {
+        font-size: 4vw !important;
+    }
+  
+}
+
+
 .contact-tech {
     width: 45vw;
     display: flex;
