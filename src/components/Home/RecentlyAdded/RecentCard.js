@@ -13,7 +13,13 @@ const RecentCard = (props) => {
 
     <div className="col-xl-4 col-md-6 mt-4">
       <Link to={"/property-detail/" + _id}>
-        <div className="card-sl">
+        <div className="card-sl"
+         data-aos="fade-up"
+         data-aos-offset="200"
+         data-aos-delay="50"
+         data-aos-duration="1000"
+         data-aos-easing="ease-in-out"
+        >
           <div className="card-image custom_card">
             <img
               src={image}

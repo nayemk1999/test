@@ -31,15 +31,6 @@
 
 /* Media Q************************************************ */
 
-@media (max-width: 1440px) {
-    .shop__page__search{
-        margin-top: -10rem;
-    }
-    .shop__page__container{
-        margin-top: 35rem;
-    }
-   
-}
 @media (max-width: 1024px) {
     .card-sl{
         width: 28rem !important;
