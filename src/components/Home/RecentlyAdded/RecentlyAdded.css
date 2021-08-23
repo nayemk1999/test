@@ -125,13 +125,18 @@
   }
 
   .slide-value div,
-  span,
   .card-body h5,
   .card-body {
     color: rgb(58, 58, 58);
     font-size: 4vw !important;
     font-weight: 600;
     text-align: center;
+  }
+
+  .slick-next,
+  .slick-prev {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
