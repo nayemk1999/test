@@ -75,7 +75,7 @@ const RecentlyAdded = () => {
         }
       </div>
          <div className="d-flex justify-content-center py-3 mt-3">
-           <Link to="/shopPage" className="btn btn-info text-white text-uppercase px-4">View More <FontAwesomeIcon icon={faAngleRight}/><FontAwesomeIcon icon={faAngleRight}/></Link>
+           <Link to="/shop-page" className="btn btn-info text-white text-uppercase px-4">View More <FontAwesomeIcon icon={faAngleRight}/><FontAwesomeIcon icon={faAngleRight}/></Link>
          </div>
     </div>
   );

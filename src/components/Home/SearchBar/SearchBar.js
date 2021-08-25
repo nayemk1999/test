@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import { useForm } from "react-hook-form";
 import Maps from "../../Maps/Maps";
+import swal from "sweetalert";
+import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 export default function SearchBar() {
+  const history = useHistory();
   const { register, handleSubmit } = useForm();
   const [allDivisionbn, setAllDivisionbn] = useState([]);
   const [district, setDistrict] = useState([]);
@@ -35,35 +39,32 @@ export default function SearchBar() {
 
   //     setSelectId(select._id)
   // }
-
+  const loading = toast.loading('Searching...Please wait!');
   const handleSearch = () => {
     const searchdata = {
       location: search
-  }
-  const url = 'http://localhost:5050/property/search-post'
-  fetch(url, {
+    }
+    const url = 'http://localhost:5050/property/search-post'
+    fetch(url, {
       method: 'POST',
       headers: {
-          'Content-Type': 'Application/json'
+        'Content-Type': 'Application/json'
       },
       body: JSON.stringify(searchdata)
-  })
+    })
       .then(res => res.json())
       .then(data => {
-          console.log(data);
-          // if(data === 'No user found'){
-          //     return swal("No user found!", "Please try again.", "error", { dangerMode: true });
-          // }
-          // if(data === 'Invalid password'){
-          //     return swal("Invaild Password!", "Please try again.", "error", { dangerMode: true });
-          // }
-          // if (data) {
-          //     toast.dismiss(loading);
-          //     setUserInfo(data)
-          //     setLoggedInUser(data);
-          //     return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
-          // }
-          
+        if(data === 'No Property found'){
+            return swal("No Property found!", "Please try again.", "error", { dangerMode: true });
+        }
+        if (data) {
+            toast.dismiss(loading);
+            // console.log(data);
+            history.push({
+              pathname: '/shop-page',
+              state: { detail: data }
+          });
+        }
       })
 
     // if (event.key === 'Enter' ) {
