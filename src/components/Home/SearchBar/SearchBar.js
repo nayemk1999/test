@@ -21,7 +21,6 @@ export default function SearchBar() {
       // appartment: data.apartment,
       // beds: data.beds
     }
-    // console.log(searchdata);
     const url = 'https://toprakserver.herokuapp.com/property/search-post'
     fetch(url, {
       method: 'POST',
@@ -66,12 +65,10 @@ export default function SearchBar() {
   //     setSelectId(select._id)
   // }
   const loading = toast.loading('Searching...Please wait!');
-  const handleSearch = () => {
-
-
-    // if (event.key === 'Enter' ) {
-    //   setSearch(event.target.value)
-    // }
+  const handleSearch = (event) => {
+    if (event.key === 'Enter' ) {
+      onSubmit()
+    }
   }
 
   // const districtChange = (e) => {
@@ -84,7 +81,7 @@ export default function SearchBar() {
         <div onSubmit={handleSearch} class="input-group">
           {/* <Maps/> */}
           <input
-            // onKeyPress={handleSearch}
+            onKeyPress={handleSearch}
             type="search"
             class="form-control rounded search"
             placeholder="Search Location"
