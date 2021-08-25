@@ -18,8 +18,8 @@ export default function SearchBar() {
   const onSubmit = (data) => {
     const searchdata = {
       location: search,
-      appartment: data.apartment,
-      beds: data.beds
+      // appartment: data.apartment,
+      // beds: data.beds
     }
     // console.log(searchdata);
     const url = 'https://toprakserver.herokuapp.com/property/search-post'
