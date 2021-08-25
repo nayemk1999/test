@@ -10,37 +10,38 @@ import axios from 'axios';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [imageURL, setImageURL] = useState(null)
-    console.log(imageURL);
+    // console.log(loggedInUser._id);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
 
     const onSubmit = updateData => {
-
+        const userId = loggedInUser._id
         const updatedData = {
-            email: updateData.email || loggedInUser.email,
-            mobile: updateData.mobile || loggedInUser.mobile,
-            city: updateData.city || loggedInUser.city,
-            country: updateData.country || loggedInUser.country,
-            profilePicture: imageURL || loggedInUser.profilePicture,
-            password: updateData.password || loggedInUser.password
+            _id: userId,
+            email: updateData.email,
+            mobile: updateData.mobile,
+            city: updateData.city,
+            country: updateData.country,
+            profilePicture: imageURL,
+            // password: updateData.password
         }
-        console.log(updatedData);
-        reset();
-        swal(`Successfully Updated Your Profile`, "success");
-        // const url = 'https://toprakserver.herokuapp.com/auth/register'
-        // fetch(url, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'Application/json'
-        //     },
-        //     body: JSON.stringify(updateData)
-        // })
-        //     .then(res => {
-        //         if (res) {
-        //             // reset();
-        //             return swal(`Successfully Updated Your Profile`, "success");
-        //         }
-        //         swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
-        //     })
+        // console.log(updatedData);
+        // reset();
+        // swal(`Successfully Updated Your Profile`, "success");
+        const url = `http://localhost:5050/user/${userId}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(updatedData)
+        })
+            .then(res => {
+                if (res === 'Account has been updated') {
+                    reset();
+                    return swal(`Successfully Updated Your Profile`, "success");
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
     };
     const handleImageUpload = (event) => {
         // console.log(event.target.files[0]);
@@ -66,25 +67,25 @@ export default function ProfileUpdate() {
                     <div className="row mt-4">
                         <div className="col-md-4 me-2">
                             <label htmlFor="email">Email</label>
-                            <input className="form-control" name='email' {...register("email")} defaultValue={loggedInUser.email} />
+                            <input className="form-control" name='email' {...register("email" , { required: true })} defaultValue={loggedInUser.email} />
                         </div>
-                        <div className="col-md-4 me-2">
-                            <label htmlFor="password">Password</label>
-                            <input className="form-control" name='password' {...register("password")} />
-                        </div>
+                        {/* <div className="col-md-4 me-2">
+                            <label htmlFor="name">Name</label>
+                            <input className="form-control" name='name' {...register("name")} />
+                        </div> */}
                         <div className="col-md-3 me-2">
                             <label htmlFor="email">Number</label>
-                            <input className="form-control" name='mobile' {...register("mobile")} defaultValue={loggedInUser.mobile} />
+                            <input className="form-control" name='mobile' {...register("mobile", { required: true })} defaultValue={loggedInUser.mobile} />
                         </div>
                     </div>
                     <div className="row mt-2">
                         <div className="col-md-4 me-2">
                             <label htmlFor="username">City</label>
-                            <input className="form-control" name='city' {...register("city")} defaultValue={loggedInUser.city} />
+                            <input className="form-control" name='city' {...register("city", { required: true })} defaultValue={loggedInUser.city} />
                         </div>
                         <div className="col-md-4 me-2">
                             <label htmlFor="email">Country</label>
-                            <input className="form-control" name='country' {...register("country")} defaultValue={loggedInUser.country} />
+                            <input className="form-control" name='country' {...register("country", { required: true })} defaultValue={loggedInUser.country} />
                         </div>
                     </div>
                     <div className="row mt-2">
@@ -93,7 +94,7 @@ export default function ProfileUpdate() {
                         </div>
                         <div className="col-md-10 me-2">
                             <label htmlFor="password">Picture</label>
-                            <input className="form-control" type="file" name='profilePicture' {...register("profilePicture")} onChange={handleImageUpload} />
+                            <input className="form-control" type="file" name='profilePicture' {...register("profilePicture", { required: true })} onChange={handleImageUpload} />
                         </div>
                     </div>
 
