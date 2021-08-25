@@ -38,7 +38,7 @@ const ShopPage = () => {
   return (
     <div>
       <Header />
-      <div className="search-bar">
+      <div className="search-bar shop__page__search">
         <SearchBar />
       </div>
       <div className="shop__page__container container">

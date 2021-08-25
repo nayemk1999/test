@@ -1,5 +1,7 @@
 .shop__page__search{
     margin-top: -5.5rem;
+    background-color:rgb(214, 214, 214);
+    height:fit-content;
 }
 .shop__page__container{
     margin-top: 25rem;
