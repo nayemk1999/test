@@ -22,7 +22,7 @@ export default function SearchBar() {
       beds: data.beds
     }
     // console.log(searchdata);
-    const url = 'http://localhost:5050/property/search-post'
+    const url = 'https://toprakserver.herokuapp.com/property/search-post'
     fetch(url, {
       method: 'POST',
       headers: {
