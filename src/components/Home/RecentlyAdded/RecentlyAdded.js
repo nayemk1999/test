@@ -10,7 +10,9 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const RecentlyAdded = () => {
   const url = 'https://toprakserver.herokuapp.com/property/all-post'
-  const [allPost, setAllPost] = useState([])
+  const [allPost, setAllPost] = useState([]);
+
+  console.log(allPost);
 
   useEffect(() => {
     fetch(url)
