@@ -10,7 +10,7 @@ import Footer from '../Home/Footer/Footer';
 
 const ShopPage = () => {
   const location = useLocation();
-  const searchData = location.state.detail
+  const searchData = location.state?.detail
   const url = 'https://toprakserver.herokuapp.com/property/all-post'
   const [allPost, setAllPost] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
@@ -30,7 +30,7 @@ const ShopPage = () => {
 
   const displayCards = (searchData || allPost).slice(pagesVisited, pagesVisited + cardPerPage).map(propsData => <ShopPageCard key={propsData._id} propsData={propsData} />)
   
-  const pageCount = Math.ceil(searchData.length || allPost.length / cardPerPage)
+  const pageCount = Math.ceil(searchData?.length || allPost.length / cardPerPage)
   const changePage = ({ selected }) => {
     setPageNumber(selected)
   }
@@ -38,7 +38,7 @@ const ShopPage = () => {
   return (
     <div>
       <Header />
-      <div className="search-bar shop__page__search">
+      <div className="search-bar">
         <SearchBar />
       </div>
       <div className="shop__page__container container">

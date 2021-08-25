@@ -9,10 +9,6 @@ import addPostStyles from "./AddPost.module.css";
 const AddAPost = () => {
   const { loggedInUser } = useContext(UserContext);
   const { register, handleSubmit, reset } = useForm();
-  const [allDivisionbn, setAllDivisionbn] = useState([]);
-  const [district, setDistrict] = useState([]);
-  const [selectId, setSelectId] = useState("");
-  const [upazila, setupazila] = useState([]);
   const [imageURL, setImageURL] = useState(null);
   const [imageURL1, setImageURL1] = useState(null);
   const [imageURL2, setImageURL2] = useState(null);
@@ -28,9 +24,6 @@ const AddAPost = () => {
       image: imageURL,
       price: data.price,
       address: data.address,
-      division: data.division,
-      district: data.district,
-      upazilla: data.upazilla,
       beds: data.beds,
       bath: data.bath,
       type: data.type,
@@ -60,19 +53,15 @@ const AddAPost = () => {
         dangerMode: true,
       });
     });
-
-    console.log("Done", newPost);
   };
 
   const handleImageUpload = (event) => {
-    console.log(event.target.files[0]);
     const imageData = new FormData();
     imageData.set("key", "9dd0f2772c6bcf2a62643d2538566ef1");
     imageData.append("image", event.target.files[0]);
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
-        console.log(response.data.data.display_url);
         setImageURL(response.data.data.display_url);
       })
       .catch(function (error) {
@@ -110,24 +99,6 @@ const AddAPost = () => {
       });
   };
 
-  useEffect(() => {
-    fetch("https://bdapis.herokuapp.com/api/v1.1/divisions")
-      .then((res) => res.json())
-      .then((data) => setAllDivisionbn(data.data));
-  }, []);
-
-  useEffect(() => {
-    fetch("https://bdapis.herokuapp.com/api/v1.1/division/" + selectId)
-      .then((res) => res.json())
-      .then((data) => {
-        setDistrict(data.data);
-      });
-  }, [selectId]);
-
-  const districtChange = (e) => {
-    const select = district.find((id) => e.target.value === id.district);
-    setupazila(select.upazilla);
-  };
   return (
     <section className={addPostStyles.form}>
       <div className={addPostStyles.formContainer}>
@@ -206,7 +177,7 @@ const AddAPost = () => {
             className={addPostStyles.input}
           />
 
-          <div class="d-flex mt-4">
+          {/* <div class="d-flex mt-4">
             <select
               {...register("division")}
               onChange={(e) => setSelectId(e.target.value)}
@@ -239,7 +210,7 @@ const AddAPost = () => {
               {selectId &&
                 upazila.map((upa) => <option key={upa}>{upa}</option>)}
             </select>
-          </div>
+          </div> */}
           <div className="d-flex mt-4">
             <select
               {...register("beds")}
