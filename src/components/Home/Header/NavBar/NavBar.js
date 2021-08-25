@@ -31,12 +31,11 @@ const NavBar = () => {
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          {" "}
           <Image
             className=""
             style={{ height: "33px", width: "43px" }}
             src="https://www.graphicsprings.com/filestorage/stencils/0b9e79b37796b4f9200d26edfa127d19.png?width=500&height=500"
-          />{" "}
+          />
           <strong class="colornav">TOPRAK</strong>
         </Navbar.Brand>
         <Navbar.Toggle

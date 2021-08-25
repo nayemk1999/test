@@ -25,21 +25,21 @@ const RecentCard = (props) => {
           <a className="card-action" href="#"></a>
           <div className="card-heading">{name}</div>
           <div className="card-text">{description}</div>
-          <div className="card-text d-flex align-items-center justify-content-between">
-            <div className="d-flex ">
-              <p>
+          <div className="card-text d-flex align-items-center justify-content-between custom__hover">
+            <div className="d-flex">
+              <p style={{marginRight:"1rem"}}>
                 <strong>
-                  <FontAwesomeIcon icon={faBed} /> {beds}
+                 Beds: <FontAwesomeIcon icon={faBed} /> {beds}
                 </strong>
               </p>
               <p>
                 <strong>
-                  <FontAwesomeIcon icon={faBath} /> {bath}
+                 Bath: <FontAwesomeIcon icon={faBath} /> {bath}
                 </strong>
               </p>
             </div>
 
-            <p>$ {price}</p>
+            <p> <strong>$ {price}</strong></p>
           </div>
           <a href="#" className="card-button">
             Explore

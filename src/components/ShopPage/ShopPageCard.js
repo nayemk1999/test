@@ -1,8 +1,10 @@
+import { faBath, faBed } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ShopPageCard = (props) => {
-    const { name, image, _id, description } = props.propsData;
+    const { name, image, _id, description, beds, bath, price } = props.propsData;
 
     return (
       <>
@@ -20,7 +22,22 @@ const ShopPageCard = (props) => {
             <a className="card-action" href="#"></a>
             <div className="card-heading">{name}</div>
             <div className="card-text">{description}</div>
-            <div className="card-text">$67,400</div>
+            <div className="card-text d-flex align-items-center justify-content-between custom__hover">
+            <div className="d-flex">
+              <p style={{marginRight:"1rem"}}>
+                <strong>
+                 Beds: <FontAwesomeIcon icon={faBed} /> {beds}
+                </strong>
+              </p>
+              <p>
+                <strong>
+                 Bath: <FontAwesomeIcon icon={faBath} /> {bath}
+                </strong>
+              </p>
+            </div>
+
+            <p> <strong>$ {price}</strong></p>
+          </div>
             <a href="#" className="card-button">
               Explore
             </a>

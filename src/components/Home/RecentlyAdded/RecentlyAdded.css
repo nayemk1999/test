@@ -331,6 +331,10 @@ a {
   }
 }
 
+.custom__hover strong:hover{
+  color: blueviolet;
+}
+
 /* Media Q ********/
 @media screen and (max-width: 1440px) {
   .card-sl {
