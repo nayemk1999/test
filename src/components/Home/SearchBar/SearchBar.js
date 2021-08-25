@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import { useForm } from "react-hook-form";
+import Maps from "../../Maps/Maps";
 
 export default function SearchBar() {
   const { register, handleSubmit } = useForm();
@@ -8,6 +9,7 @@ export default function SearchBar() {
   const [district, setDistrict] = useState([]);
   const [selectId, setSelectId] = useState("");
   const [upazila, setupazila] = useState([]);
+  const [search, setSearch] = useState('');
 
   const onSubmit = (data) => {
     alert("Thank You....Data Connected");
@@ -34,6 +36,41 @@ export default function SearchBar() {
   //     setSelectId(select._id)
   // }
 
+  const handleSearch = () => {
+    const searchdata = {
+      location: search
+  }
+  const url = 'http://localhost:5050/property/search-post'
+  fetch(url, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(searchdata)
+  })
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+          // if(data === 'No user found'){
+          //     return swal("No user found!", "Please try again.", "error", { dangerMode: true });
+          // }
+          // if(data === 'Invalid password'){
+          //     return swal("Invaild Password!", "Please try again.", "error", { dangerMode: true });
+          // }
+          // if (data) {
+          //     toast.dismiss(loading);
+          //     setUserInfo(data)
+          //     setLoggedInUser(data);
+          //     return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
+          // }
+          
+      })
+
+    // if (event.key === 'Enter' ) {
+    //   setSearch(event.target.value)
+    // }
+  }
+
   const districtChange = (e) => {
     const select = district.find((id) => e.target.value === id.district);
     setupazila(select.upazilla);
@@ -42,18 +79,23 @@ export default function SearchBar() {
     <>
       <div class="search-container " aria-label="Mini form">
         <div class="input-group">
+          {/* <Maps/> */}
           <input
+            // onKeyPress={handleSearch}
             type="search"
             class="form-control rounded search"
             placeholder="Search"
             aria-label="Search"
             aria-describedby="search-addon"
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <button type="button" class="btn btn-outline-success ms-3">
+          <button onClick={handleSearch} type="button" class="btn btn-outline-success ms-3">
             search
           </button>
         </div>
         <br />
+
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <div class="d-flex">
             <select

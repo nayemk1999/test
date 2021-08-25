@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { getDecodedUser } from "./components/Authentication/LoginManager";
 import "./App.css"
 import ShopPage from "./components/ShopPage/ShopPage";
+import Maps from "./components/Maps/Maps";
 
 export const UserContext = createContext();
 
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/sold">
+            <Maps />
           </Route>
           <PrivateRoute path="/dashboard">
             <Dashboard />

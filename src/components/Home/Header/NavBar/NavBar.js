@@ -55,7 +55,7 @@ const NavBar = () => {
             <Nav.Link href="#rent" className="mr-5 h5 nav-link">
               <strong class="colornav">Rent</strong>
             </Nav.Link>
-            <Nav.Link as={Link} to="/" className="mr-5 h5 nav-link">
+            <Nav.Link as={Link} to="/sold" className="mr-5 h5 nav-link">
               <strong class="colornav">Sold</strong>
             </Nav.Link>
             <Nav.Link
