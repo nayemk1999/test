@@ -28,7 +28,7 @@ const AboutUs = () => {
             our customers with an easy option to get pre-approved and secure
             financing for their next home purchase.{" "}
           </p>
-          <button className={styles.button}
+          <button className={styles.button} 
            data-aos="fade-up"
            data-aos-offset="200"
            data-aos-delay="60"

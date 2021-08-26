@@ -31,11 +31,11 @@ const Review = ({ review }) => {
 
     <>
       <div class="col-md-6 col-lg-4 item"
-       data-aos="fade-up"
-       data-aos-offset="200"
-       data-aos-delay="50"
-       data-aos-duration="1000"
-       data-aos-easing="ease-in-out"
+        data-aos="fade-up"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
       >
         <div class="box">
           <p class="description">{review.message}</p>

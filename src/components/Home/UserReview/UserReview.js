@@ -14,11 +14,11 @@ export default function UserReview() {
     <div class="testimonials-clean">
       <div class="container">
         <div class="intro"
-         data-aos="flip-up"
-         data-aos-offset="200"
-         data-aos-delay="50"
-         data-aos-duration="1000"
-         data-aos-easing="ease-in-out"
+          data-aos="flip-up"
+          data-aos-offset="200"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
         >
           <h2 class="text-center">Testimonials </h2>
           <p class="text-center">

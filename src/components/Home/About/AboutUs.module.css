@@ -7,6 +7,7 @@
     "houseArea1 houseArea3"
     "houseArea4 houseArea4";
   gap: 15px;
+  overflow: hidden;
 }
 .houseArea1 {
   overflow: hidden;
