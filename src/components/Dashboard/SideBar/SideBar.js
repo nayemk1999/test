@@ -110,38 +110,34 @@ const SideBar = () => {
             <li className={sidebarStyles.sideText}>
               <Link className={sidebarStyles.menuLink} to={`${url}/add-post`}>
                 <FontAwesomeIcon icon={faPlus} />
-
                 <span className={sidebarStyles.span}>Add Post</span>
               </Link>
             </li>
-            {/* {isAdmin ? ( */}
-            <>
-              <li className={sidebarStyles.sideText}>
-                <Link
-                  className={sidebarStyles.menuLink}
-                  to={`${url}/manage-post`}
-                >
-                  <FontAwesomeIcon icon={faCog} />
-
-                  <span className={sidebarStyles.span}>Manage Post</span>
-                </Link>
-              </li>
-              <li className={sidebarStyles.sideText}>
-                <Link
-                  className={sidebarStyles.menuLink}
-                  to={`${url}/add-admin`}
-                >
-                  <FontAwesomeIcon icon={faUsersCog} />
-
-                  <span className={sidebarStyles.span}>Add Admin</span>
-                </Link>
-              </li>
-            </>
-            {/* ) : ( */}
+            {isAdmin && (
+              <>
+                <li className={sidebarStyles.sideText}>
+                  <Link
+                    className={sidebarStyles.menuLink}
+                    to={`${url}/manage-post`}
+                  >
+                    <FontAwesomeIcon icon={faCog} />
+                    <span className={sidebarStyles.span}>Manage Post</span>
+                  </Link>
+                </li>
+                <li className={sidebarStyles.sideText}>
+                  <Link
+                    className={sidebarStyles.menuLink}
+                    to={`${url}/add-admin`}
+                  >
+                    <FontAwesomeIcon icon={faUsersCog} />
+                    <span className={sidebarStyles.span}>Add Admin</span>
+                  </Link>
+                </li>
+              </>
+            )}
             <li className={sidebarStyles.sideText}>
               <Link className={sidebarStyles.menuLink} to={`${url}/review`}>
                 <FontAwesomeIcon icon={faUsersCog} />
-
                 <span className={sidebarStyles.span}>Review</span>
               </Link>
             </li>

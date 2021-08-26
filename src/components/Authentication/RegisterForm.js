@@ -4,7 +4,7 @@ import './FormStyle.css'
 import avatar from '../../image/avatar.svg';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { fetchProfile, initializeLoginFramework } from './LoginManager';
+// import { fetchProfile, initializeLoginFramework } from './LoginManager';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 
