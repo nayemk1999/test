@@ -33,7 +33,7 @@ export default class Maps extends React.Component {
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
-                className: 'location-search-input form-control rounded search',
+                className: 'location-search-input',
               })}
             />
             <div className="autocomplete-dropdown-container">
@@ -53,7 +53,7 @@ export default class Maps extends React.Component {
                       style,
                     })}
                   >
-                    <>{suggestion.description}</>
+                    <span>{suggestion.description}</span>
                   </div>
                 );
               })}

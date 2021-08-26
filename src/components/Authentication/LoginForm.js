@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { fetchProfile, handleGoogleSignIn, initializeLoginFramework, setJWTToken, setUserInfo } from './LoginManager';
+import { initializeLoginFramework, setUserInfo } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
