@@ -6,7 +6,13 @@ const AboutUs = () => {
   return (
     <Container className={styles.container}>
       <Row>
-        <Col sm={12} md={6} lg={6} className="text-center">
+        <Col sm={12} md={6} lg={6} className="text-center"
+         data-aos="fade-right"
+         data-aos-offset="200"
+         data-aos-delay="50"
+         data-aos-duration="1000"
+         data-aos-easing="ease-in-out"
+        >
           <h3 className={styles.title}>About Us</h3>
           <p className={styles.aboutText}>
             Toprak is a multipurpose real estate web app where buyers as well as
@@ -22,9 +28,21 @@ const AboutUs = () => {
             our customers with an easy option to get pre-approved and secure
             financing for their next home purchase.{" "}
           </p>
-          <button className={styles.button}>Our Details</button>
+          <button className={styles.button} 
+           data-aos="fade-up"
+           data-aos-offset="200"
+           data-aos-delay="60"
+           data-aos-duration="1000"
+           data-aos-easing="ease-in-out"
+          >Our Details</button>
         </Col>
-        <Col sm={12} md={6} lg={6}>
+        <Col sm={12} md={6} lg={6}
+         data-aos="fade-left"
+         data-aos-offset="200"
+         data-aos-delay="50"
+         data-aos-duration="1000"
+         data-aos-easing="ease-in-out"
+        >
           <div className={styles.houses}>
             <div className={styles.houseArea1}>
               <img

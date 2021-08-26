@@ -10,7 +10,13 @@ const ShopPageCard = (props) => {
       <>
       <div className="col-xl-4 col-lg-6 col-md-6 mt-5">
         <Link to={"/property-detail/" + _id}>
-          <div className="card-sl shope__custom__card" style={{ width: "20rem" }}>
+          <div className="card-sl shope__custom__card" style={{ width: "20rem" }}
+           data-aos="fade-up"
+           data-aos-offset="200"
+           data-aos-delay="50"
+           data-aos-duration="1000"
+           data-aos-easing="ease-in-out"
+          >
             <div className="card-image custom_card">
               <img
                 src={image}
