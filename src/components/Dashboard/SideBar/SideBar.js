@@ -150,7 +150,6 @@ const SideBar = () => {
             <li className={sidebarStyles.sideText}>
               <Link className={sidebarStyles.menuLink} to="/">
                 <FontAwesomeIcon icon={faUsersCog} />
-
                 <span className={sidebarStyles.span}>Home</span>
               </Link>
             </li>
