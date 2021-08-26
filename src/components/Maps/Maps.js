@@ -53,7 +53,7 @@ export default class Maps extends React.Component {
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <>{suggestion.description}</>
                   </div>
                 );
               })}
