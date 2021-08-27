@@ -7,16 +7,7 @@ import { UserContext } from "../../../App";
 import ProfileUpdate from "./ProfileUpdate";
 
 const Profile = () => {
-
   const [show, setShow] = useState(null);
-  const [hide, setHide] = useState(false);
-
-  function handleShow() {
-    setShow(true);
-  }
-  function onHide() {
-    setHide(true);
-  }
 
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
   const history = useHistory();
@@ -66,6 +57,7 @@ const Profile = () => {
             <div className="mt-4">
               <h4>{loggedInUser.username}</h4>
               <p className="text-secondary mb-3">{loggedInUser.email}</p>
+              <p className="text-secondary mb-3">{loggedInUser.country}</p>
             </div>
             <div className="mt-2">
               <Button
