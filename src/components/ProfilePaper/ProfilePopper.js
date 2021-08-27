@@ -13,14 +13,15 @@ const ProfilePopper = () => {
     const history = useHistory()
     const signOut = () => {
         // initializeLoginFramework();
-       const userId = localStorage.removeItem('user');
+        const userId = localStorage.removeItem("user_token");
         // toast.error("Logged Out!");
         if (!userId) {
-            return swal("Successfully Logout!", "Please Login.", { dangerMode: true })
-                .then(lo => {
-                    setLoggedInUser(lo)
-                    history.push('/login')
-                });
+            return swal("Successfully Logout!", "Please Login.", {
+                dangerMode: true,
+            }).then((lo) => {
+                setLoggedInUser(lo);
+                history.push("/login");
+            });
         }
     }
 
@@ -44,7 +45,7 @@ const ProfilePopper = () => {
             }
         >
             <Nav.Link className="p-0">
-                <Image style={{ border: '1px solid #17a2b8', marginTop:'-8px' }} src={profilePicture || "https://i.ibb.co/7CzR0Dg/users.jpg"} width="48" height="48" roundedCircle className="d-inline-block align-top" alt="..." />
+                <Image style={{ border: '1px solid #17a2b8', marginTop: '-8px' }} src={profilePicture || "https://i.ibb.co/7CzR0Dg/users.jpg"} width="48" height="48" roundedCircle className="d-inline-block align-top" alt="..." />
             </Nav.Link>
         </OverlayTrigger>
     );

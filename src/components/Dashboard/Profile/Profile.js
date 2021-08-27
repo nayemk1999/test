@@ -14,7 +14,7 @@ const Profile = () => {
 
   const signOut = () => {
     // initializeLoginFramework();
-    const userId = localStorage.removeItem("user");
+    const userId = localStorage.removeItem("user_token");
     // toast.error("Logged Out!");
     if (!userId) {
       return swal("Successfully Logout!", "Please Login.", {

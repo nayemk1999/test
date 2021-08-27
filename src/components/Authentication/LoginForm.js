@@ -24,7 +24,7 @@ const LoginForm = () => {
             userName: userName,
             password: password
         }
-        const url = 'https://toprakserver.herokuapp.com/auth/login'
+        const url = 'http://localhost:5050/auth/login'
         fetch(url, {
             method: 'POST',
             headers: {
@@ -43,8 +43,9 @@ const LoginForm = () => {
                 }
                 if (data) {
                     toast.dismiss(loading);
+                    // console.log(data);
                     setUserInfo(data)
-                    setLoggedInUser(data);
+                    // setLoggedInUser(data);
                     return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
                 }
                 

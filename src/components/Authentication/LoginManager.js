@@ -48,13 +48,14 @@ export const initializeLoginFramework = () => {
 //         })
 // }
 export const setUserInfo = (props) => {
-    return localStorage.setItem('user', JSON.stringify(props) )
+    return localStorage.setItem('user_token', props)
 }
 
 export const getDecodedUser = () => {
-    const user = localStorage.getItem('user');
-    const userData = JSON.parse(user)
-    if (!user) {
+    const token = localStorage.getItem('user_token');
+    const jwt_decoder = jwt_decode(token)
+    const userData = jwt_decoder.user
+    if (!token) {
         return {};
     }
     return userData;
@@ -62,11 +63,9 @@ export const getDecodedUser = () => {
 
 
 export const handleSignOut = () => { 
-    localStorage.removeItem('user');
-    const signout = {
-        email: ''
-    } 
-    return signout;
+    if(localStorage.removeItem('user_token')){
+        return{}
+    }
 }
 
 // export const fetchProfile = (props) => {
