@@ -67,7 +67,7 @@ const NavBar = () => {
             </Nav.Link>
           </Nav>
           <div>
-            {loggedInUser.email ?
+            {loggedInUser?.email ?
               <ProfilePopper />
               :
               <Nav.Link style={{ marginLeft: "20px" }} className='h5 colornav' as={Link} to="/login" >
