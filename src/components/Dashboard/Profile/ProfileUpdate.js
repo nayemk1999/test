@@ -10,37 +10,28 @@ import axios from 'axios';
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const [imageURL, setImageURL] = useState(null)
-    console.log(imageURL);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
-
     const onSubmit = updateData => {
-
         const updatedData = {
-            email: updateData.email || loggedInUser.email,
-            mobile: updateData.mobile || loggedInUser.mobile,
-            city: updateData.city || loggedInUser.city,
-            country: updateData.country || loggedInUser.country,
-            profilePicture: imageURL || loggedInUser.profilePicture,
-            password: updateData.password || loggedInUser.password
+            userId: loggedInUser._id,
+            email: updateData.email,
+            mobile: updateData.mobile,
+            city: updateData.city,
+            country: updateData.country,
+            profilePicture: imageURL,
+            // password: updateData.password
         }
-        console.log(updatedData);
-        reset();
-        swal(`Successfully Updated Your Profile`, "success");
-        // const url = 'https://toprakserver.herokuapp.com/auth/register'
-        // fetch(url, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'Application/json'
-        //     },
-        //     body: JSON.stringify(updateData)
-        // })
-        //     .then(res => {
-        //         if (res) {
-        //             // reset();
-        //             return swal(`Successfully Updated Your Profile`, "success");
-        //         }
-        //         swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
-        //     })
+
+        const url = `http://localhost:5050/user/${loggedInUser._id}`
+        axios.patch(url, updatedData)
+            .then(res => {
+                if (res.data) {
+                    reset();
+                    setLoggedInUser(res.data)
+                    return swal(`Account has been updated`, "success");
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
     };
     const handleImageUpload = (event) => {
         // console.log(event.target.files[0]);
@@ -59,32 +50,32 @@ export default function ProfileUpdate() {
     }
     return (
         <div className="container">
-            <h2 className="text-center mt-2 text-success">Profile Update</h2>
-            <div style={{ borderRadius: "20px" }} className="p-5 shadow-lg mt-2">
+            {/* <h2 className="text-center mt-2 text-success">Profile Update</h2> */}
+            <div style={{ borderRadius: "20px" }} className="p-3 shadow-lg mt-1">
                 {/* <Image className="d-flex justify-content-center mx-auto" style={{ maxWidth: "70px", border: '1px solid #17a2b8' }} src={loggedInUser.profilePicture} roundedCircle /> */}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row mt-4">
                         <div className="col-md-4 me-2">
                             <label htmlFor="email">Email</label>
-                            <input className="form-control" name='email' {...register("email")} defaultValue={loggedInUser.email} />
+                            <input className="form-control" name='email' {...register("email", { required: true })} defaultValue={loggedInUser.email} />
                         </div>
-                        <div className="col-md-4 me-2">
+                        {/* <div className="col-md-4 me-2">
                             <label htmlFor="password">Password</label>
-                            <input className="form-control" name='password' {...register("password")} />
-                        </div>
+                            <input className="form-control" name='password' {...register("password", { required: true })} />
+                        </div> */}
                         <div className="col-md-3 me-2">
                             <label htmlFor="email">Number</label>
-                            <input className="form-control" name='mobile' {...register("mobile")} defaultValue={loggedInUser.mobile} />
+                            <input className="form-control" name='mobile' {...register("mobile", { required: true })} defaultValue={loggedInUser.mobile} />
                         </div>
                     </div>
                     <div className="row mt-2">
                         <div className="col-md-4 me-2">
                             <label htmlFor="username">City</label>
-                            <input className="form-control" name='city' {...register("city")} defaultValue={loggedInUser.city} />
+                            <input className="form-control" name='city' {...register("city", { required: true })} defaultValue={loggedInUser.city} />
                         </div>
                         <div className="col-md-4 me-2">
                             <label htmlFor="email">Country</label>
-                            <input className="form-control" name='country' {...register("country")} defaultValue={loggedInUser.country} />
+                            <input className="form-control" name='country' {...register("country", { required: true })} defaultValue={loggedInUser.country} />
                         </div>
                     </div>
                     <div className="row mt-2">

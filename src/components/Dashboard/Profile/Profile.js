@@ -1,11 +1,23 @@
-import React, { useContext } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Button, Card, Container, Modal } from "react-bootstrap";
 // import toast from "react-hot-toast";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import { UserContext } from "../../../App";
+import ProfileUpdate from "./ProfileUpdate";
 
 const Profile = () => {
+
+  const [show, setShow] = useState(null);
+  const [hide, setHide] = useState(false);
+
+  function handleShow() {
+    setShow(true);
+  }
+  function onHide() {
+    setHide(true);
+  }
+
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
   const history = useHistory();
 
@@ -57,9 +69,10 @@ const Profile = () => {
             </div>
             <div className="mt-2">
               <Button
-                as={Link}
-                to="/dashboard/update-profile"
+                // as={Link}
+                // to="/dashboard/update-profile"
                 className="btn btn-secondary me-4"
+                onClick={() => setShow(true)}
               >
                 Profile Update
               </Button>
@@ -69,6 +82,17 @@ const Profile = () => {
             </div>
           </div>
         </Card.Body>
+        <>
+          <Modal centered show={show} size='lg'>
+            <Modal.Header >
+              <Modal.Title className="text-center mt-2 text-success">Update Profile</Modal.Title>
+              <Button onClick={() => setShow(false)}>Close</Button>
+            </Modal.Header>
+            <Modal.Body >
+              <ProfileUpdate />
+            </Modal.Body>
+          </Modal>
+        </>
       </Card>
     </Container>
   );
