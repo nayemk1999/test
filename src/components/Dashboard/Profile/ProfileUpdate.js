@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
 import axios from 'axios';
+import { setUpdateInfo } from '../../Authentication/LoginManager';
 
 export default function ProfileUpdate() {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext);
@@ -22,17 +23,26 @@ export default function ProfileUpdate() {
             // password: updateData.password
         }
 
-        const url = `http://localhost:5050/user/${loggedInUser._id}`
+        const url = `https://toprakserver.herokuapp.com/user/${loggedInUser._id}`
         axios.patch(url, updatedData)
             .then(res => {
                 if (res.data) {
                     reset();
-                    setLoggedInUser(res.data)
+                    handleUpdate(res.data)
+                    // setLoggedInUser(res.data)
                     return swal(`Account has been updated`, "success");
                 }
                 swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
     };
+
+    const handleUpdate = (res) => {
+        setUpdateInfo(res)
+        setLoggedInUser(res);
+    }
+
+
+
     const handleImageUpload = (event) => {
         // console.log(event.target.files[0]);
         const imageData = new FormData();

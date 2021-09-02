@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import { initializeLoginFramework, setUserInfo } from './LoginManager';
+import { getUserInfo, initializeLoginFramework, setUserInfo } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
@@ -34,22 +34,28 @@ const LoginForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                
-                if(data === 'No user found'){
+                if (data === 'No user found') {
                     return swal("No user found!", "Please try again.", "error", { dangerMode: true });
                 }
-                if(data === 'Invalid password'){
+                if (data === 'Invalid password') {
                     return swal("Invaild Password!", "Please try again.", "error", { dangerMode: true });
                 }
                 if (data) {
                     toast.dismiss(loading);
-                    setUserInfo(data)
-                    setLoggedInUser(data);
-                    return swal(`Successfully Log In`, `Welcome`, "success").then(res => history.push(from));
+                    handleLogin(data)
                 }
-                
+
             })
     }
+
+    const handleLogin = (res) => {
+        setUserInfo(res)
+        setLoggedInUser(res);
+        return swal(`Successfully Log In`, `Welcome`, "success")
+            .then(res => history.push(from));
+    }
+
+
 
     var provider = new firebase.auth.GoogleAuthProvider();
     const handleGoogleSignIn = () => {
