@@ -14,6 +14,9 @@ const HeadCarousel = () => {
       data-bs-ride="carousel"
     >
       <div className="search-bar">
+        {/* <marquee width="100%" direction="left" height="30%">
+          This is sample scrolling text.
+        </marquee> */}
         <SearchBar />
       </div>
 

@@ -24,7 +24,7 @@ const LoginForm = () => {
             userName: userName,
             password: password
         }
-        const url = 'https://toprakserver.herokuapp.com/auth/login'
+        const url = 'http://localhost:5050/auth/login'
         fetch(url, {
             method: 'POST',
             headers: {
