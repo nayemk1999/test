@@ -36,12 +36,12 @@ const ManagePost = () => {
                     <td>৳ {post.price}</td>
                     <td className="text-center">
                       <div className="d-flex">
-                        <Button
+                        {/* <Button
                           variant="outline-secondary"
                           className="p-1 mb-0 me-2"
                         >
                           Add To Best Property
-                        </Button>
+                        </Button> */}
                         <Button
                           variant="outline-success"
                           className="p-1 mb-0 me-2"
@@ -60,7 +60,7 @@ const ManagePost = () => {
                       <>
                         <Modal centered show={show} size='lg'>
                           <Modal.Header >
-                            <Modal.Title className="text-center mt-2 text-success">Update Profile</Modal.Title>
+                            <Modal.Title className="text-center mt-2 text-success">Update Property</Modal.Title>
                             <Button onClick={() => setShow(false)}>Close</Button>
                           </Modal.Header>
                           <Modal.Body >

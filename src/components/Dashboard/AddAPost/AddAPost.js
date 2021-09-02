@@ -68,36 +68,6 @@ const AddAPost = () => {
         console.log(error);
       });
   };
-  const handleImageUpload1 = (event) => {
-    console.log(event.target.files[0]);
-    const imageData = new FormData();
-    imageData.set("key", "9dd0f2772c6bcf2a62643d2538566ef1");
-    imageData.append("image", event.target.files[0]);
-    axios
-      .post("https://api.imgbb.com/1/upload", imageData)
-      .then(function (response) {
-        console.log(response.data.data.display_url);
-        setImageURL1(response.data.data.display_url);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-  const handleImageUpload2 = (event) => {
-    console.log(event.target.files[0]);
-    const imageData = new FormData();
-    imageData.set("key", "9dd0f2772c6bcf2a62643d2538566ef1");
-    imageData.append("image", event.target.files[0]);
-    axios
-      .post("https://api.imgbb.com/1/upload", imageData)
-      .then(function (response) {
-        console.log(response.data.data.display_url);
-        setImageURL2(response.data.data.display_url);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   return (
     <section className={addPostStyles.form}>
@@ -147,22 +117,6 @@ const AddAPost = () => {
             className={addPostStyles.input}
           />
 
-          <label className={addPostStyles.label}>Image 2:</label>
-          <input
-            {...register("image2")}
-            onChange={handleImageUpload1}
-            type="file"
-            className={addPostStyles.input}
-          />
-
-          <label className={addPostStyles.label}>Image 3:</label>
-          <input
-            {...register("image3")}
-            onChange={handleImageUpload2}
-            type="file"
-            className={addPostStyles.input}
-          />
-
           <label className={addPostStyles.label}>Price:</label>
           <input
             {...register("price")}
@@ -176,41 +130,6 @@ const AddAPost = () => {
             type="text"
             className={addPostStyles.input}
           />
-
-          {/* <div class="d-flex mt-4">
-            <select
-              {...register("division")}
-              onChange={(e) => setSelectId(e.target.value)}
-              className={`form-select me-2 ${addPostStyles.select}`}
-              aria-label="Default select example"
-            >
-              <option selected>Division</option>
-              {allDivisionbn.map((dv) => (
-                <option key={dv._id}>{dv.division}</option>
-              ))}
-            </select>
-            <select
-              {...register("district")}
-              onChange={districtChange}
-              className={`form-select me-2 ${addPostStyles.select}`}
-              aria-label="Default select example"
-            >
-              <option selected>District</option>
-              {district !== undefined &&
-                district.map((dis) => (
-                  <option key={dis._id}>{dis.district}</option>
-                ))}
-            </select>
-            <select
-              {...register("upazilla")}
-              className={`form-select me-2 ${addPostStyles.select}`}
-              aria-label="Default select example"
-            >
-              <option selected>Upazilla</option>
-              {selectId &&
-                upazila.map((upa) => <option key={upa}>{upa}</option>)}
-            </select>
-          </div> */}
           <div className="d-flex mt-4">
             <select
               {...register("beds")}
