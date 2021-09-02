@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Modal, Table } from "react-bootstrap";
 import TableSpinner from "../../Spinner/Spinner";
+import AddAPost from "../AddAPost/AddAPost";
 
 const ManagePost = () => {
   const url = "https://toprakserver.herokuapp.com/property/all-post";
   const [allPost, setAllPost] = useState([]);
+  const [show, setShow] = useState(null);
 
   useEffect(() => {
     fetch(url)
@@ -43,7 +45,7 @@ const ManagePost = () => {
                         <Button
                           variant="outline-success"
                           className="p-1 mb-0 me-2"
-                          onClick={"()=>handleUpdateService(post._id)"}
+                          onClick={() => setShow(true)}
                         >
                           Edit Property{" "}
                         </Button>
@@ -55,6 +57,17 @@ const ManagePost = () => {
                           Delete Property{" "}
                         </Button>
                       </div>
+                      <>
+                        <Modal centered show={show} size='lg'>
+                          <Modal.Header >
+                            <Modal.Title className="text-center mt-2 text-success">Update Profile</Modal.Title>
+                            <Button onClick={() => setShow(false)}>Close</Button>
+                          </Modal.Header>
+                          <Modal.Body >
+                            <AddAPost />
+                          </Modal.Body>
+                        </Modal>
+                      </>
                     </td>
                   </tr>
                 </tbody>
