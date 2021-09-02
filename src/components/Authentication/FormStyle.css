@@ -160,6 +160,7 @@
     font-size: 1.4rem;
     transition: .3s;
     font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
 .forget-signup .a:hover,

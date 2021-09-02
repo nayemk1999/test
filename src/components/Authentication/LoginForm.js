@@ -8,23 +8,26 @@ import { UserContext } from '../../App';
 import { getUserInfo, initializeLoginFramework, setUserInfo } from './LoginManager';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
+import { Modal, Button } from 'react-bootstrap';
+import ForgetPassword from './ForgetPassword';
 
 const LoginForm = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const { setLoggedInUser } = useContext(UserContext);
-
+    const [show, setShow] = useState(null);
     const history = useHistory()
     const location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
     const loading = toast.loading('Adding...Please wait!');
 
     const login = () => {
+
         const logindata = {
             userName: userName,
             password: password
         }
-        const url = 'http://localhost:5050/auth/login'
+        const url = 'https://toprakserver.herokuapp.com/auth/login'
         fetch(url, {
             method: 'POST',
             headers: {
@@ -54,8 +57,6 @@ const LoginForm = () => {
         return swal(`Successfully Log In`, `Welcome`, "success")
             .then(res => history.push(from));
     }
-
-
 
     var provider = new firebase.auth.GoogleAuthProvider();
     const handleGoogleSignIn = () => {
@@ -96,8 +97,6 @@ const LoginForm = () => {
                 console.log(err);
                 console.log(err.message);
             })
-
-
     }
 
     const handleResponse = (res) => {
@@ -169,10 +168,22 @@ const LoginForm = () => {
                             </div>
                         </div>
                         <div class='forget-signup'>
-                            <Link className="a" to="/">Forget Password</Link>
+                            <span className="a" onClick={() => setShow(true)}>Forget Password</span>
+
                             <Link className="a" to="/register-form">Sign Up</Link>
                         </div>
                         <input onClick={login} type="submit" class="login-btn" value="Login" />
+                        <>
+                            <Modal centered show={show} size='lg'>
+                                <Modal.Header >
+                                    <Modal.Title className="text-center mt-2 text-success">Forget Password</Modal.Title>
+                                    <Button onClick={() => setShow(false)}>Close</Button>
+                                </Modal.Header>
+                                <Modal.Body >
+                                    <ForgetPassword />
+                                </Modal.Body>
+                            </Modal>
+                        </>
                         <button onClick={"handleGoogleSignIn"} class="login-btn" value="">Login With Google</button>
                     </div>
                 </div>

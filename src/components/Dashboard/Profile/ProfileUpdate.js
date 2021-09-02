@@ -22,8 +22,8 @@ export default function ProfileUpdate() {
             profilePicture: imageURL,
             // password: updateData.password
         }
-
-        const url = `http://localhost:5050/user/${loggedInUser._id}`
+        
+        const url = `https://toprakserver.herokuapp.com/user/${loggedInUser._id}`
         axios.patch(url, updatedData)
             .then(res => {
                 if (res.data) {
