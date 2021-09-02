@@ -13,36 +13,38 @@ export default function SearchBar() {
   // const [district, setDistrict] = useState([]);
   // const [selectId, setSelectId] = useState("");
   // const [upazila, setupazila] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const onSubmit = (data) => {
     const searchdata = {
       location: search,
       // appartment: data.apartment,
       // beds: data.beds
-    }
-    const url = 'https://toprakserver.herokuapp.com/property/search-post'
+    };
+    const url = "https://toprakserver.herokuapp.com/property/search-post";
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'Application/json'
+        "Content-Type": "Application/json",
       },
-      body: JSON.stringify(searchdata)
+      body: JSON.stringify(searchdata),
     })
-      .then(res => res.json())
-      .then(data => {
-        if (data === 'No Property found') {
-          return swal("No Property found!", "Please try again.", "error", { dangerMode: true });
+      .then((res) => res.json())
+      .then((data) => {
+        if (data === "No Property found") {
+          return swal("No Property found!", "Please try again.", "error", {
+            dangerMode: true,
+          });
         }
         if (data) {
           toast.dismiss(loading);
           // console.log(data);
           history.push({
-            pathname: '/shop-page',
-            state: { detail: data }
+            pathname: "/shop-page",
+            state: { detail: data },
           });
         }
-      })
+      });
   };
 
   // useEffect(() => {
@@ -64,12 +66,12 @@ export default function SearchBar() {
 
   //     setSelectId(select._id)
   // }
-  const loading = toast.loading('Searching...Please wait!');
+  const loading = toast.loading("Searching...Please wait!");
   const handleSearch = (event) => {
-    if (event.key === 'Enter' ) {
-      onSubmit()
+    if (event.key === "Enter") {
+      onSubmit();
     }
-  }
+  };
 
   // const districtChange = (e) => {
   //   const select = district.find((id) => e.target.value === id.district);
@@ -166,7 +168,7 @@ export default function SearchBar() {
               <option value="3">6</option>
             </select>
           </div>
-          <button className="btn btn-outline-success mt-1 w-100" type="submit">
+          <button className="btn btn-outline-danger mt-1 w-100" type="submit">
             Find Property
           </button>
         </form>
