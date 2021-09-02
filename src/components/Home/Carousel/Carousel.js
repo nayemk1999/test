@@ -5,8 +5,9 @@ import "./Carousel.css";
 
 const HeadCarousel = () => {
   const img1 = "https://i.ibb.co/pnGSnwZ/233999.jpg";
-  const img2 = "https://i.ibb.co/kxKkGjD/1-2.jpg";
+  const img2 = "https://i.ibb.co/fXQjD1x/photo-1470723710355-95304d8aece4.jpg";
   const img3 = "https://i.ibb.co/Nx0bjDn/153056.jpg";
+
   return (
     <div
       id="carouselExampleCaptions"
