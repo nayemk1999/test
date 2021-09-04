@@ -2,6 +2,6 @@
 
 # This is Real Estate Website
 
-# Website URL: https://toprak-real.web.app/
-
+# Live URL: https://toprak-real.web.app/
+# Server URL: https://github.com/nayemk1999/toprak-server.git
 ## Available Scripts
